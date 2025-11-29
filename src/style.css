@@ -16,9 +16,37 @@
   font-family: 'Satoshi', sans-serif;
 }
 
-.swiper-pagination-progressbar-fill {
+/* Slider 1: Happenings (Black) */
+.happenings-pagination .swiper-pagination-progressbar-fill {
   background-color: black !important;
 }
-.events-pagination {
+
+/* Slider 2: Upcoming Events (White) */
+.events-pagination .swiper-pagination-progressbar-fill {
   background-color: white !important;
 }
+
+/* Slider 3: Spotlight (Red or another color) */
+.spotlight-pagination .swiper-pagination-progressbar-fill {
+  background-color: black !important;
+}
+
+/* Hero Slider Custom styles to hide scrollbars */
+.fade-enter {
+opacity: 0;
+transform: translateY(20px);
+}
+.fade-enter-active {
+opacity: 1;
+transform: translateY(0);
+transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+.line-clamp-2 {
+display: -webkit-box;
+-webkit-line-clamp: 2;
+-webkit-box-orient: vertical;
+overflow: hidden;
+}
+
+.fade-enter { opacity: 0; transform: translateY(10px); }
+    .fade-enter-active { opacity: 1; transform: translateY(0); transition: opacity 0.5s ease-out, transform 0.5s ease-out; }

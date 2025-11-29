@@ -18,95 +18,109 @@
   <body>
     
     <!--------------BANNER VIDEO---------------->
-    <section class="py-2 px-2 sm:py-4 sm:px-4 lg:py-6 lg:px-6 w-full"> 
-      <div class="relative h-[550px] sm:h-[700px] lg:h-[850px] w-full rounded-2xl sm:rounded-[2rem] overflow-hidden group">
-        
+<section class="py-2 px-2 sm:py-4 sm:px-4 lg:py-6 lg:px-6 w-full h-full">
+    <div class="relative h-[600px] sm:h-[700px] lg:h-[850px] w-full rounded-2xl sm:rounded-[2rem] overflow-hidden group shadow-2xl bg-black">
+      
         <video 
-          autoPlay 
-          loop 
-          muted 
-          playsInline 
-          class="absolute inset-0 w-full h-full object-cover"
+            id="hero-video"
+            autoplay 
+            muted 
+            playsinline 
+            class="absolute inset-0 w-full h-full object-cover transition-opacity duration-700 opacity-0"
         >
-          <source src="img/amrita-campus-video-home-page.mp4" type="video/mp4" />
+            <source src="" type="video/mp4" />
         </video>
 
         <div class="absolute inset-0 bg-black/40 sm:bg-black/50"></div>
 
         <div class="absolute inset-0 w-full h-full">
-          <div class="container mx-auto px-4 lg:px-6 h-full relative flex flex-col justify-between py-6 sm:py-8 lg:py-10">
+            <div class="container mx-auto px-4 lg:px-6 h-full relative flex flex-col justify-between py-6 sm:py-8 lg:py-10">
 
-            <div class="flex justify-between items-start z-20">
-              
-              <div class="flex items-center">
-                <img 
-                  src="img/logo.svg" 
-                  alt="Logo" 
-                  class="h-12 sm:h-16 lg:h-20 w-auto"
-                />
-              </div>
+                <div class="flex justify-between items-start z-20">
+                    <div class="flex items-center">
+                        <img src="img/logo.svg" alt="Logo" class="h-10 sm:h-16 lg:h-20 w-auto" />
+                    </div>
 
-              <div class="flex items-center gap-2 sm:gap-4">
-                
-                <button class="cursor-pointer group/admissions relative z-10 hidden md:inline-flex items-center gap-3 overflow-hidden rounded-full bg-[#AF0C3E] pl-1 pr-6 py-1 text-white transition-all duration-800 hover:shadow-lg">
-                  <span class="absolute left-1 top-1/2 -translate-y-1/2 h-10 w-10 rounded-full bg-white transition-transform duration-800 ease-out scale-0 group-hover/admissions:scale-[10]"></span>
-                  
-                  <div class="relative z-10 flex h-10 w-10 items-center justify-center rounded-full bg-white/20 transition-all duration-800 group-hover/admissions:bg-[#AF0C3E] group-hover/admissions:rotate-90">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-5 w-5 text-white">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                    </svg>
-                  </div>
+                    <div class="flex items-center gap-2 sm:gap-4">
+                        <button class="cursor-pointer group/admissions relative z-10 hidden md:inline-flex items-center gap-3 overflow-hidden rounded-full bg-[#AF0C3E] pl-1 pr-6 py-1 text-white transition-all duration-800 hover:shadow-lg">
+                            <span class="absolute left-1 top-1/2 -translate-y-1/2 h-10 w-10 rounded-full bg-white transition-transform duration-800 ease-out scale-0 group-hover/admissions:scale-[10]"></span>
+                            <div class="relative z-10 flex h-10 w-10 items-center justify-center rounded-full bg-white/20 transition-all duration-800 group-hover/admissions:bg-[#AF0C3E] group-hover/admissions:rotate-90">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-5 w-5 text-white">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                                </svg>
+                            </div>
+                            <span class="relative z-10 font-satoshi text-sm font-medium tracking-wide transition-colors duration-800 group-hover/admissions:text-black">Admissions</span>
+                        </button>
 
-                  <span class="relative z-10 font-satoshi text-sm font-medium tracking-wide transition-colors duration-800 group-hover/admissions:text-black">
-                    Admissions
-                  </span>
-                </button>
+                        <button class="group/button cursor-pointer bg-white text-gray-600 rounded-full w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center hover:bg-gray-200 transition-colors duration-300">
+                            <div class="w-5 sm:w-6 flex flex-col gap-[4px] sm:gap-[5px]">
+                                <span class="h-[2px] w-1/2 bg-current rounded-full ml-auto transition-transform duration-300 ease-out group-hover/button:-translate-x-full"></span>
+                                <span class="h-[2px] w-full bg-current rounded-full"></span>
+                                <span class="h-[2px] w-1/2 bg-current rounded-full transition-transform duration-300 ease-out group-hover/button:translate-x-full"></span>
+                            </div>
+                        </button>
+                    </div>
+                </div>
 
-                <button class="group/button cursor-pointer bg-white text-gray-600 rounded-full w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center hover:bg-gray-200 transition-colors duration-300">
-                  <div class="w-5 sm:w-6 flex flex-col gap-[4px] sm:gap-[5px]">
-                    <span class="h-[2px] w-1/2 bg-current rounded-full ml-auto transition-transform duration-300 ease-out group-hover/button:-translate-x-full"></span>
-                    <span class="h-[2px] w-full bg-current rounded-full"></span>
-                    <span class="h-[2px] w-1/2 bg-current rounded-full transition-transform duration-300 ease-out group-hover/button:translate-x-full"></span>
-                  </div>
-                </button>
+                <div class="flex flex-col lg:flex-row items-end justify-between relative z-10 w-full pointer-events-none h-full pb-32 sm:pb-0">
+                    
+                    <div class="max-w-3xl w-full lg:max-w-4xl pointer-events-auto mt-auto mb-10 sm:mb-10">
+                        <h1 id="hero-title" class="text-white font-anton text-5xl sm:text-6xl lg:text-8xl lg:leading-[1.1] uppercase leading-12 sm:leading-tight mb-3 sm:mb-4 drop-shadow-lg transition-all duration-500 ease-in-out">
+                            </h1>
+                        
+                        <p id="hero-subtitle" class="max-w-[90%] sm:max-w-lg py-2 sm:py-4 text-gray-100 font-satoshi text-base sm:text-lg lg:text-xl leading-snug sm:leading-7 drop-shadow-md transition-opacity duration-500">
+                            </p>
 
-              </div>
-            </div>
+                        <button class="mt-4 sm:mt-5 cursor-pointer group/apply relative z-10 inline-flex items-center gap-3 overflow-hidden rounded-full bg-[#AF0C3E] pl-1 pr-6 py-1 text-white transition-all duration-800 hover:shadow-lg">
+                            <span class="absolute left-1 top-1/2 -translate-y-1/2 h-10 w-10 rounded-full bg-white transition-transform duration-800 ease-out scale-0 group-hover/apply:scale-[10]"></span>
+                            <div class="relative z-10 flex h-10 w-10 items-center justify-center rounded-full bg-white/20 transition-all duration-800 group-hover/apply:bg-[#AF0C3E] group-hover/apply:rotate-90">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-5 w-5 text-white">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                                </svg>
+                            </div>
+                            <span class="relative z-10 font-satoshi text-sm font-medium tracking-wide transition-colors duration-800 group-hover/apply:text-black">Apply Now</span>
+                        </button>
+                    </div>
 
-            <div class="relative z-10 mb-4 sm:mb-6 lg:mb-10">
-              <div class="inline-block max-w-3xl">
-                
-                <h1 class="text-white font-anton text-4xl sm:text-6xl lg:text-8xl lg:leading-[1.1] uppercase leading-tight mb-2 sm:mb-4 drop-shadow-lg">
-                  The Future<br/>
-                  Awaits You.<br/>
-                  Shape it.
-                </h1>
-                
-                <p class="max-w-xs sm:max-w-lg py-2 sm:py-4 text-gray-100 font-satoshi text-base sm:text-lg lg:text-xl leading-snug sm:leading-7 drop-shadow-md">
-                  Join Amrita’s B.Tech programmes, where innovation, technology, and values unite to shape a better tomorrow—for all.
-                </p>
+                </div>
 
-                <button class="mt-4 sm:mt-5 cursor-pointer group/admissions relative z-10 inline-flex items-center gap-3 overflow-hidden rounded-full bg-[#AF0C3E] pl-1 pr-6 py-1 text-white transition-all duration-800 hover:shadow-lg">
-                  <span class="absolute left-1 top-1/2 -translate-y-1/2 h-10 w-10 rounded-full bg-white transition-transform duration-800 ease-out scale-0 group-hover/admissions:scale-[10]"></span>
+                <div class="absolute bottom-4 left-4 right-4 sm:left-auto sm:right-8 sm:bottom-12 z-30 w-auto sm:w-full sm:max-w-md pointer-events-auto">
+                    <div class="bg-black/80 sm:bg-black/60 backdrop-blur-xl border border-white/10 p-3 pb-4 rounded-xl flex gap-3 sm:gap-4 items-center shadow-2xl relative overflow-hidden group/card transition-all hover:bg-black/70">
+                        
+                        <div class="absolute bottom-0 left-0 w-full h-[3px] bg-white/10">
+                            <div id="video-progress-bar" class="h-full bg-[#AF0C3E] w-0 transition-all duration-100 ease-linear"></div>
+                        </div>
 
-                  <div class="relative z-10 flex h-10 w-10 items-center justify-center rounded-full bg-white/20 transition-all duration-800 group-hover/admissions:bg-[#AF0C3E] group-hover/admissions:rotate-90">
-                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-5 w-5 text-white">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                    </svg>
-                  </div>
+                        <div class="w-20 h-20 sm:w-32 sm:h-24 flex-shrink-0 rounded-lg overflow-hidden relative bg-gray-800">
+                            <video id="card-thumb-video" muted loop class="w-full h-full object-cover opacity-80 group-hover/card:opacity-100 transition-opacity">
+                                <source src="" type="video/mp4">
+                            </video>
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                        </div>
 
-                  <span class="relative z-10 font-satoshi text-sm font-medium tracking-wide transition-colors duration-800 group-hover/admissions:text-black">
-                    Apply Now
-                  </span>
-                </button>
+                        <div class="flex-1 pr-1 sm:pr-2">
+                            <h3 id="card-title" class="text-white font-bold text-sm sm:text-base leading-tight mb-1 line-clamp-2 transition-opacity duration-300">
+                            </h3>
+                            <p id="card-desc" class="text-gray-400 text-[10px] sm:text-xs leading-normal line-clamp-2 mb-2 sm:mb-3 transition-opacity duration-300">
+                            </p>
+                            
+                            <div class="flex items-center gap-2 justify-end">
+                                <button id="prev-btn" class="w-6 h-6 sm:w-7 sm:h-7 flex items-center justify-center border border-white/20 rounded hover:bg-white hover:text-black text-white transition-colors cursor-pointer">
+                                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+                                </button>
+                                <button id="next-btn" class="w-6 h-6 sm:w-7 sm:h-7 flex items-center justify-center border border-white/20 rounded hover:bg-white hover:text-black text-white transition-colors cursor-pointer">
+                                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-              </div>
-            </div>
             </div>
         </div>
+    </div>
+</section>
 
-      </div>
-    </section>
 
     <!--------------WHAT'S YOUR INTEREST---------------->
     <section class="py-12 lg:py-24 w-full bg-white">
@@ -1303,7 +1317,7 @@
   </div>
 </section>
 
-
+<!-----------SPOTLIGHT PROJECTS-------------------->
 <section class="py-12 lg:py-25 bg-gray-100">
   <div class="container mx-auto px-4 sm:px-6">
     
@@ -1444,7 +1458,7 @@
 <!--------------LEADERSHIP---------------->
 
 <section class="pt-12 lg:pt-25 pb-12 lg:pb-25 bg-white overflow-hidden">
-  <div class="container mx-auto px-6 relative z-10">
+  <div class="container mx-auto px-4 relative z-10">
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-5 items-center">
 
       <div class="text-center lg:text-left order-1 lg:order-none">
@@ -1491,7 +1505,7 @@
 
 <!--------------RANKING---------------->
 <section class="py-12 lg:py-25 bg-black relative overflow-hidden">
-    <div class="container mx-auto px-6 relative z-10">
+    <div class="container mx-auto px-4 relative z-10">
     
     <div class="absolute right-0 top-10 lg:-top-1 w-[80%] opacity-80 lg:w-[14%] lg:opacity-100 pointer-events-none lg:z-30 z-0">
       <img src="img/gradient-glass-ranking.svg" alt="Gradient" class="w-full h-auto" />
@@ -1593,17 +1607,16 @@
   </div>
 </section>
 
-
 <footer class="relative text-white pt-20 pb-0 overflow-hidden font-satoshi group">
 
   <div class="absolute inset-0 -z-10 bg-black">
     <img 
-      src="img/footer-bg.png" 
+      src="img/footer-bg-cover.png" 
       alt="Background" 
-      class="absolute inset-0 w-full h-full object-cover opacity-60" 
+      class="absolute inset-0 w-full h-full object-cover" 
     />
     <div class="absolute inset-0 bg-gradient-to-br from-[#0f2e2a]/90 via-[#061214]/90 to-[#000000]/95 mix-blend-overlay animate-gradient-xy"></div>
-    <div class="absolute inset-0 bg-black/40"></div>
+    <div class="absolute inset-0 bg-black/70"></div>
   </div>
 
   <div class="absolute inset-x-0 top-[45%] h-px bg-white/10 hidden lg:block pointer-events-none z-0"></div>
@@ -1616,32 +1629,37 @@
         <div class="absolute top-0 bottom-[80px] left-1/2 w-px bg-white/10"></div>
         <div class="absolute top-0 bottom-[80px] left-3/4 w-px bg-white/10"></div>
 
-        <div class="absolute left-1/4 top-[45%] -translate-x-1/2 -translate-y-1/2 text-white/20 text-3xl font-thin">+</div>
-        <div class="absolute left-1/2 top-[45%] -translate-x-1/2 -translate-y-1/2 text-white/20 text-3xl font-thin">+</div>
-        <div class="absolute left-3/4 top-[45%] -translate-x-1/2 -translate-y-1/2 text-white/20 text-3xl font-thin">+</div>
+        <div class="absolute left-1/4 top-[45%] -translate-x-1/2 -translate-y-1/2 text-[#A9CFF6] text-3xl font-thin">+</div>
+        <div class="absolute left-1/2 top-[45%] -translate-x-1/2 -translate-y-1/2 text-[#A9CFF6] text-3xl font-thin">+</div>
+        <div class="absolute left-3/4 top-[45%] -translate-x-1/2 -translate-y-1/2 text-[#A9CFF6] text-3xl font-thin">+</div>
 
-        <div class="absolute left-1/4 top-[14%] w-[2px] h-4 bg-cyan-400 -translate-x-1/2 shadow-[0_0_10px_rgba(34,211,238,0.8)]"></div>
-        <div class="absolute left-1/2 top-[14%] w-[2px] h-4 bg-cyan-400 -translate-x-1/2 shadow-[0_0_10px_rgba(34,211,238,0.8)]"></div>
-        <div class="absolute left-3/4 top-[14%] w-[2px] h-4 bg-cyan-400 -translate-x-1/2 shadow-[0_0_10px_rgba(34,211,238,0.8)]"></div>
+        <div class="absolute left-1/4 top-[14%] w-[2px] h-4 bg-[#A9CFF6] -translate-x-1/2"></div>
+        <div class="absolute left-1/2 top-[14%] w-[2px] h-4 bg-[#A9CFF6] -translate-x-1/2"></div>
+        <div class="absolute left-3/4 top-[14%] w-[2px] h-4 bg-[#A9CFF6] -translate-x-1/2"></div>
 
-        <div class="absolute left-1/4 top-[51%] w-[2px] h-4 bg-cyan-400 -translate-x-1/2 shadow-[0_0_10px_rgba(34,211,238,0.8)]"></div>
-        <div class="absolute left-1/2 top-[51%] w-[2px] h-4 bg-cyan-400 -translate-x-1/2 shadow-[0_0_10px_rgba(34,211,238,0.8)]"></div>
-        <div class="absolute left-3/4 top-[51%] w-[2px] h-4 bg-cyan-400 -translate-x-1/2 shadow-[0_0_10px_rgba(34,211,238,0.8)]"></div>
+        <div class="absolute left-1/4 top-[51%] w-[2px] h-4 bg-[#A9CFF6] -translate-x-1/2"></div>
+        <div class="absolute left-1/2 top-[51%] w-[2px] h-4 bg-[#A9CFF6] -translate-x-1/2"></div>
+        <div class="absolute left-3/4 top-[51%] w-[2px] h-4 bg-[#A9CFF6] -translate-x-1/2"></div>
 
     </div>
   </div>
 
-  <div class="container mx-auto px-6 relative z-10 mb-20">
+  <div class="container mx-auto px-4 relative z-10 mb-20">
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-0">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-0 sm:gap-10 lg:gap-0">
 
-      <div class="lg:h-64 lg:pr-10 flex flex-col justify-start pt-6 border-b border-white/5 lg:border-none pb-8 lg:pb-0">
-        <img src="/img/amrita-white-logo.svg" alt="Amrita Logo" class="w-48 opacity-90" />
+      <div class="lg:h-64  flex flex-col justify-center border-b border-white/5 lg:border-none pb-8 lg:pb-0">
+        <img src="/img/amrita-white-logo.svg" alt="Amrita Logo" class="w-48" />
       </div>
 
-      <div class="lg:h-64 lg:px-10 flex flex-col justify-start pt-6 border-b border-white/5 lg:border-none pb-8 lg:pb-0">
-        <h4 class="text-xs font-bold text-white uppercase tracking-widest mb-6">University Information</h4>
-        <ul class="space-y-3 text-sm text-gray-400 font-medium">
+      <div class="lg:h-64 lg:px-10 flex flex-col justify-start pt-6 border-b border-white/5 lg:border-none pb-6 lg:pb-0">
+        <div class="flex items-center justify-between cursor-pointer lg:cursor-default toggle-header">
+            <h4 class="text-xs font-bold text-white uppercase tracking-widest">University Information</h4>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4 text-white lg:hidden transition-transform duration-300 chevron-icon">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+            </svg>
+        </div>
+        <ul class="space-y-3 text-sm text-gray-400 font-medium hidden lg:block toggle-content mt-6">
           <li><a href="#" class="hover:text-cyan-400 transition-colors">About Amrita</a></li>
           <li><a href="#" class="hover:text-cyan-400 transition-colors">Reports</a></li>
           <li><a href="#" class="hover:text-cyan-400 transition-colors">Research</a></li>
@@ -1649,26 +1667,41 @@
         </ul>
       </div>
 
-      <div class="lg:h-64 lg:px-10 flex flex-col justify-start pt-6 border-b border-white/5 lg:border-none pb-8 lg:pb-0">
-        <h4 class="text-xs font-bold text-white uppercase tracking-widest mb-6">Navigation</h4>
-        <ul class="space-y-3 text-sm text-gray-400 font-medium">
+      <div class="lg:h-64 lg:px-10 flex flex-col justify-start pt-6 border-b border-white/5 lg:border-none pb-6 lg:pb-0">
+        <div class="flex items-center justify-between cursor-pointer lg:cursor-default toggle-header">
+            <h4 class="text-xs font-bold text-white uppercase tracking-widest">Navigation</h4>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4 text-white lg:hidden transition-transform duration-300 chevron-icon">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+            </svg>
+        </div>
+        <ul class="space-y-3 text-sm text-gray-400 font-medium hidden lg:block toggle-content mt-6">
           <li><a href="#" class="hover:text-cyan-400 transition-colors">Maps & Directions</a></li>
           <li><a href="#" class="hover:text-cyan-400 transition-colors">Locations</a></li>
         </ul>
       </div>
 
-      <div class="lg:h-64 lg:pl-10 flex flex-col justify-start pt-6 border-b border-white/5 lg:border-none pb-8 lg:pb-0">
-        <h4 class="text-xs font-bold text-white uppercase tracking-widest mb-6">Updates</h4>
-        <ul class="space-y-3 text-sm text-gray-400 font-medium">
+      <div class="lg:h-64 lg:pl-10 flex flex-col justify-start pt-6 border-b border-white/5 lg:border-none pb-6 lg:pb-0">
+        <div class="flex items-center justify-between cursor-pointer lg:cursor-default toggle-header">
+            <h4 class="text-xs font-bold text-white uppercase tracking-widest">Updates</h4>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4 text-white lg:hidden transition-transform duration-300 chevron-icon">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+            </svg>
+        </div>
+        <ul class="space-y-3 text-sm text-gray-400 font-medium hidden lg:block toggle-content mt-6">
           <li><a href="#" class="hover:text-cyan-400 transition-colors">News</a></li>
           <li><a href="#" class="hover:text-cyan-400 transition-colors">Events</a></li>
         </ul>
       </div>
 
 
-      <div class="lg:h-64 lg:pr-10 flex flex-col justify-start pt-6 lg:pt-12 border-b border-white/5 lg:border-none pb-8 lg:pb-0">
-        <h4 class="text-xs font-bold text-white uppercase tracking-widest mb-6">Quick Links</h4>
-        <ul class="space-y-3 text-sm text-gray-400 font-medium">
+      <div class="lg:h-64 lg:pr-10 flex flex-col justify-start pt-6 lg:pt-12 border-b border-white/5 lg:border-none pb-6 lg:pb-0">
+        <div class="flex items-center justify-between cursor-pointer lg:cursor-default toggle-header">
+            <h4 class="text-xs font-bold text-white uppercase tracking-widest">Quick Links</h4>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4 text-white lg:hidden transition-transform duration-300 chevron-icon">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+            </svg>
+        </div>
+        <ul class="space-y-3 text-sm text-gray-400 font-medium hidden lg:block toggle-content mt-6">
           <li><a href="#" class="hover:text-cyan-400 transition-colors">Apply Now</a></li>
           <li><a href="#" class="hover:text-cyan-400 transition-colors">Interests</a></li>
           <li><a href="#" class="hover:text-cyan-400 transition-colors">Programs</a></li>
@@ -1676,26 +1709,41 @@
         </ul>
       </div>
 
-      <div class="lg:h-64 lg:px-10 flex flex-col justify-start pt-6 lg:pt-12 border-b border-white/5 lg:border-none pb-8 lg:pb-0">
-        <h4 class="text-xs font-bold text-white uppercase tracking-widest mb-6">Communication</h4>
-        <ul class="space-y-3 text-sm text-gray-400 font-medium">
+      <div class="lg:h-64 lg:px-10 flex flex-col justify-start pt-6 lg:pt-12 border-b border-white/5 lg:border-none pb-6 lg:pb-0">
+        <div class="flex items-center justify-between cursor-pointer lg:cursor-default toggle-header">
+            <h4 class="text-xs font-bold text-white uppercase tracking-widest">Communication</h4>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4 text-white lg:hidden transition-transform duration-300 chevron-icon">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+            </svg>
+        </div>
+        <ul class="space-y-3 text-sm text-gray-400 font-medium hidden lg:block toggle-content mt-6">
           <li><a href="#" class="hover:text-cyan-400 transition-colors">Write to Us</a></li>
           <li><a href="#" class="hover:text-cyan-400 transition-colors">Contact</a></li>
           <li><a href="#" class="hover:text-cyan-400 transition-colors">Feedback</a></li>
         </ul>
       </div>
 
-      <div class="lg:h-64 lg:px-10 flex flex-col justify-start pt-6 lg:pt-12 border-b border-white/5 lg:border-none pb-8 lg:pb-0">
-        <h4 class="text-xs font-bold text-white uppercase tracking-widest mb-6">Policies</h4>
-        <ul class="space-y-3 text-sm text-gray-400 font-medium">
+      <div class="lg:h-64 lg:px-10 flex flex-col justify-start pt-6 lg:pt-12 border-b border-white/5 lg:border-none pb-6 lg:pb-0">
+        <div class="flex items-center justify-between cursor-pointer lg:cursor-default toggle-header">
+            <h4 class="text-xs font-bold text-white uppercase tracking-widest">Policies</h4>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4 text-white lg:hidden transition-transform duration-300 chevron-icon">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+            </svg>
+        </div>
+        <ul class="space-y-3 text-sm text-gray-400 font-medium hidden lg:block toggle-content mt-6">
           <li><a href="#" class="hover:text-cyan-400 transition-colors">Privacy Policy</a></li>
           <li><a href="#" class="hover:text-cyan-400 transition-colors">Ragging</a></li>
         </ul>
       </div>
 
-      <div class="lg:h-64 lg:pl-10 flex flex-col justify-start pt-6 lg:pt-12 relative pb-8 lg:pb-0">
-        <h4 class="text-xs font-bold text-white uppercase tracking-widest mb-6">Community</h4>
-        <ul class="space-y-3 text-sm text-gray-400 font-medium">
+      <div class="lg:h-64 lg:pl-10 flex flex-col justify-start pt-6 lg:pt-12 relative pb-6 lg:pb-0">
+        <div class="flex items-center justify-between cursor-pointer lg:cursor-default toggle-header">
+            <h4 class="text-xs font-bold text-white uppercase tracking-widest">Community</h4>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4 text-white lg:hidden transition-transform duration-300 chevron-icon">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+            </svg>
+        </div>
+        <ul class="space-y-3 text-sm text-gray-400 font-medium hidden lg:block toggle-content mt-6">
           <li><a href="#" class="hover:text-cyan-400 transition-colors">Outreach</a></li>
           <li><a href="#" class="hover:text-cyan-400 transition-colors">Interests</a></li>
         </ul>
@@ -1711,7 +1759,6 @@
   <div class="w-full relative z-20 border-t border-white/10 bg-[#000505]/80 backdrop-blur-md">
     <div class="container mx-auto px-6">
       <div class="flex flex-col xl:flex-row items-center justify-between text-xs sm:text-sm py-6 text-gray-400">
-
         <div class="flex flex-col md:flex-row items-center text-center md:text-left gap-2 md:gap-6 mb-4 xl:mb-0">
           <span class="text-white">© 2025 Amrita Vishwa Vidyapeetham</span>
           <div class="hidden md:block w-px h-3 bg-gray-600"></div>
@@ -1725,28 +1772,30 @@
         </div>
 
         <div class="flex items-center gap-4">
-          <span class="text-white hidden sm:block">Follow Us On</span>
+  <span class="text-white hidden sm:block">Follow Us On</span>
+  <div class="flex gap-3">
+    
+    <a href="#" class="w-8 h-8 rounded-full border border-white/30 flex items-center justify-center transition-all duration-300 hover:bg-white hover:text-black hover:scale-110 hover:-translate-y-1">
+      <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12.07C22 6.48 17.52 2 12 2S2 6.48 2 12.07c0 4.99 3.66 9.13 8.44 9.93v-7.03H7.9v-2.9h2.54V9.41c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.87h2.78l-.44 2.9h-2.34V22c4.78-.8 8.44-4.94 8.44-9.93z" /></svg>
+    </a>
 
-          <div class="flex gap-3">
-            <a href="#" class="w-8 h-8 rounded-full border border-white/30 flex items-center justify-center hover:bg-white hover:text-black transition-all">
-              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12.07C22 6.48 17.52 2 12 2S2 6.48 2 12.07c0 4.99 3.66 9.13 8.44 9.93v-7.03H7.9v-2.9h2.54V9.41c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.87h2.78l-.44 2.9h-2.34V22c4.78-.8 8.44-4.94 8.44-9.93z" /></svg>
-            </a>
-            <a href="#" class="w-8 h-8 rounded-full border border-white/30 flex items-center justify-center hover:bg-white hover:text-black transition-all">
-              <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-            </a>
-            <a href="#" class="w-8 h-8 rounded-full border border-white/30 flex items-center justify-center hover:bg-white hover:text-black transition-all">
-               <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M7 2C4.24 2 2 4.24 2 7v10c0 2.76 2.24 5 5 5h10c2.76 0 5-2.24 5-5V7c0-2.76-2.24-5-5-5H7zm10 2c1.65 0 3 1.35 3 3v10c0 1.65-1.35 3-3 3H7c-1.65 0-3-1.35-3-3V7c0-1.65 1.35-3 3-3h10zm-5 3.5A4.5 4.5 0 1 0 16.5 12 4.5 4.5 0 0 0 12 7.5zm0 2A2.5 2.5 0 1 1 9.5 12 2.5 2.5 0 0 1 12 9.5zm4.75-3.75a1 1 0 1 1-1 1 1 1 0 0 1 1-1z" /></svg>
-            </a>
-            <a href="#" class="w-8 h-8 rounded-full border border-white/30 flex items-center justify-center hover:bg-white hover:text-black transition-all">
-               <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M4.98 3.5C4.98 4.88 3.88 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8h4V24h-4V8zm7.5 0h3.8v2.2h.1c.5-.9 1.7-2.2 3.6-2.2 3.8 0 4.5 2.6 4.5 6V24h-4v-7.8c0-1.8 0-4-2.5-4s-2.9 2-2.9 3.9V24h-4V8z" /></svg>
-            </a>
-          </div>
-        </div>
+    <a href="#" class="w-8 h-8 rounded-full border border-white/30 flex items-center justify-center transition-all duration-300 hover:bg-white hover:text-black hover:scale-110 hover:-translate-y-1">
+      <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+    </a>
+
+    <a href="#" class="w-8 h-8 rounded-full border border-white/30 flex items-center justify-center transition-all duration-300 hover:bg-white hover:text-black hover:scale-110 hover:-translate-y-1">
+       <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M7 2C4.24 2 2 4.24 2 7v10c0 2.76 2.24 5 5 5h10c2.76 0 5-2.24 5-5V7c0-2.76-2.24-5-5-5H7zm10 2c1.65 0 3 1.35 3 3v10c0 1.65-1.35 3-3 3H7c-1.65 0-3-1.35-3-3V7c0-1.65 1.35-3 3-3h10zm-5 3.5A4.5 4.5 0 1 0 16.5 12 4.5 4.5 0 0 0 12 7.5zm0 2A2.5 2.5 0 1 1 9.5 12 2.5 2.5 0 0 1 12 9.5zm4.75-3.75a1 1 0 1 1-1 1 1 1 0 0 1 1-1z" /></svg>
+    </a>
+
+    <a href="#" class="w-8 h-8 rounded-full border border-white/30 flex items-center justify-center transition-all duration-300 hover:bg-white hover:text-black hover:scale-110 hover:-translate-y-1">
+       <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M4.98 3.5C4.98 4.88 3.88 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8h4V24h-4V8zm7.5 0h3.8v2.2h.1c.5-.9 1.7-2.2 3.6-2.2 3.8 0 4.5 2.6 4.5 6V24h-4v-7.8c0-1.8 0-4-2.5-4s-2.9 2-2.9 3.9V24h-4V8z" /></svg>
+    </a>
+  </div>
+</div>
 
       </div>
     </div>
   </div>
-
 </footer>
 
 
