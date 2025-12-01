@@ -48,5 +48,46 @@ display: -webkit-box;
 overflow: hidden;
 }
 
+/* 1. WebKit Browsers (Chrome, Safari, Edge) */
+  .custom-scrollbar::-webkit-scrollbar {
+      width: 5px; /* Slimmer width */
+  }
+
+  /* TRACK: Make transparent so you don't see the bar background */
+  .custom-scrollbar::-webkit-scrollbar-track {
+      background: transparent; 
+  }
+
+  /* THUMB: The moving part */
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+      background-color: #d1d5db; /* Light gray thumb */
+      border-radius: 20px;
+  }
+  
+  /* THUMB HOVER: Brand color */
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+      background-color: #AF0C3E; 
+  }
+
+  /* BUTTONS/ARROWS: Explicitly hide them */
+  .custom-scrollbar::-webkit-scrollbar-button {
+      display: none;
+  }
+
+  /* 2. Firefox Support */
+  .custom-scrollbar {
+      scrollbar-width: thin;
+      /* Thumb Color | Track Color (Transparent) */
+      scrollbar-color: #d1d5db transparent; 
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(5px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .animate-fade-in {
+    animation: fadeIn 0.4s ease-out forwards;
+  }
+
 .fade-enter { opacity: 0; transform: translateY(10px); }
-    .fade-enter-active { opacity: 1; transform: translateY(0); transition: opacity 0.5s ease-out, transform 0.5s ease-out; }
+.fade-enter-active { opacity: 1; transform: translateY(0); transition: opacity 0.5s ease-out, transform 0.5s ease-out; }

@@ -1,5 +1,81 @@
 import './style.css'
 
+
+/////////////////////////////// 1. MEGA MENU /////////////////////////////////
+document.addEventListener('DOMContentLoaded', () => {
+    
+    // --- ELEMENTS ---
+    const openBtn = document.getElementById('open-btn');   // Button on Main Page
+    const closeBtn = document.getElementById('close-btn'); // Button inside Menu
+    const megaMenu = document.getElementById('mega-menu');
+    const menuCard = document.getElementById('menu-card');
+
+    // --- FUNCTION TO OPEN ---
+    function openMenu() {
+        // Show Overlay
+        megaMenu.classList.remove('opacity-0', 'pointer-events-none');
+        megaMenu.classList.add('opacity-100', 'pointer-events-auto');
+        
+        // Animate Card Scale
+        if(menuCard) {
+            menuCard.classList.remove('scale-95');
+            menuCard.classList.add('scale-100');
+        }
+    }
+
+    // --- FUNCTION TO CLOSE ---
+    function closeMenu() {
+        // Hide Overlay
+        megaMenu.classList.add('opacity-0', 'pointer-events-none');
+        megaMenu.classList.remove('opacity-100', 'pointer-events-auto');
+        
+        // Reset Card Scale
+        if(menuCard) {
+            menuCard.classList.add('scale-95');
+            menuCard.classList.remove('scale-100');
+        }
+    }
+
+    // --- LISTENERS ---
+    if (openBtn) openBtn.addEventListener('click', openMenu);
+    if (closeBtn) closeBtn.addEventListener('click', closeMenu);
+});
+
+/////////////////////////////// 1. TAB GROUP MENU /////////////////////////////////
+
+// Define the function
+  const switchTab = (tabName, clickedElement) => {
+    // 1. Hide all content sections
+    const allContents = document.querySelectorAll('.tab-content');
+    allContents.forEach(div => div.classList.add('hidden'));
+
+    // 2. Show the selected content section
+    const targetContent = document.getElementById('content-' + tabName);
+    if(targetContent) {
+      targetContent.classList.remove('hidden');
+    }
+
+    // 3. Reset all buttons to "inactive" state
+    const allButtons = document.querySelectorAll('.tab-btn');
+    allButtons.forEach(btn => {
+      // Remove Active Styles
+      btn.classList.remove('bg-white', 'shadow-sm', 'border-[#AF0C3E]');
+      // Add Inactive Styles
+      btn.classList.add('hover:bg-white', 'hover:shadow-md', 'border-transparent', 'hover:border-[#AF0C3E]');
+    });
+
+    // 4. Set the clicked button to "active" state
+    // Remove Inactive Styles
+    clickedElement.classList.remove('hover:bg-white', 'hover:shadow-md', 'border-transparent', 'hover:border-[#AF0C3E]');
+    // Add Active Styles
+    clickedElement.classList.add('bg-white', 'shadow-sm', 'border-[#AF0C3E]');
+  };
+
+  // !!! CRITICAL FOR VITE !!!
+  // Attach function to window so HTML 'onclick' can find it
+  window.switchTab = switchTab;
+
+
 /////////////////////////////// 1. HERO SLIDER /////////////////////////////////
 // --- DATA ---
 const slides = [
