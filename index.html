@@ -14,313 +14,277 @@
   </head>
   <body>
     <!--------------BANNER VIDEO---------------->
-<section class="py-2 px-2 sm:py-4 sm:px-4 lg:py-6 lg:px-6 w-full h-full relative">
-  <div class="relative h-[600px] sm:h-[700px] lg:h-[850px] w-full rounded-2xl sm:rounded-[2rem] overflow-hidden group shadow-2xl bg-black z-10 transition-all duration-500" id="main-content">
-    
-    <video id="hero-video" autoplay muted playsinline class="absolute inset-0 w-full h-full object-cover transition-opacity duration-700 opacity-0">
-      <source src="" type="video/mp4" />
-    </video>
-    
-    <div class="absolute inset-0 bg-black/40 sm:bg-black/50"></div>
-    
-    <div class="absolute inset-0 w-full h-full">
-      <div class="container mx-auto px-4 lg:px-6 h-full relative flex flex-col justify-between py-6 sm:py-8 lg:py-10">
-        
-        <div class="flex justify-between items-start z-20">
-          <div class="flex items-center">
-            <img src="img/logo.svg" alt="Logo" class="h-10 sm:h-16 lg:h-20 w-auto" />
-          </div>
-          <div class="flex items-center gap-2 sm:gap-4">
-            <button class="cursor-pointer group/admissions relative z-10 hidden md:inline-flex items-center gap-3 overflow-hidden rounded-full bg-[#AF0C3E] pl-1 pr-6 py-1 text-white transition-all duration-800 hover:shadow-lg">
-              <span class="absolute left-1 top-1/2 -translate-y-1/2 h-10 w-10 rounded-full bg-white transition-transform duration-800 ease-out scale-0 group-hover/admissions:scale-[10]"></span>
-              <div class="relative z-10 flex h-10 w-10 items-center justify-center rounded-full bg-white/20 transition-all duration-800 group-hover/admissions:bg-[#AF0C3E] group-hover/admissions:rotate-90">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-5 w-5 text-white">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                </svg>
+    <section class="py-2 px-2 sm:py-4 sm:px-4 lg:py-6 lg:px-6 w-full h-full relative">
+      <div class="relative h-[600px] sm:h-[700px] lg:h-[850px] w-full rounded-2xl sm:rounded-[2rem] overflow-hidden group shadow-2xl bg-black z-10 transition-all duration-500" id="main-content">
+        <video id="hero-video" autoplay muted playsinline class="absolute inset-0 w-full h-full object-cover transition-opacity duration-700 opacity-0">
+          <source src="" type="video/mp4" />
+        </video>
+        <div class="absolute inset-0 bg-black/40 sm:bg-black/50"></div>
+        <div class="absolute inset-0 w-full h-full">
+          <div class="container mx-auto px-4 lg:px-6 h-full relative flex flex-col justify-between py-6 sm:py-8 lg:py-10">
+            <div class="flex justify-between items-start z-20">
+              <!--------------Header Logo---------------->
+              <div class="flex items-center">
+                <img src="img/logo.svg" alt="Logo" class="h-10 sm:h-16 lg:h-20 w-auto" />
               </div>
-              <span class="relative z-10 font-satoshi text-sm font-medium tracking-wide transition-colors duration-800 group-hover/admissions:text-black">Admissions</span>
-            </button>
-
-            <button id="open-btn" class="group/button cursor-pointer bg-white text-gray-600 rounded-full w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center hover:bg-gray-200 transition-colors duration-300">
-    <div class="w-5 sm:w-6 flex flex-col gap-[4px] sm:gap-[5px]">
-        <span class="h-[2px] w-1/2 bg-current rounded-full ml-auto transition-transform duration-300 ease-out group-hover/button:-translate-x-full"></span>
-        
-        <span class="h-[2px] w-full bg-current rounded-full"></span>
-        
-        <span class="h-[2px] w-1/2 bg-current rounded-full transition-transform duration-300 ease-out group-hover/button:translate-x-full"></span>
-    </div>
-</button>
-          </div>
-        </div>
-        
-        <div class="flex flex-col lg:flex-row items-end justify-between relative z-10 w-full pointer-events-none h-full pb-32 sm:pb-0">
-          <div class="max-w-3xl w-full lg:max-w-4xl pointer-events-auto mt-auto mb-10 sm:mb-10">
-            <h1 id="hero-title" class="text-white font-anton text-5xl sm:text-6xl lg:text-8xl lg:leading-[1.1] uppercase leading-tight mb-3 sm:mb-4 drop-shadow-lg transition-all duration-500 ease-in-out"></h1>
-            <p id="hero-subtitle" class="max-w-[90%] sm:max-w-lg py-2 sm:py-4 text-gray-100 font-satoshi text-base sm:text-lg lg:text-xl leading-snug sm:leading-7 drop-shadow-md transition-opacity duration-500"></p>
-            <button class="mt-4 sm:mt-5 cursor-pointer group/apply relative z-10 inline-flex items-center gap-3 overflow-hidden rounded-full bg-[#AF0C3E] pl-1 pr-6 py-1 text-white transition-all duration-800 hover:shadow-lg">
-              <span class="absolute left-1 top-1/2 -translate-y-1/2 h-10 w-10 rounded-full bg-white transition-transform duration-800 ease-out scale-0 group-hover/apply:scale-[10]"></span>
-              <div class="relative z-10 flex h-10 w-10 items-center justify-center rounded-full bg-white/20 transition-all duration-800 group-hover/apply:bg-[#AF0C3E] group-hover/apply:rotate-90">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-5 w-5 text-white">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                </svg>
-              </div>
-              <span class="relative z-10 font-satoshi text-sm font-medium tracking-wide transition-colors duration-800 group-hover/apply:text-black">Apply Now</span>
-            </button>
-          </div>
-        </div>
-
-        <div class="absolute bottom-4 left-4 right-4 sm:left-auto sm:right-8 sm:bottom-12 z-30 w-auto sm:w-full sm:max-w-md pointer-events-auto">
-          <div class="bg-black/80 sm:bg-black/60 backdrop-blur-xl border border-white/10 p-3 pb-4 rounded-xl flex gap-3 sm:gap-4 items-center shadow-2xl relative overflow-hidden group/card transition-all hover:bg-black/70">
-            <div class="absolute bottom-0 left-0 w-full h-[3px] bg-white/10">
-              <div id="video-progress-bar" class="h-full bg-[#AF0C3E] w-0 transition-all duration-100 ease-linear"></div>
-            </div>
-            <div class="w-20 h-20 sm:w-32 sm:h-24 flex-shrink-0 rounded-lg overflow-hidden relative bg-gray-800">
-              <video id="card-thumb-video" muted loop class="w-full h-full object-cover opacity-80 group-hover/card:opacity-100 transition-opacity">
-                <source src="" type="video/mp4" />
-              </video>
-              <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-            </div>
-            <div class="flex-1 pr-1 sm:pr-2">
-              <h3 id="card-title" class="text-white font-bold text-sm sm:text-base leading-tight mb-1 line-clamp-2 transition-opacity duration-300"></h3>
-              <p id="card-desc" class="text-gray-400 text-[10px] sm:text-xs leading-normal line-clamp-2 mb-2 sm:mb-3 transition-opacity duration-300"></p>
-              <div class="flex items-center gap-2 justify-end">
-                <button id="prev-btn" class="w-6 h-6 sm:w-7 sm:h-7 flex items-center justify-center border border-white/20 rounded hover:bg-white hover:text-black text-white transition-colors cursor-pointer">
-                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6" /></svg>
+              <div class="flex items-center gap-2 sm:gap-4">
+                <!--------------Header Admission Button---------------->
+                <button class="cursor-pointer group/admissions relative z-10 hidden md:inline-flex items-center gap-3 overflow-hidden rounded-full bg-[#AF0C3E] pl-1 pr-6 py-1 text-white transition-all duration-800 hover:shadow-lg">
+                  <span class="absolute left-1 top-1/2 -translate-y-1/2 h-10 w-10 rounded-full bg-white transition-transform duration-800 ease-out scale-0 group-hover/admissions:scale-[10]"></span>
+                  <div class="relative z-10 flex h-10 w-10 items-center justify-center rounded-full bg-white/20 transition-all duration-800 group-hover/admissions:bg-[#AF0C3E] group-hover/admissions:rotate-90">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-5 w-5 text-white">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                    </svg>
+                  </div>
+                  <span class="relative z-10 font-satoshi text-sm font-medium tracking-wide transition-colors duration-800 group-hover/admissions:text-black">Admissions</span>
                 </button>
-                <button id="next-btn" class="w-6 h-6 sm:w-7 sm:h-7 flex items-center justify-center border border-white/20 rounded hover:bg-white hover:text-black text-white transition-colors cursor-pointer">
-                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6" /></svg>
+                <!--------------Nav Toogle---------------->
+                <button id="open-btn" class="group/button cursor-pointer bg-white text-gray-600 rounded-full w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center hover:bg-gray-200 transition-colors duration-300">
+                  <div class="w-5 sm:w-6 flex flex-col gap-[4px] sm:gap-[5px]">
+                    <span class="h-[2px] w-1/2 bg-current rounded-full ml-auto transition-transform duration-300 ease-out group-hover/button:-translate-x-full"></span>
+                    <span class="h-[2px] w-full bg-current rounded-full"></span>
+                    <span class="h-[2px] w-1/2 bg-current rounded-full transition-transform duration-300 ease-out group-hover/button:translate-x-full"></span>
+                  </div>
                 </button>
               </div>
             </div>
+            <div class="flex flex-col lg:flex-row items-end justify-between relative z-10 w-full pointer-events-none h-full pb-32 sm:pb-0">
+              <div class="max-w-3xl w-full lg:max-w-4xl pointer-events-auto mt-auto mb-10 sm:mb-10">
+                <!--------------Video Overlay Heading---------------->
+                <h1 id="hero-title" class="text-white font-anton text-5xl sm:text-6xl lg:text-8xl lg:leading-[1.1] uppercase leading-tight mb-3 sm:mb-4 drop-shadow-lg transition-all duration-500 ease-in-out"></h1>
+                <!--------------Video Sub Heading---------------->
+                <p id="hero-subtitle" class="max-w-[90%] sm:max-w-lg py-2 sm:py-4 text-gray-100 font-satoshi text-base sm:text-lg lg:text-xl leading-snug sm:leading-7 drop-shadow-md transition-opacity duration-500"></p>
+                <!--------------Video Apply Now Button---------------->
+                <button class="mt-4 sm:mt-5 cursor-pointer group/apply relative z-10 inline-flex items-center gap-3 overflow-hidden rounded-full bg-[#AF0C3E] pl-1 pr-6 py-1 text-white transition-all duration-800 hover:shadow-lg">
+                  <span class="absolute left-1 top-1/2 -translate-y-1/2 h-10 w-10 rounded-full bg-white transition-transform duration-800 ease-out scale-0 group-hover/apply:scale-[10]"></span>
+                  <div class="relative z-10 flex h-10 w-10 items-center justify-center rounded-full bg-white/20 transition-all duration-800 group-hover/apply:bg-[#AF0C3E] group-hover/apply:rotate-90">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-5 w-5 text-white">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                    </svg>
+                  </div>
+                  <span class="relative z-10 font-satoshi text-sm font-medium tracking-wide transition-colors duration-800 group-hover/apply:text-black">Apply Now</span>
+                </button>
+              </div>
+            </div>
+            <!--------------Video Navigation Card---------------->
+            <div class="absolute bottom-4 left-4 right-4 sm:left-auto sm:right-8 sm:bottom-12 z-30 w-auto sm:w-full sm:max-w-md pointer-events-auto">
+              <div class="bg-black/80 sm:bg-black/60 backdrop-blur-xl border border-white/10 p-3 pb-4 rounded-xl flex gap-3 sm:gap-4 items-center shadow-2xl relative overflow-hidden group/card transition-all hover:bg-black/70">
+                <div class="absolute bottom-0 left-0 w-full h-[3px] bg-white/10">
+                  <div id="video-progress-bar" class="h-full bg-[#AF0C3E] w-0 transition-all duration-100 ease-linear"></div>
+                </div>
+                <div class="w-20 h-20 sm:w-32 sm:h-24 flex-shrink-0 rounded-lg overflow-hidden relative bg-gray-800">
+                  <video id="card-thumb-video" muted loop class="w-full h-full object-cover opacity-80 group-hover/card:opacity-100 transition-opacity">
+                    <source src="" type="video/mp4" />
+                  </video>
+                  <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                </div>
+                <div class="flex-1 pr-1 sm:pr-2">
+                  <h3 id="card-title" class="text-white font-bold text-sm sm:text-base leading-tight mb-1 line-clamp-2 transition-opacity duration-300"></h3>
+                  <p id="card-desc" class="text-gray-400 text-[10px] sm:text-xs leading-normal line-clamp-2 mb-2 sm:mb-3 transition-opacity duration-300"></p>
+                  <div class="flex items-center gap-2 justify-end">
+                    <button id="prev-btn" class="w-6 h-6 sm:w-7 sm:h-7 flex items-center justify-center border border-white/20 rounded hover:bg-white hover:text-black text-white transition-colors cursor-pointer">
+                      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M15 18l-6-6 6-6" />
+                      </svg>
+                    </button>
+                    <button id="next-btn" class="w-6 h-6 sm:w-7 sm:h-7 flex items-center justify-center border border-white/20 rounded hover:bg-white hover:text-black text-white transition-colors cursor-pointer">
+                      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 18l6-6-6-6" />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-
       </div>
-    </div>
-  </div>
-
-  <div id="mega-menu" class="fixed inset-0 z-50 w-full h-full flex flex-col items-center opacity-0 pointer-events-none transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]">
-    
-  <div class="absolute inset-0 bg-black backdrop-blur-sm"></div>
-
-  <div class="relative w-full h-full flex flex-col px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
-
-    <div class="hidden lg:flex justify-between items-end pb-4 text-white font-satoshi text-xs font-regular tracking-widest uppercase shrink-0 w-full">
-    
-    <div class="flex gap-8">
-        <a href="#" class="hover:text-white transition-colors">International</a>
-        <a href="#" class="hover:text-white transition-colors">Alumni</a>
-        <a href="#" class="hover:text-white transition-colors">Faculty</a>
-        <a href="#" class="hover:text-white transition-colors">Schools</a>
-        <a href="#" class="hover:text-white transition-colors">Campus Life</a>
-    </div>
-
-    <div class="flex gap-8">
-        <a href="#" class="hover:text-white transition-colors">News</a>
-        <a href="#" class="hover:text-white transition-colors">Events</a>
-        <a href="#" class="hover:text-white transition-colors">Careers</a>
-        <a href="#" class="hover:text-white transition-colors">Contact</a>
-    </div>
-
-</div>
-
-    <div class="relative flex-1 bg-white rounded-[2rem] shadow-2xl overflow-hidden flex flex-col transition-transform duration-500 scale-95" id="menu-card">
-      
-      <div class="flex justify-between items-center px-6 sm:px-10 py-5 border-b border-gray-200 shrink-0">
-        
-        <div class="flex items-center shrink-0 flex-1"> 
-           <img src="img/logo.svg" alt="Logo" class="h-8 sm:h-12 w-auto" /> 
-        </div>
-
-        <div class="hidden lg:flex items-center justify-center gap-6 xl:gap-10 font-satoshi text-lg sm:text-xl text-gray-400 shrink-0">
-            <span class="cursor-pointer hover:text-gray-800 transition-colors">About</span>
-            <span class="cursor-pointer hover:text-gray-800 transition-colors">Campus</span>
-            <span class="cursor-pointer text-[#AF0C3E] font-medium relative">
-              Academics & Programs
-              <span class="absolute -top-1 -right-3 text-yellow-400 text-xs">✦</span>
-            </span>
-            <span class="cursor-pointer hover:text-gray-800 transition-colors">Research</span>
-        </div>
-
-        <div class="flex items-center justify-end gap-3 shrink-0 flex-1">
-             
-             <button class="cursor-pointer group/admissions relative z-10 hidden md:inline-flex items-center gap-3 overflow-hidden rounded-full bg-[#AF0C3E] pl-1 pr-6 py-1 text-white transition-all duration-800">
-    <span class="absolute left-1 top-1/2 -translate-y-1/2 h-10 w-10 rounded-full bg-[#FFD92A] transition-transform duration-800 ease-out scale-0 group-hover/admissions:scale-[10]"></span>
-    
-    <div class="relative z-10 flex h-10 w-10 items-center justify-center rounded-full bg-white/20 transition-all duration-800 group-hover/admissions:bg-[#AF0C3E] group-hover/admissions:rotate-90">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-5 w-5 text-white">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-        </svg>
-    </div>
-    <span class="relative z-10 font-satoshi text-sm font-medium tracking-wide transition-colors duration-800 group-hover/admissions:text-black whitespace-nowrap">Admissions</span>
-</button>
-
-            <button id="close-btn" class="group/close cursor-pointer bg-gray-100 text-black rounded-full w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center hover:bg-gray-200 transition-colors duration-300">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transition-transform duration-500 ease-out group-hover/close:rotate-90" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+      <!--------------MEGA MENU---------------->
+      <div id="mega-menu" class="fixed inset-0 z-50 w-full h-full flex flex-col items-center opacity-0 pointer-events-none transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]">
+        <div class="absolute inset-0 bg-black backdrop-blur-sm" id="menu-overlay"></div>
+        <div class="relative w-full h-full flex flex-col px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+          <div class="hidden lg:flex justify-between items-end pb-4 text-white font-satoshi text-xs font-regular tracking-widest uppercase shrink-0 w-full">
+            <!--------------Top Left Corner Links---------------->
+            <div class="flex gap-8">
+              <a href="#" class="hover:text-white transition-colors">International</a>
+              <a href="#" class="hover:text-white transition-colors">Alumni</a>
+              <a href="#" class="hover:text-white transition-colors">Faculty</a>
+              <a href="#" class="hover:text-white transition-colors">Schools</a>
+              <a href="#" class="hover:text-white transition-colors">Campus Life</a>
+            </div>
+            <!--------------Top Right Corner Links---------------->
+            <div class="flex gap-8">
+              <a href="#" class="hover:text-white transition-colors">News</a>
+              <a href="#" class="hover:text-white transition-colors">Events</a>
+              <a href="#" class="hover:text-white transition-colors">Careers</a>
+              <a href="#" class="hover:text-white transition-colors">Contact</a>
+            </div>
+          </div>
+          <div class="relative flex-1 bg-white rounded-[2rem] shadow-2xl overflow-hidden flex flex-col transition-transform duration-500 scale-95" id="menu-card">
+            <div class="flex justify-between items-center px-6 sm:px-10 py-5 border-b border-gray-200 shrink-0">
+              <!--------------Menu Inside Logo Left Corner---------------->
+              <div class="flex items-center shrink-0 flex-1">
+                <img src="img/logo.svg" alt="Logo" class="h-8 sm:h-12 w-auto" />
+              </div>
+              <!--------------Main Navigation Links Center---------------->
+              <div class="hidden lg:flex items-center justify-center gap-6 xl:gap-10 font-satoshi text-lg sm:text-xl text-gray-400 shrink-0">
+                <span onclick="switchRoot('about', this)" class="root-nav cursor-pointer hover:text-gray-800 transition-colors relative"> About </span>
+                <span onclick="switchRoot('campus', this)" class="root-nav cursor-pointer hover:text-gray-800 transition-colors relative"> Campus </span>
+                <span onclick="switchRoot('academics', this)" class="root-nav active text-[#AF0C3E] font-medium cursor-pointer relative"> Academics & Programs </span>
+                <span onclick="switchRoot('research', this)" class="root-nav cursor-pointer hover:text-gray-800 transition-colors relative"> Research </span>
+              </div>
+              <div class="flex items-center justify-end gap-3 shrink-0 flex-1">
+                <!--------------Admission Button Inside Menu---------------->
+                <button class="cursor-pointer group/admissions relative z-10 hidden md:inline-flex items-center gap-3 overflow-hidden rounded-full bg-[#AF0C3E] pl-1 pr-6 py-1 text-white transition-all duration-800">
+                  <span class="absolute left-1 top-1/2 -translate-y-1/2 h-10 w-10 rounded-full bg-[#FFD92A] transition-transform duration-800 ease-out scale-0 group-hover/admissions:scale-[10]"></span>
+                  <div class="relative z-10 flex h-10 w-10 items-center justify-center rounded-full bg-white/20 transition-all duration-800 group-hover/admissions:bg-[#AF0C3E] group-hover/admissions:rotate-90">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-5 w-5 text-white">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                    </svg>
+                  </div>
+                  <span class="relative z-10 font-satoshi text-sm font-medium tracking-wide transition-colors duration-800 group-hover/admissions:text-black whitespace-nowrap">Admissions</span>
+                </button>
+                <!--------------Toogle Close Button---------------->
+                <button id="close-btn" class="group/close cursor-pointer bg-gray-100 text-black rounded-full w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center hover:bg-gray-200 transition-colors duration-300">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transition-transform duration-500 ease-out group-hover/close:rotate-90" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                </svg>
-            </button>
+                  </svg>
+                </button>
+              </div>
+            </div>
+            <div class="flex flex-1 overflow-hidden relative">
+              <!--------------Side Bar Menus---------------->
+              <div class="hidden md:flex w-64 py-8 pl-12 flex-col gap-5 font-satoshi text-lg text-gray-500 overflow-y-auto border-r border-gray-200">
+                <div id="sidebar-academics" class="sidebar-root-group flex flex-col gap-5">
+                  <span onclick="switchLevel('academics-ug', this)" class="level-btn text-[#AF0C3E] font-medium border-b-2 border-[#AF0C3E] pb-1 w-max cursor-pointer">Undergraduate</span>
+                  <span onclick="switchLevel('academics-pg', this)" class="level-btn cursor-pointer hover:text-gray-800 pb-1 w-max border-b-2 border-transparent">Postgraduate</span>
+                  <span onclick="switchLevel('academics-phd', this)" class="level-btn cursor-pointer hover:text-gray-800 pb-1 w-max border-b-2 border-transparent">Doctoral</span>
+                </div>
+                <div id="sidebar-about" class="sidebar-root-group hidden flex flex-col gap-5">
+                  <span onclick="switchLevel('about-overview', this)" class="level-btn cursor-pointer hover:text-gray-800 pb-1 w-max border-b-2 border-transparent">Overview</span>
+                  <span onclick="switchLevel('about-leadership', this)" class="level-btn cursor-pointer hover:text-gray-800 pb-1 w-max border-b-2 border-transparent">Leadership</span>
+                  <span onclick="switchLevel('about-rankings', this)" class="level-btn cursor-pointer hover:text-gray-800 pb-1 w-max border-b-2 border-transparent">Rankings</span>
+                </div>
+                <div id="sidebar-campus" class="sidebar-root-group hidden flex flex-col gap-5">
+                  <span onclick="switchLevel('campus-facilities', this)" class="level-btn cursor-pointer hover:text-gray-800 pb-1 w-max border-b-2 border-transparent">Facilities</span>
+                  <span onclick="switchLevel('campus-life', this)" class="level-btn cursor-pointer hover:text-gray-800 pb-1 w-max border-b-2 border-transparent">Student Life</span>
+                </div>
+                <div id="sidebar-research" class="sidebar-root-group hidden flex flex-col gap-5">
+                  <span onclick="switchLevel('research-centers', this)" class="level-btn cursor-pointer hover:text-gray-800 pb-1 w-max border-b-2 border-transparent">Centers of Excellence</span>
+                  <span onclick="switchLevel('research-projects', this)" class="level-btn cursor-pointer hover:text-gray-800 pb-1 w-max border-b-2 border-transparent">Funded Projects</span>
+                </div>
+              </div>
+              <div class="flex-1 bg-white p-6 sm:p-10 overflow-hidden flex flex-col">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 h-full">
+                  <!--------------Program Types---------------->
+                  <div id="tab-container" class="lg:col-span-3 bg-[#FDFBF7] rounded-xl p-4 flex flex-col gap-2 h-full overflow-y-auto custom-scrollbar">
+                    <div id="tabs-academics-ug" class="level-group flex flex-col gap-2">
+                      <div onclick="switchTab('ug-arts', this)" class="tab-btn active group flex items-center gap-3 p-3 rounded-lg bg-white shadow-sm cursor-pointer border-l-[3px] border-[#AF0C3E]">
+                        <div class="w-8 h-8 rounded bg-orange-100 flex items-center justify-center text-gray-700 transition-transform duration-300 group-hover:scale-110">A</div>
+                        <span class="font-satoshi text-base font-medium text-gray-800 group-hover:text-[#AF0C3E]">Arts & Humanities</span>
+                      </div>
+                      <div onclick="switchTab('ug-eng', this)" class="tab-btn group flex items-center gap-3 p-3 rounded-lg hover:bg-white hover:shadow-md cursor-pointer border-l-[3px] border-transparent hover:border-[#AF0C3E]">
+                        <div class="w-8 h-8 rounded bg-purple-100 flex items-center justify-center text-gray-700 transition-transform duration-300 group-hover:scale-110">E</div>
+                        <span class="font-satoshi text-base font-medium text-gray-800 group-hover:text-[#AF0C3E]">Engineering</span>
+                      </div>
+                    </div>
+                    <div id="tabs-academics-pg" class="level-group hidden flex flex-col gap-2">
+                      <div onclick="switchTab('pg-mba', this)" class="tab-btn group flex items-center gap-3 p-3 rounded-lg hover:bg-white hover:shadow-md cursor-pointer border-l-[3px] border-transparent hover:border-[#AF0C3E]">
+                        <div class="w-8 h-8 rounded bg-blue-100 flex items-center justify-center text-gray-700 transition-transform duration-300 group-hover:scale-110">M</div>
+                        <span class="font-satoshi text-base font-medium text-gray-800 group-hover:text-[#AF0C3E]">MBA</span>
+                      </div>
+                    </div>
+                    <div id="tabs-academics-phd" class="level-group hidden flex flex-col gap-2"></div>
+                    <div id="tabs-about-overview" class="level-group hidden flex flex-col gap-2">
+                      <div onclick="switchTab('about-vision', this)" class="tab-btn group flex items-center gap-3 p-3 rounded-lg hover:bg-white hover:shadow-md cursor-pointer border-l-[3px] border-transparent hover:border-[#AF0C3E]">
+                        <div class="w-8 h-8 rounded bg-gray-100 flex items-center justify-center">V</div>
+                        <span class="font-satoshi text-base font-medium text-gray-800 group-hover:text-[#AF0C3E]">Vision & Mission</span>
+                      </div>
+                      <div onclick="switchTab('about-history', this)" class="tab-btn group flex items-center gap-3 p-3 rounded-lg hover:bg-white hover:shadow-md cursor-pointer border-l-[3px] border-transparent hover:border-[#AF0C3E]">
+                        <div class="w-8 h-8 rounded bg-gray-100 flex items-center justify-center">H</div>
+                        <span class="font-satoshi text-base font-medium text-gray-800 group-hover:text-[#AF0C3E]">History</span>
+                      </div>
+                    </div>
+                    <div id="tabs-about-leadership" class="level-group hidden flex flex-col gap-2"></div>
+                    <div id="tabs-about-rankings" class="level-group hidden flex flex-col gap-2"></div>
+                    <div id="tabs-campus-facilities" class="level-group hidden flex flex-col gap-2">
+                      <div onclick="switchTab('campus-library', this)" class="tab-btn group flex items-center gap-3 p-3 rounded-lg hover:bg-white hover:shadow-md cursor-pointer border-l-[3px] border-transparent hover:border-[#AF0C3E]">
+                        <div class="w-8 h-8 rounded bg-yellow-100 flex items-center justify-center">L</div>
+                        <span class="font-satoshi text-base font-medium text-gray-800 group-hover:text-[#AF0C3E]">Central Library</span>
+                      </div>
+                    </div>
+                    <div id="tabs-campus-life" class="level-group hidden flex flex-col gap-2">
+                      <div onclick="switchTab('campus-housing', this)" class="tab-btn group flex items-center gap-3 p-3 rounded-lg hover:bg-white hover:shadow-md cursor-pointer border-l-[3px] border-transparent hover:border-[#AF0C3E]">
+                        <div class="w-8 h-8 rounded bg-yellow-100 flex items-center justify-center">H</div>
+                        <span class="font-satoshi text-base font-medium text-gray-800 group-hover:text-[#AF0C3E]">Housing & Hostels</span>
+                      </div>
+                    </div>
+                    <div id="tabs-research-centers" class="level-group hidden flex flex-col gap-2">
+                      <div onclick="switchTab('res-ai', this)" class="tab-btn group flex items-center gap-3 p-3 rounded-lg hover:bg-white hover:shadow-md cursor-pointer border-l-[3px] border-transparent hover:border-[#AF0C3E]">
+                        <div class="w-8 h-8 rounded bg-red-100 flex items-center justify-center">A</div>
+                        <span class="font-satoshi text-base font-medium text-gray-800 group-hover:text-[#AF0C3E]">AI & Robotics</span>
+                      </div>
+                    </div>
+                    <div id="tabs-research-projects" class="level-group hidden flex flex-col gap-2"></div>
+                  </div>
+                  <!--------------Main Links Listing---------------->
+                  <div class="lg:col-span-9 bg-white p-2 h-full overflow-y-auto custom-scrollbar">
+                    <div id="content-ug-arts" class="tab-content grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-fade-in">
+                      <div class="flex flex-col gap-4">
+                        <a href="#" class="font-satoshi text-base text-gray-700 hover:text-[#AF0C3E] block">B.A. (Hons) English</a>
+                        <a href="#" class="font-satoshi text-base text-gray-700 hover:text-[#AF0C3E] block">B.A. Mass Comm</a>
+                      </div>
+                      <div class="flex flex-col gap-4">
+                        <a href="#" class="font-satoshi text-base text-gray-700 hover:text-[#AF0C3E] block">B.A. (Hons) English</a>
+                        <a href="#" class="font-satoshi text-base text-gray-700 hover:text-[#AF0C3E] block">B.A. Mass Comm</a>
+                      </div>
+                      <div class="flex flex-col gap-4">
+                        <a href="#" class="font-satoshi text-base text-gray-700 hover:text-[#AF0C3E] block">B.A. (Hons) English</a>
+                        <a href="#" class="font-satoshi text-base text-gray-700 hover:text-[#AF0C3E] block">B.A. Mass Comm</a>
+                      </div>
+                    </div>
+                    <div id="content-ug-eng" class="tab-content hidden grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-fade-in">
+                      <div class="flex flex-col gap-4">
+                        <a href="#" class="font-satoshi text-base text-gray-700 hover:text-[#AF0C3E] block">Computer Science</a>
+                        <a href="#" class="font-satoshi text-base text-gray-700 hover:text-[#AF0C3E] block">Mechanical Engg</a>
+                      </div>
+                    </div>
+                    <div id="content-pg-mba" class="tab-content hidden grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-fade-in">
+                      <div class="flex flex-col gap-4">
+                        <a href="#" class="font-satoshi text-base text-gray-700 hover:text-[#AF0C3E] block">MBA General</a>
+                      </div>
+                    </div>
+                    <div id="content-about-vision" class="tab-content hidden animate-fade-in">
+                      <h3 class="text-xl font-bold text-[#AF0C3E] mb-2">Our Vision</h3>
+                      <p class="text-gray-600 mb-4">To be a world-class institution...</p>
+                      <a href="#" class="text-[#AF0C3E] underline">Read More</a>
+                    </div>
+                    <div id="content-about-history" class="tab-content hidden animate-fade-in">
+                      <h3 class="text-xl font-bold text-[#AF0C3E] mb-2">Our History</h3>
+                      <p class="text-gray-600">Founded in 2003, we have grown into...</p>
+                    </div>
+                    <div id="content-campus-library" class="tab-content hidden animate-fade-in">
+                      <div class="grid grid-cols-2 gap-4">
+                        <div class="bg-gray-100 h-32 rounded-lg"></div>
+                        <div class="bg-gray-100 h-32 rounded-lg"></div>
+                      </div>
+                      <p class="mt-4 text-gray-600">State of the art library facilities...</p>
+                    </div>
+                    <div id="content-campus-housing" class="tab-content hidden animate-fade-in">
+                      <p class="text-gray-600">Secure and comfortable hostels for boys and girls...</p>
+                    </div>
+                    <div id="content-res-ai" class="tab-content hidden animate-fade-in">
+                      <h3 class="text-xl font-bold text-[#AF0C3E] mb-2">Center for AI</h3>
+                      <p class="text-gray-600">Leading research in Machine Learning and Robotics.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-
       </div>
-
-      <div class="flex flex-1 overflow-hidden relative">
-        <div class="hidden md:flex w-64 py-8 pl-12 flex-col gap-5 font-satoshi text-lg text-gray-500 overflow-y-auto border-r border-gray-200">
-          <span class="text-[#AF0C3E] font-medium border-b-2 border-[#AF0C3E] pb-1 w-max cursor-pointer">Undergraduate</span>
-          <span class="cursor-pointer hover:text-gray-800 transition-colors">Integrated Degree</span>
-          <span class="cursor-pointer hover:text-gray-800 transition-colors">Postgraduate</span>
-          <span class="cursor-pointer hover:text-gray-800 transition-colors">Doctoral</span>
-        </div>
-
-        <div class="flex-1 bg-white p-6 sm:p-10 overflow-hidden flex flex-col">
-  
-  <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 h-full">
-    
-    <div id="tab-container" class="lg:col-span-3 bg-[#FDFBF7] rounded-xl p-4 flex flex-col gap-2 h-full overflow-y-auto custom-scrollbar">
-
-      <div onclick="switchTab('arts', this)" class="tab-btn active group flex items-center gap-3 p-3 rounded-lg bg-white shadow-sm cursor-pointer border-l-[3px] border-[#AF0C3E] transition-all duration-300 ease-in-out">
-        <div class="w-8 h-8 rounded bg-orange-100 flex items-center justify-center text-gray-700 transition-transform duration-300 group-hover:scale-110">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l9 4.9V17L12 22 3 17V6.9L12 2z"/></svg>
-        </div>
-        <span class="font-satoshi text-base font-medium text-gray-800 group-hover:text-[#AF0C3E] transition-colors duration-300">Arts & Humanities</span>
-      </div>
-
-      <div onclick="switchTab('business', this)" class="tab-btn group flex items-center gap-3 p-3 rounded-lg hover:bg-white hover:shadow-md cursor-pointer transition-all duration-300 ease-in-out border-l-[3px] border-transparent hover:border-[#AF0C3E]">
-        <div class="w-8 h-8 rounded bg-blue-100 flex items-center justify-center text-gray-700 transition-transform duration-300 group-hover:scale-110">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
-        </div>
-        <span class="font-satoshi text-base font-medium text-gray-800 group-hover:text-[#AF0C3E] transition-colors duration-300">Business / Management</span>
-      </div>
-
-      <div onclick="switchTab('engineering', this)" class="tab-btn group flex items-center gap-3 p-3 rounded-lg hover:bg-white hover:shadow-md cursor-pointer transition-all duration-300 ease-in-out border-l-[3px] border-transparent hover:border-[#AF0C3E]">
-        <div class="w-8 h-8 rounded bg-purple-100 flex items-center justify-center text-gray-700 transition-transform duration-300 group-hover:scale-110">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.9 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
-        </div>
-        <span class="font-satoshi text-base font-medium text-gray-800 group-hover:text-[#AF0C3E] transition-colors duration-300">Engineering</span>
-      </div>
-
-      <div onclick="switchTab('medical', this)" class="tab-btn group flex items-center gap-3 p-3 rounded-lg hover:bg-white hover:shadow-md cursor-pointer transition-all duration-300 ease-in-out border-l-[3px] border-transparent hover:border-[#AF0C3E]">
-        <div class="w-8 h-8 rounded bg-green-100 flex items-center justify-center text-gray-700 transition-transform duration-300 group-hover:scale-110">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20"/></svg>
-        </div>
-        <span class="font-satoshi text-base font-medium text-gray-800 group-hover:text-[#AF0C3E] transition-colors duration-300">Medical Sciences</span>
-      </div>
-
-      <div onclick="switchTab('social', this)" class="tab-btn group flex items-center gap-3 p-3 rounded-lg hover:bg-white hover:shadow-md cursor-pointer transition-all duration-300 ease-in-out border-l-[3px] border-transparent hover:border-[#AF0C3E]">
-        <div class="w-8 h-8 rounded bg-yellow-100 flex items-center justify-center text-gray-700 transition-transform duration-300 group-hover:scale-110">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/></svg>
-        </div>
-        <span class="font-satoshi text-base font-medium text-gray-800 group-hover:text-[#AF0C3E] transition-colors duration-300">Social Sciences</span>
-      </div>
-
-      <div onclick="switchTab('biotech', this)" class="tab-btn group flex items-center gap-3 p-3 rounded-lg hover:bg-white hover:shadow-md cursor-pointer transition-all duration-300 ease-in-out border-l-[3px] border-transparent hover:border-[#AF0C3E]">
-        <div class="w-8 h-8 rounded bg-pink-100 flex items-center justify-center text-gray-700 transition-transform duration-300 group-hover:scale-110">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-        </div>
-        <span class="font-satoshi text-base font-medium text-gray-800 group-hover:text-[#AF0C3E] transition-colors duration-300">Biotechnology</span>
-      </div>
-
-    </div>
-
-    <div class="lg:col-span-9 bg-white p-2 h-full overflow-y-auto custom-scrollbar">
-      
-      <div id="content-arts" class="tab-content grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-fade-in">
-          <div class="flex flex-col gap-4">
-              <a href="#" class="font-satoshi text-base text-gray-700 hover:text-[#AF0C3E] block">B.A. (Hons) English</a>
-              <a href="#" class="font-satoshi text-base text-gray-700 hover:text-[#AF0C3E] block">B.A. (Hons) Mass Comm</a>
-              <a href="#" class="font-satoshi text-base text-gray-700 hover:text-[#AF0C3E] block">B.A. Philosophy</a>
-              <a href="#" class="font-satoshi text-base text-gray-700 hover:text-[#AF0C3E] block">B.F.A. Applied Art</a>
-          </div>
-          <div class="flex flex-col gap-4">
-               <a href="#" class="font-satoshi text-base text-gray-700 hover:text-[#AF0C3E] block">M.A. English Literature</a>
-               <a href="#" class="font-satoshi text-base text-gray-700 hover:text-[#AF0C3E] block">M.A. Communication</a>
-               <a href="#" class="font-satoshi text-base text-gray-700 hover:text-[#AF0C3E] block">M.A. Philosophy</a>
-          </div>
-          <div class="flex flex-col gap-4">
-               <a href="#" class="font-satoshi text-base text-gray-700 hover:text-[#AF0C3E] block">Ph.D. in English</a>
-               <a href="#" class="font-satoshi text-base text-gray-700 hover:text-[#AF0C3E] block">Ph.D. in Cultural Studies</a>
-               <a href="#" class="font-satoshi text-base text-gray-700 hover:text-[#AF0C3E] block">Research Fellowships</a>
-          </div>
-      </div>
-
-      <div id="content-business" class="tab-content hidden grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-fade-in">
-          <div class="flex flex-col gap-4">
-              <a href="#" class="font-satoshi text-base text-gray-700 hover:text-[#AF0C3E] block">B.B.A (Business Analytics)</a>
-              <a href="#" class="font-satoshi text-base text-gray-700 hover:text-[#AF0C3E] block">B.Com. (Honours) with ACCA</a>
-              <a href="#" class="font-satoshi text-base text-gray-700 hover:text-[#AF0C3E] block">B.Com. (Honours) in FinTech</a>
-          </div>
-          <div class="flex flex-col gap-4">
-              <a href="#" class="font-satoshi text-base text-gray-700 hover:text-[#AF0C3E] block">M.B.A. General Management</a>
-              <a href="#" class="font-satoshi text-base text-gray-700 hover:text-[#AF0C3E] block">M.Com. Finance & Systems</a>
-              <a href="#" class="font-satoshi text-base text-gray-700 hover:text-[#AF0C3E] block">MBA in Innovation</a>
-          </div>
-           <div class="flex flex-col gap-4">
-              <h3 class="text-sm font-bold text-gray-400 uppercase tracking-wider mb-1">Executive</h3>
-              <a href="#" class="font-satoshi text-base text-gray-700 hover:text-[#AF0C3E] block">Executive MBA</a>
-              <a href="#" class="font-satoshi text-base text-gray-700 hover:text-[#AF0C3E] block">Management Development</a>
-          </div>
-      </div>
-
-      <div id="content-engineering" class="tab-content hidden grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-fade-in">
-          <div class="flex flex-col gap-4">
-              <a href="#" class="font-satoshi text-base text-gray-700 hover:text-[#AF0C3E] block">B.Tech. CS & Engg</a>
-              <a href="#" class="font-satoshi text-base text-gray-700 hover:text-[#AF0C3E] block">B.Tech. AI & Data Science</a>
-              <a href="#" class="font-satoshi text-base text-gray-700 hover:text-[#AF0C3E] block">B.Tech. Cyber Security</a>
-          </div>
-          <div class="flex flex-col gap-4">
-              <a href="#" class="font-satoshi text-base text-gray-700 hover:text-[#AF0C3E] block">B.Tech. Mechanical</a>
-              <a href="#" class="font-satoshi text-base text-gray-700 hover:text-[#AF0C3E] block">B.Tech. Electrical</a>
-              <a href="#" class="font-satoshi text-base text-gray-700 hover:text-[#AF0C3E] block">B.Tech. Civil Engg</a>
-          </div>
-          <div class="flex flex-col gap-4">
-              <a href="#" class="font-satoshi text-base text-gray-700 hover:text-[#AF0C3E] block">B.Tech. Robotics</a>
-              <a href="#" class="font-satoshi text-base text-gray-700 hover:text-[#AF0C3E] block">B.Tech. Aerospace</a>
-          </div>
-      </div>
-
-      <div id="content-medical" class="tab-content hidden grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-fade-in">
-           <div class="flex flex-col gap-4">
-              <a href="#" class="font-satoshi text-base text-gray-700 hover:text-[#AF0C3E] block">M.B.B.S</a>
-              <a href="#" class="font-satoshi text-base text-gray-700 hover:text-[#AF0C3E] block">B.D.S (Dental Surgery)</a>
-          </div>
-           <div class="flex flex-col gap-4">
-              <a href="#" class="font-satoshi text-base text-gray-700 hover:text-[#AF0C3E] block">B.Sc. Nursing</a>
-              <a href="#" class="font-satoshi text-base text-gray-700 hover:text-[#AF0C3E] block">B.Pharm</a>
-          </div>
-          <div class="flex flex-col gap-4">
-              <a href="#" class="font-satoshi text-base text-gray-700 hover:text-[#AF0C3E] block">Doctor of Pharmacy</a>
-          </div>
-      </div>
-
-      <div id="content-social" class="tab-content hidden grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-fade-in">
-           <div class="flex flex-col gap-4">
-              <a href="#" class="font-satoshi text-base text-gray-700 hover:text-[#AF0C3E] block">Master of Social Work</a>
-              <a href="#" class="font-satoshi text-base text-gray-700 hover:text-[#AF0C3E] block">B.A. Social Sciences</a>
-          </div>
-          <div class="flex flex-col gap-4">
-              <a href="#" class="font-satoshi text-base text-gray-700 hover:text-[#AF0C3E] block">M.A. Public Policy</a>
-          </div>
-      </div>
-
-      <div id="content-biotech" class="tab-content hidden grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-fade-in">
-          <div class="flex flex-col gap-4">
-              <a href="#" class="font-satoshi text-base text-gray-700 hover:text-[#AF0C3E] block">B.Sc. Biotechnology</a>
-              <a href="#" class="font-satoshi text-base text-gray-700 hover:text-[#AF0C3E] block">M.Sc. Microbiology</a>
-          </div>
-          <div class="flex flex-col gap-4">
-              <a href="#" class="font-satoshi text-base text-gray-700 hover:text-[#AF0C3E] block">Ph.D. Biotechnology</a>
-          </div>
-      </div>
-
-    </div>
-  </div>
-</div>
-      </div>
-    </div>
-  </div>
-</div>
-
-</section>
+    </section>
     <!--------------WHAT'S YOUR INTEREST---------------->
     <section class="py-12 lg:py-24 w-full bg-white">
       <div class="container mx-auto px-4 sm:px-6 lg:px-6">
@@ -487,6 +451,7 @@
     <!--------------AMRITA ADVANTAGE---------------->
     <section class="relative text-white bg-black py-12 lg:py-25 overflow-hidden">
       <div class="absolute top-0 right-0 h-full w-full lg:w-[50%] overflow-hidden">
+        <!--------------Background Gradient Video---------------->
         <video class="absolute top-0 left-0 h-full w-full object-cover opacity-40 lg:opacity-100" autoplay loop muted playsinline>
           <source src="img/bg-loop-video-excellence.mp4" type="video/mp4" />
         </video>
@@ -495,9 +460,13 @@
       <div class="container mx-auto px-4 sm:px-6 relative z-10">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center">
           <div class="col-span-1 py-4 lg:py-20 relative z-10">
+            <!--------------Sub Heading---------------->
             <p class="text-left font-satoshi mb-2 text-sm sm:text-base text-gray-300"> 02 __ The Amrita Advantage </p>
+            <!--------------Main Heading---------------->
             <h2 class="leading-tight text-4xl sm:text-5xl lg:text-6xl font-medium uppercase text-left font-anton mb-6"> Be Transformative. <br />Discover Excellence. </h2>
+            <!--------------Description---------------->
             <p class="text-left font-satoshi mb-8 text-gray-300 text-sm sm:text-base leading-relaxed lg:max-w-lg"> Amrita Vishwa Vidyapeetham is a multi-disciplinary, research-intensive, private university, educating a vibrant student population of over 30,000 by 2000+ strong faculty. Accredited with the highest possible ‘A++’ grade by NAAC, Amrita offers more than 300 UG, PG, and Ph.D. programs across various disciplines, including Engineering, Management, Medical Sciences, Ayurveda, Life Sciences, Physical Sciences, Agricultural Sciences, Law, Arts & Humanities, and Social & Behavioral Sciences. </p>
+            <!--------------Know More Links---------------->
             <a href="#" class="relative bg-primary font-satoshi text-white rounded-md inline-flex items-center gap-3 py-2 hover:opacity-90 transition group">
               <img src="/img/arrow-icon.svg" alt="Arrow" class="w-3 h-3" />
               <span>Know More</span>
@@ -506,6 +475,7 @@
           </div>
           <div class="col-span-1 relative lg:py-20 z-10">
             <ul class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-3">
+              <!--------------Card 01---------------->
               <li class="border border-white/50 rounded-3xl p-6 bg-black/60 backdrop-blur-sm w-full h-full min-h-[200px] flex flex-col">
                 <div class="flex flex-col justify-between h-full">
                   <div class="text-left">
@@ -515,6 +485,7 @@
                   <img src="img/gradient-glass.svg" alt="Research" class="w-28 h-28 sm:w-30 sm:h-30 self-end" />
                 </div>
               </li>
+              <!--------------Card 02---------------->
               <li class="relative border border-white/50 rounded-3xl bg-black/60 backdrop-blur-sm w-full h-full min-h-[200px] flex flex-col overflow-hidden">
                 <img src="img/gradient-glass-card-02.svg" alt="Research" class="absolute top-0 right-0 w-28 h-28 sm:w-30 sm:h-30" />
                 <div class="p-6 mt-auto text-left relative z-10">
@@ -522,6 +493,7 @@
                   <p class="font-thin font-satoshi text-sm sm:text-base text-gray-300"> Publications </p>
                 </div>
               </li>
+              <!--------------Card 03---------------->
               <li class="relative border border-white/50 rounded-3xl bg-black/60 backdrop-blur-sm w-full h-full min-h-[200px] flex flex-col overflow-hidden">
                 <img src="img/gradient-glass-card-03.svg" alt="Research" class="absolute w-28 h-28 sm:w-30 sm:h-30 right-0 left-0 mx-auto bottom-0 translate-x-4 translate-y-0 sm:translate-x-0 sm:translate-y-0" />
                 <div class="p-6 flex flex-col justify-between h-full relative z-10">
@@ -531,6 +503,7 @@
                   </div>
                 </div>
               </li>
+              <!--------------Card 04---------------->
               <li class="border border-white rounded-3xl p-6 bg-white w-full h-full min-h-[200px] flex flex-col">
                 <div class="flex flex-col justify-between h-full">
                   <div class="text-left">

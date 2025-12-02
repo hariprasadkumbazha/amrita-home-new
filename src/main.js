@@ -1,82 +1,163 @@
 import './style.css'
 
-
 /////////////////////////////// 1. MEGA MENU /////////////////////////////////
 document.addEventListener('DOMContentLoaded', () => {
-    
     // --- ELEMENTS ---
-    const openBtn = document.getElementById('open-btn');   // Button on Main Page
-    const closeBtn = document.getElementById('close-btn'); // Button inside Menu
+    const openBtn = document.getElementById('open-btn');
+    const closeBtn = document.getElementById('close-btn');
     const megaMenu = document.getElementById('mega-menu');
     const menuCard = document.getElementById('menu-card');
+    const menuOverlay = document.getElementById('menu-overlay');
 
-    // --- FUNCTION TO OPEN ---
+    // --- OPEN / CLOSE ---
     function openMenu() {
-        // Show Overlay
         megaMenu.classList.remove('opacity-0', 'pointer-events-none');
         megaMenu.classList.add('opacity-100', 'pointer-events-auto');
-        
-        // Animate Card Scale
-        if(menuCard) {
+        if (menuCard) {
             menuCard.classList.remove('scale-95');
             menuCard.classList.add('scale-100');
         }
+        resetToDefault();
     }
 
-    // --- FUNCTION TO CLOSE ---
     function closeMenu() {
-        // Hide Overlay
         megaMenu.classList.add('opacity-0', 'pointer-events-none');
         megaMenu.classList.remove('opacity-100', 'pointer-events-auto');
-        
-        // Reset Card Scale
-        if(menuCard) {
+        if (menuCard) {
             menuCard.classList.add('scale-95');
             menuCard.classList.remove('scale-100');
         }
     }
 
-    // --- LISTENERS ---
     if (openBtn) openBtn.addEventListener('click', openMenu);
     if (closeBtn) closeBtn.addEventListener('click', closeMenu);
+    if (menuOverlay) menuOverlay.addEventListener('click', closeMenu);
 });
 
-/////////////////////////////// 1. TAB GROUP MENU /////////////////////////////////
 
-// Define the function
-  const switchTab = (tabName, clickedElement) => {
-    // 1. Hide all content sections
+// --- 1. ROOT SWITCHER (Top Nav: About / Campus / Academics / Research) ---
+const switchRoot = (rootId, clickedElement) => {
+    
+    // A. Visual Styles for Top Nav
+    const allRoots = document.querySelectorAll('.root-nav');
+    allRoots.forEach(el => {
+        // Reset styles (remove Active red color)
+        el.classList.remove('text-[#AF0C3E]', 'font-medium', 'active');
+        el.classList.add('hover:text-gray-800');
+        
+        // Remove the yellow star if it exists
+        const star = el.querySelector('span'); 
+        if(star) star.remove();
+    });
+
+    // Set Active style
+    clickedElement.classList.remove('hover:text-gray-800');
+    clickedElement.classList.add('text-[#AF0C3E]', 'font-medium', 'active');
+    
+    // Add the Star (Visual flair)
+    const starSpan = document.createElement('span');
+    starSpan.className = "absolute -top-1 -right-3 text-yellow-400 text-xs";
+    starSpan.innerHTML = "✦";
+    clickedElement.appendChild(starSpan);
+
+    // B. Show Corresponding Sidebar Group
+    const allSidebarGroups = document.querySelectorAll('.sidebar-root-group');
+    allSidebarGroups.forEach(grp => grp.classList.add('hidden'));
+
+    const targetSidebar = document.getElementById('sidebar-' + rootId);
+    if(targetSidebar) {
+        targetSidebar.classList.remove('hidden');
+        
+        // C. Automatically Click the FIRST item in this Sidebar
+        // This ensures the middle and right columns populate immediately
+        const firstBtn = targetSidebar.querySelector('.level-btn');
+        if(firstBtn) firstBtn.click();
+    }
+};
+
+// --- 2. LEVEL SWITCHER (Sidebar: Undergraduate / Leadership / Facilities etc) ---
+const switchLevel = (levelId, clickedElement) => {
+    
+    // Reset Sidebar Buttons Styles (globally)
+    const allLevelBtns = document.querySelectorAll('.level-btn');
+    allLevelBtns.forEach(btn => {
+        btn.classList.remove('text-[#AF0C3E]', 'font-medium', 'border-[#AF0C3E]');
+        btn.classList.add('text-gray-500', 'border-transparent');
+    });
+
+    // Set Active Style
+    clickedElement.classList.remove('text-gray-500', 'border-transparent');
+    clickedElement.classList.add('text-[#AF0C3E]', 'font-medium', 'border-[#AF0C3E]');
+
+    // Hide ALL Tab Groups (Middle)
+    const allLevelGroups = document.querySelectorAll('.level-group');
+    allLevelGroups.forEach(group => group.classList.add('hidden'));
+
+    // Show the specific Tab Group
+    const targetGroup = document.getElementById('tabs-' + levelId);
+    if (targetGroup) {
+        targetGroup.classList.remove('hidden');
+        
+        // Auto-click the first tab in this group
+        const firstTab = targetGroup.querySelector('.tab-btn');
+        if(firstTab) firstTab.click();
+    }
+};
+
+
+// --- 3. TAB SWITCHER (Middle: Arts / Engineering / Vision etc) ---
+const switchTab = (contentId, clickedElement) => {
+    // Hide ALL content sections
     const allContents = document.querySelectorAll('.tab-content');
     allContents.forEach(div => div.classList.add('hidden'));
 
-    // 2. Show the selected content section
-    const targetContent = document.getElementById('content-' + tabName);
-    if(targetContent) {
-      targetContent.classList.remove('hidden');
+    // Show selected content
+    const targetContent = document.getElementById('content-' + contentId);
+    if (targetContent) {
+        targetContent.classList.remove('hidden');
     }
 
-    // 3. Reset all buttons to "inactive" state
+    // Reset Tab Styles
     const allButtons = document.querySelectorAll('.tab-btn');
     allButtons.forEach(btn => {
-      // Remove Active Styles
-      btn.classList.remove('bg-white', 'shadow-sm', 'border-[#AF0C3E]');
-      // Add Inactive Styles
-      btn.classList.add('hover:bg-white', 'hover:shadow-md', 'border-transparent', 'hover:border-[#AF0C3E]');
+        // Remove Active
+        btn.classList.remove('bg-white', 'shadow-sm', 'border-[#AF0C3E]', 'active');
+        // Add Inactive
+        btn.classList.add('hover:bg-white', 'hover:shadow-md', 'border-transparent', 'hover:border-[#AF0C3E]');
+        
+        // Handle Responsive Borders (Left for Desktop, Bottom for Mobile)
+        // Resetting specifically the border direction classes is tricky without removing all. 
+        // Best approach: Just toggle the border color class as we are doing.
     });
 
-    // 4. Set the clicked button to "active" state
-    // Remove Inactive Styles
+    // Set Active Tab Style
     clickedElement.classList.remove('hover:bg-white', 'hover:shadow-md', 'border-transparent', 'hover:border-[#AF0C3E]');
-    // Add Active Styles
-    clickedElement.classList.add('bg-white', 'shadow-sm', 'border-[#AF0C3E]');
-  };
-
-  // !!! CRITICAL FOR VITE !!!
-  // Attach function to window so HTML 'onclick' can find it
-  window.switchTab = switchTab;
+    clickedElement.classList.add('bg-white', 'shadow-sm', 'border-[#AF0C3E]', 'active');
+};
 
 
-/////////////////////////////// 1. HERO SLIDER /////////////////////////////////
+// --- RESET TO DEFAULT (Academics -> Undergraduate) ---
+const resetToDefault = () => {
+    // Find the Academics root button
+    const rootBtns = document.querySelectorAll('.root-nav');
+    // Assuming 3rd item (index 2) is Academics based on HTML order
+    // Or we can find by text content, but let's use the click trigger on the known element
+    const academicsBtn = Array.from(rootBtns).find(el => el.innerText.includes('Academics'));
+    
+    if(academicsBtn) {
+        academicsBtn.click();
+    }
+}
+
+// Expose to window
+window.switchRoot = switchRoot;
+window.switchLevel = switchLevel;
+window.switchTab = switchTab;
+window.resetToDefault = resetToDefault;
+
+
+
+/////////////////////////////// 2. HERO SLIDER /////////////////////////////////
 // --- DATA ---
 const slides = [
     {
@@ -233,7 +314,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-/////////////////////////////// 1. HAPPENINGS AT AMRITA /////////////////////////////////
+/////////////////////////////// 3. HAPPENINGS AT AMRITA /////////////////////////////////
 const happeningsSwiper = new Swiper(".HappeningsAtAmrita", {
   slidesPerView: 1,
   spaceBetween: 20,
@@ -257,7 +338,7 @@ const happeningsSwiper = new Swiper(".HappeningsAtAmrita", {
   },
 });
 
-/////////////////////////////// 2. UPCOMING EVENTS /////////////////////////////////
+/////////////////////////////// 4. UPCOMING EVENTS /////////////////////////////////
 const eventsSwiper = new Swiper(".UpcomingEvents", {
   slidesPerView: 1,
   spaceBetween: 20,
@@ -281,7 +362,7 @@ const eventsSwiper = new Swiper(".UpcomingEvents", {
   },
 });
 
-/////////////////////////////// 3. VIDEO SLIDER /////////////////////////////////
+/////////////////////////////// 5. VIDEO SLIDER /////////////////////////////////
 const videoSwiper = new Swiper(".VideoSlider", {
   slidesPerView: 1,
   spaceBetween: 0,
@@ -301,7 +382,7 @@ const videoSwiper = new Swiper(".VideoSlider", {
   },
 });
 
-/////////////////////////////// 4. SPOTLIGHT PROJECTS /////////////////////////////////
+/////////////////////////////// 6. SPOTLIGHT PROJECTS /////////////////////////////////
 const spotlightSwiper = new Swiper(".SpotlightProjects", {
   slidesPerView: 1,
   spaceBetween: 20,
@@ -326,7 +407,7 @@ const spotlightSwiper = new Swiper(".SpotlightProjects", {
 });
 
 
-/////////////////////////////// 5. FOOTER TOOGLE /////////////////////////////////
+/////////////////////////////// 7. FOOTER TOOGLE /////////////////////////////////
 document.addEventListener('DOMContentLoaded', () => {
         // Select all header containers
         const headers = document.querySelectorAll('.toggle-header');
