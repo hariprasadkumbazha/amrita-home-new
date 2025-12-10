@@ -1,6 +1,6 @@
 import './style.css'
 
-/////////////////////////////// 1. MEGA MENU /////////////////////////////////
+/////////////////////////////// 1. MEGA MENU SWITCHER/////////////////////////////////
 document.addEventListener('DOMContentLoaded', () => {
     // --- ELEMENTS ---
     const openBtn = document.getElementById('open-btn');
@@ -11,21 +11,29 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- OPEN / CLOSE ---
     function openMenu() {
-        megaMenu.classList.remove('opacity-0', 'pointer-events-none');
-        megaMenu.classList.add('opacity-100', 'pointer-events-auto');
+        // 1. Add 'am:' to all classes being removed/added
+        megaMenu.classList.remove('am:opacity-0', 'am:pointer-events-none');
+        megaMenu.classList.add('am:opacity-100', 'am:pointer-events-auto');
+        
         if (menuCard) {
-            menuCard.classList.remove('scale-95');
-            menuCard.classList.add('scale-100');
+            menuCard.classList.remove('am:scale-95');
+            menuCard.classList.add('am:scale-100');
         }
-        resetToDefault();
+        
+        // Ensure this function exists or checks for prefix too
+        if (typeof resetToDefault === 'function') {
+            resetToDefault(); 
+        }
     }
 
     function closeMenu() {
-        megaMenu.classList.add('opacity-0', 'pointer-events-none');
-        megaMenu.classList.remove('opacity-100', 'pointer-events-auto');
+        // 2. Add 'am:' here as well
+        megaMenu.classList.add('am:opacity-0', 'am:pointer-events-none');
+        megaMenu.classList.remove('am:opacity-100', 'am:pointer-events-auto');
+        
         if (menuCard) {
-            menuCard.classList.add('scale-95');
-            menuCard.classList.remove('scale-100');
+            menuCard.classList.add('am:scale-95');
+            menuCard.classList.remove('am:scale-100');
         }
     }
 
@@ -39,11 +47,12 @@ document.addEventListener('DOMContentLoaded', () => {
 const switchRoot = (rootId, clickedElement) => {
     
     // A. Visual Styles for Top Nav
-    const allRoots = document.querySelectorAll('.root-nav');
+    // Note: escape colon with \\ for selectors
+    const allRoots = document.querySelectorAll('.am\\:root-nav'); 
     allRoots.forEach(el => {
         // Reset styles (remove Active red color)
-        el.classList.remove('text-[#AF0C3E]', 'font-medium', 'active');
-        el.classList.add('hover:text-gray-800');
+        el.classList.remove('am:text-[#AF0C3E]', 'am:font-medium', 'am:active');
+        el.classList.add('am:hover:text-gray-800');
         
         // Remove the yellow star if it exists
         const star = el.querySelector('span'); 
@@ -51,26 +60,26 @@ const switchRoot = (rootId, clickedElement) => {
     });
 
     // Set Active style
-    clickedElement.classList.remove('hover:text-gray-800');
-    clickedElement.classList.add('text-[#AF0C3E]', 'font-medium', 'active');
+    clickedElement.classList.remove('am:hover:text-gray-800');
+    clickedElement.classList.add('am:text-[#AF0C3E]', 'am:font-medium', 'am:active');
     
     // Add the Star (Visual flair)
     const starSpan = document.createElement('span');
-    starSpan.className = "absolute -top-1 -right-3 text-yellow-400 text-xs";
+    // Updated classes with prefix
+    starSpan.className = "am:absolute am:-top-1 am:-right-3 am:text-yellow-400 am:text-xs";
     starSpan.innerHTML = "✦";
     clickedElement.appendChild(starSpan);
 
     // B. Show Corresponding Sidebar Group
-    const allSidebarGroups = document.querySelectorAll('.sidebar-root-group');
-    allSidebarGroups.forEach(grp => grp.classList.add('hidden'));
+    const allSidebarGroups = document.querySelectorAll('.am\\:sidebar-root-group');
+    allSidebarGroups.forEach(grp => grp.classList.add('am:hidden'));
 
     const targetSidebar = document.getElementById('sidebar-' + rootId);
     if(targetSidebar) {
-        targetSidebar.classList.remove('hidden');
+        targetSidebar.classList.remove('am:hidden');
         
         // C. Automatically Click the FIRST item in this Sidebar
-        // This ensures the middle and right columns populate immediately
-        const firstBtn = targetSidebar.querySelector('.level-btn');
+        const firstBtn = targetSidebar.querySelector('.am\\:level-btn');
         if(firstBtn) firstBtn.click();
     }
 };
@@ -79,27 +88,27 @@ const switchRoot = (rootId, clickedElement) => {
 const switchLevel = (levelId, clickedElement) => {
     
     // Reset Sidebar Buttons Styles (globally)
-    const allLevelBtns = document.querySelectorAll('.level-btn');
+    const allLevelBtns = document.querySelectorAll('.am\\:level-btn');
     allLevelBtns.forEach(btn => {
-        btn.classList.remove('text-[#AF0C3E]', 'font-medium', 'border-[#AF0C3E]');
-        btn.classList.add('text-gray-500', 'border-transparent');
+        btn.classList.remove('am:text-[#AF0C3E]', 'am:font-medium', 'am:border-[#AF0C3E]');
+        btn.classList.add('am:text-gray-500', 'am:border-transparent');
     });
 
     // Set Active Style
-    clickedElement.classList.remove('text-gray-500', 'border-transparent');
-    clickedElement.classList.add('text-[#AF0C3E]', 'font-medium', 'border-[#AF0C3E]');
+    clickedElement.classList.remove('am:text-gray-500', 'am:border-transparent');
+    clickedElement.classList.add('am:text-[#AF0C3E]', 'am:font-medium', 'am:border-[#AF0C3E]');
 
     // Hide ALL Tab Groups (Middle)
-    const allLevelGroups = document.querySelectorAll('.level-group');
-    allLevelGroups.forEach(group => group.classList.add('hidden'));
+    const allLevelGroups = document.querySelectorAll('.am\\:level-group');
+    allLevelGroups.forEach(group => group.classList.add('am:hidden'));
 
     // Show the specific Tab Group
     const targetGroup = document.getElementById('tabs-' + levelId);
     if (targetGroup) {
-        targetGroup.classList.remove('hidden');
+        targetGroup.classList.remove('am:hidden');
         
         // Auto-click the first tab in this group
-        const firstTab = targetGroup.querySelector('.tab-btn');
+        const firstTab = targetGroup.querySelector('.am\\:tab-btn');
         if(firstTab) firstTab.click();
     }
 };
@@ -108,40 +117,34 @@ const switchLevel = (levelId, clickedElement) => {
 // --- 3. TAB SWITCHER (Middle: Arts / Engineering / Vision etc) ---
 const switchTab = (contentId, clickedElement) => {
     // Hide ALL content sections
-    const allContents = document.querySelectorAll('.tab-content');
-    allContents.forEach(div => div.classList.add('hidden'));
+    const allContents = document.querySelectorAll('.am\\:tab-content');
+    allContents.forEach(div => div.classList.add('am:hidden'));
 
     // Show selected content
     const targetContent = document.getElementById('content-' + contentId);
     if (targetContent) {
-        targetContent.classList.remove('hidden');
+        targetContent.classList.remove('am:hidden');
     }
 
     // Reset Tab Styles
-    const allButtons = document.querySelectorAll('.tab-btn');
+    const allButtons = document.querySelectorAll('.am\\:tab-btn');
     allButtons.forEach(btn => {
         // Remove Active
-        btn.classList.remove('bg-white', 'shadow-sm', 'border-[#AF0C3E]', 'active');
+        btn.classList.remove('am:bg-white', 'am:shadow-sm', 'am:border-[#AF0C3E]', 'am:active');
         // Add Inactive
-        btn.classList.add('hover:bg-white', 'hover:shadow-md', 'border-transparent', 'hover:border-[#AF0C3E]');
-        
-        // Handle Responsive Borders (Left for Desktop, Bottom for Mobile)
-        // Resetting specifically the border direction classes is tricky without removing all. 
-        // Best approach: Just toggle the border color class as we are doing.
+        btn.classList.add('am:hover:bg-white', 'am:hover:shadow-md', 'am:border-transparent', 'am:hover:border-[#AF0C3E]');
     });
 
     // Set Active Tab Style
-    clickedElement.classList.remove('hover:bg-white', 'hover:shadow-md', 'border-transparent', 'hover:border-[#AF0C3E]');
-    clickedElement.classList.add('bg-white', 'shadow-sm', 'border-[#AF0C3E]', 'active');
+    clickedElement.classList.remove('am:hover:bg-white', 'am:hover:shadow-md', 'am:border-transparent', 'am:hover:border-[#AF0C3E]');
+    clickedElement.classList.add('am:bg-white', 'am:shadow-sm', 'am:border-[#AF0C3E]', 'am:active');
 };
 
 
-// --- RESET TO DEFAULT (Academics -> Undergraduate) ---
+// --- 4. RESET TO DEFAULT (Academics -> Undergraduate) ---
 const resetToDefault = () => {
     // Find the Academics root button
-    const rootBtns = document.querySelectorAll('.root-nav');
-    // Assuming 3rd item (index 2) is Academics based on HTML order
-    // Or we can find by text content, but let's use the click trigger on the known element
+    const rootBtns = document.querySelectorAll('.am\\:root-nav');
     const academicsBtn = Array.from(rootBtns).find(el => el.innerText.includes('Academics'));
     
     if(academicsBtn) {
@@ -158,188 +161,187 @@ window.resetToDefault = resetToDefault;
 
 
 /////////////////////////////// 2. HERO SLIDER /////////////////////////////////
-// --- DATA ---
-const slides = [
-    {
-        id: 1,
-        title: "The Future<br/>Awaits You.<br/>Shape it.",
-        subtitle: "Join Amrita’s B.Tech programmes, where innovation, technology, and values unite to shape a better tomorrow—for all.",
-        videoSrc: "img/amrita-campus-video-home-page.mp4",
-        cardTitle: "The Future Awaits You. Shape it.",
-        cardDesc: "Join Amrita’s B.Tech programmes, where innovation, technology, and values unite to shape a better tomorrow—for all."
-    },
-    {
-        id: 2,
-        title: "Admissions<br/>Open 2025",
-        subtitle: "Join Amrita’s B.Tech programmes, where innovation, technology, and values unite to shape a better tomorrow—for all.",
-        videoSrc: "img/banner-video.mp4",
-        cardTitle: "Admissions Open 2025",
-        cardDesc: "Apply now for world-class engineering programs designed for the future."
-    },
-    {
-        id: 3,
-        title: "Sustainable Development",
-        subtitle: "Join Amrita’s B.Tech programmes, where innovation, technology, and values unite to shape a better tomorrow—for all.",
-        videoSrc: "img/header-coimbatore.mov",
-        cardTitle: "Center for Sustainable Development",
-        cardDesc: "Amrita launches new initiatives to tackle global climate challenges."
-    }
-];
+document.addEventListener("DOMContentLoaded", function () {
+  
+  // ============================================
+  // PART A: MEGA MENU LOGIC
+  // ============================================
+  const openBtn = document.getElementById("open-btn");
+  const closeBtn = document.getElementById("close-btn");
+  const megaMenu = document.getElementById("mega-menu");
+  const menuCard = document.getElementById("menu-card");
 
-// --- STATE ---
-let currentSlideIndex = 0;
+  // Teleport menu to body to avoid clipping
+  if (megaMenu) { document.body.appendChild(megaMenu); }
 
-// --- DOM ELEMENTS ---
-const videoElement = document.getElementById('hero-video');
-const titleElement = document.getElementById('hero-title');
-const subtitleElement = document.getElementById('hero-subtitle');
-
-// Card Elements
-const cardTitle = document.getElementById('card-title');
-const cardDesc = document.getElementById('card-desc');
-const cardThumbVideo = document.getElementById('card-thumb-video');
-const progressBar = document.getElementById('video-progress-bar'); // NEW Element
-
-// Buttons
-const prevBtn = document.getElementById('prev-btn');
-const nextBtn = document.getElementById('next-btn');
-
-// --- FUNCTIONS ---
-
-function init() {
-    // Start initial slide
-    loadSlide(0);
-
-    // Setup Video Event Listeners
-    setupVideoEvents();
-}
-
-function setupVideoEvents() {
-    // 1. Auto Play Next Slide when video ends
-    videoElement.addEventListener('ended', () => {
-        nextSlide();
+  if (openBtn && megaMenu && menuCard) {
+    openBtn.addEventListener("click", () => {
+      megaMenu.style.pointerEvents = "auto";
+      megaMenu.style.opacity = "1";
+      menuCard.classList.remove("am:scale-95");
+      menuCard.classList.add("am:scale-100");
     });
 
-    // 2. Update Progress Bar
-    videoElement.addEventListener('timeupdate', () => {
-        if(videoElement.duration) {
+    closeBtn.addEventListener("click", () => {
+      megaMenu.style.opacity = "0";
+      megaMenu.style.pointerEvents = "none";
+      menuCard.classList.remove("am:scale-100");
+      menuCard.classList.add("am:scale-95");
+    });
+  }
+
+  // ============================================
+  // PART B: HERO VIDEO SLIDER LOGIC
+  // ============================================
+  let slides = [];
+  let currentSlideIndex = 0;
+
+  // DOM Elements
+  const videoElement = document.getElementById('hero-video');
+  const titleElement = document.getElementById('hero-title');
+  const subtitleElement = document.getElementById('hero-subtitle');
+  const cardTitle = document.getElementById('card-title');
+  const cardDesc = document.getElementById('card-desc');
+  const cardThumbVideo = document.getElementById('card-thumb-video');
+  const progressBar = document.getElementById('video-progress-bar');
+  const prevBtn = document.getElementById('prev-btn');
+  const nextBtn = document.getElementById('next-btn');
+
+  function initSlider() {
+    // 1. Fetch data from HTML
+    const dataContainer = document.getElementById('hero-slides-data');
+    if (dataContainer) {
+      const items = dataContainer.querySelectorAll('.slide-item');
+      slides = Array.from(items).map((item, index) => {
+        return {
+          id: index,
+          videoSrc: item.getAttribute('data-video-src'),
+          title: item.querySelector('.slide-title').innerHTML,
+          subtitle: item.querySelector('.slide-subtitle').innerText,
+          cardTitle: item.querySelector('.slide-card-title').innerText,
+          cardDesc: item.querySelector('.slide-card-desc').innerText
+        };
+      });
+    }
+
+    // 2. Start Slider
+    if (slides.length > 0) {
+      loadSlide(0);
+      
+      // Auto-next on video end
+      if (videoElement) {
+        videoElement.addEventListener('ended', nextSlide);
+        videoElement.addEventListener('timeupdate', () => {
+          if (videoElement.duration && progressBar) {
             const progress = (videoElement.currentTime / videoElement.duration) * 100;
             progressBar.style.width = `${progress}%`;
-        }
-    });
-}
+          }
+        });
+      }
+    }
+  }
 
-async function loadSlide(index) {
+  async function loadSlide(index) {
+    if (!slides[index]) return;
     currentSlideIndex = index;
     const slide = slides[index];
 
-    // Reset Progress Bar immediately
-    progressBar.style.width = '0%';
+    if (progressBar) progressBar.style.width = '0%';
 
-    // 1. Update Background Video
-    videoElement.style.opacity = '0'; 
-    
-    setTimeout(async () => {
+    // Change Video
+    if (videoElement) {
+      videoElement.style.opacity = '0';
+      setTimeout(async () => {
         videoElement.src = slide.videoSrc;
-        videoElement.load();
         try {
-            const playPromise = videoElement.play();
-            if (playPromise !== undefined) {
-                await playPromise;
-                videoElement.style.opacity = '1';
-            }
-        } catch (error) {
-            console.warn("Video playback issue:", error);
-            videoElement.style.opacity = '1'; 
-        }
-    }, 300);
+          await videoElement.play();
+          videoElement.style.opacity = '1';
+        } catch (e) { videoElement.style.opacity = '1'; }
+      }, 300);
+    }
 
-    // 2. Update Text
-    animateTextChange(titleElement, slide.title);
-    animateTextChange(subtitleElement, slide.subtitle);
+    // Animate Text
+    if (titleElement) animateTextChange(titleElement, slide.title);
+    if (subtitleElement) animateTextChange(subtitleElement, slide.subtitle);
 
-    // 3. Update Card
-    updateCardUI(slide);
-}
-
-function updateCardUI(slide) {
-    cardTitle.style.opacity = '0';
-    cardDesc.style.opacity = '0';
-    
-    setTimeout(() => {
+    // Update Card
+    if (cardTitle && cardDesc) {
+      cardTitle.style.opacity = '0';
+      cardDesc.style.opacity = '0';
+      setTimeout(() => {
         cardTitle.innerText = slide.cardTitle;
         cardDesc.innerText = slide.cardDesc;
-        
-        // Thumbnail
-        cardThumbVideo.src = slide.videoSrc;
-        cardThumbVideo.muted = true;
-        cardThumbVideo.play().catch(() => {});
-
+        if (cardThumbVideo) {
+          cardThumbVideo.src = slide.videoSrc;
+          cardThumbVideo.play().catch(() => {});
+        }
         cardTitle.style.opacity = '1';
         cardDesc.style.opacity = '1';
-    }, 200);
-}
+      }, 200);
+    }
+  }
 
-function animateTextChange(element, newHtml) {
+  function animateTextChange(element, newHtml) {
     element.classList.remove('fade-enter-active');
     element.classList.add('fade-enter');
-    
     setTimeout(() => {
-        element.innerHTML = newHtml;
-        element.classList.remove('fade-enter');
-        // force reflow
-        void element.offsetWidth;
-        element.classList.add('fade-enter-active');
+      element.innerHTML = newHtml;
+      element.classList.remove('fade-enter');
+      void element.offsetWidth; // force reflow
+      element.classList.add('fade-enter-active');
     }, 300);
-}
+  }
 
-function nextSlide() {
-    const nextIndex = (currentSlideIndex + 1) % slides.length;
-    loadSlide(nextIndex);
-}
+  function nextSlide() {
+    if (slides.length === 0) return;
+    loadSlide((currentSlideIndex + 1) % slides.length);
+  }
 
-function prevSlide() {
-    const prevIndex = (currentSlideIndex - 1 + slides.length) % slides.length;
-    loadSlide(prevIndex);
-}
+  function prevSlide() {
+    if (slides.length === 0) return;
+    loadSlide((currentSlideIndex - 1 + slides.length) % slides.length);
+  }
 
-// --- INITIALIZATION ---
-document.addEventListener('DOMContentLoaded', () => {
-    init();
-    
-    // Attach click listeners to the specific IDs
-    if(prevBtn) prevBtn.addEventListener('click', prevSlide);
-    if(nextBtn) nextBtn.addEventListener('click', nextSlide);
+  if (prevBtn) prevBtn.addEventListener('click', prevSlide);
+  if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+
+  // Initialize
+  initSlider();
 });
 
 
-
 /////////////////////////////// 3. HAPPENINGS AT AMRITA /////////////////////////////////
-const happeningsSwiper = new Swiper(".HappeningsAtAmrita", {
+const happeningsSwiper = new Swiper('[class~="am:HappeningsAtAmrita"]', {
   slidesPerView: 1,
   spaceBetween: 20,
   speed: 800,
   grabCursor: true,
   autoplay: true,
   
+  // NOTE: Swiper will look for 'swiper-wrapper' and 'swiper-slide' by default.
+  // We added those back to the HTML above.
+
   breakpoints: {
     640: { slidesPerView: 2, spaceBetween: 20 },
     1024: { slidesPerView: 3, spaceBetween: 32 },
   },
 
-  // UNIQUE SELECTORS
+  // Navigation (Safe Selectors for am: prefixes)
   navigation: {
-    nextEl: ".happenings-next", // Target specific button
-    prevEl: ".happenings-prev",
+    nextEl: '[class~="am:happenings-next"]',
+    prevEl: '[class~="am:happenings-prev"]',
   },
+  
+  // Pagination (Safe Selector)
   pagination: {
-    el: ".happenings-pagination", // Target specific progress bar
+    el: '[class~="am:happenings-pagination"]',
     type: "progressbar",
   },
 });
 
 /////////////////////////////// 4. UPCOMING EVENTS /////////////////////////////////
-const eventsSwiper = new Swiper(".UpcomingEvents", {
+// Assuming you prefixed this in HTML as 'am:UpcomingEvents'
+const eventsSwiper = new Swiper('[class~="am:UpcomingEvents"]', {
   slidesPerView: 1,
   spaceBetween: 20,
   speed: 800,
@@ -351,19 +353,19 @@ const eventsSwiper = new Swiper(".UpcomingEvents", {
     1024: { slidesPerView: 3, spaceBetween: 32 },
   },
 
-  // UNIQUE SELECTORS
   navigation: {
-    nextEl: ".events-next",
-    prevEl: ".events-prev",
+    nextEl: '[class~="am:events-next"]',
+    prevEl: '[class~="am:events-prev"]',
   },
   pagination: {
-    el: ".events-pagination",
+    el: '[class~="am:events-pagination"]',
     type: "progressbar",
   },
 });
 
 /////////////////////////////// 5. VIDEO SLIDER /////////////////////////////////
-const videoSwiper = new Swiper(".VideoSlider", {
+// Assuming you prefixed this in HTML as 'am:VideoSlider'
+const videoSwiper = new Swiper('[class~="am:VideoSlider"]', {
   slidesPerView: 1,
   spaceBetween: 0,
   speed: 800,
@@ -375,15 +377,14 @@ const videoSwiper = new Swiper(".VideoSlider", {
     1024: { slidesPerView: 4, spaceBetween: 0 },
   },
 
-  // Video slider usually doesn't have arrows, but if it does, add unique classes
   pagination: {
-    el: ".video-pagination", 
+    el: '[class~="am:video-pagination"]', 
     type: "progressbar",
   },
 });
 
 /////////////////////////////// 6. SPOTLIGHT PROJECTS /////////////////////////////////
-const spotlightSwiper = new Swiper(".SpotlightProjects", {
+const spotlightSwiper = new Swiper('[class~="am:SpotlightProjects"]', {
   slidesPerView: 1,
   spaceBetween: 20,
   speed: 800,
@@ -395,13 +396,13 @@ const spotlightSwiper = new Swiper(".SpotlightProjects", {
     1024: { slidesPerView: 3, spaceBetween: 32 },
   },
 
-  // UNIQUE SELECTORS
+  // UNIQUE SELECTORS (Using Attribute Selector for 'am:' prefix)
   navigation: {
-    nextEl: ".spotlight-next",
-    prevEl: ".spotlight-prev",
+    nextEl: '[class~="am:spotlight-next"]',
+    prevEl: '[class~="am:spotlight-prev"]',
   },
   pagination: {
-    el: ".spotlight-pagination",
+    el: '[class~="am:spotlight-pagination"]',
     type: "progressbar",
   },
 });

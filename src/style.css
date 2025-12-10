@@ -1,33 +1,28 @@
 @import "tailwindcss";
+@import "tailwindcss" prefix(am);
+
+@theme {
+  --font-anton: 'Anton', sans-serif;
+  --font-satoshi: 'Satoshi', sans-serif;
+}
 
 * {
 box-sizing: border-box;
 }
 
-:root {
-font-family: 'Satoshi', sans-serif;
-}
-
-.font-anton {
-font-family: 'Anton', sans-serif;
-}
-
-.font-satoshi {
-font-family: 'Satoshi', sans-serif;
-}
 
 /* Slider 1: Happenings (Black) */
-.happenings-pagination .swiper-pagination-progressbar-fill {
-background-color: black !important;
+.am\:happenings-pagination .swiper-pagination-progressbar-fill {
+  background-color: black !important;
 }
 
 /* Slider 2: Upcoming Events (White) */
-.events-pagination .swiper-pagination-progressbar-fill {
+.am\:events-pagination .swiper-pagination-progressbar-fill {
 background-color: white !important;
 }
 
 /* Slider 3: Spotlight (Red or another color) */
-.spotlight-pagination .swiper-pagination-progressbar-fill {
+.am\:spotlight-pagination .swiper-pagination-progressbar-fill {
 background-color: black !important;
 }
 
