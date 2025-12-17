@@ -162,151 +162,68 @@ window.resetToDefault = resetToDefault;
 
 /////////////////////////////// 2. HERO SLIDER /////////////////////////////////
 document.addEventListener("DOMContentLoaded", function () {
-  
-  // ============================================
-  // PART A: MEGA MENU LOGIC
-  // ============================================
-  const openBtn = document.getElementById("open-btn");
-  const closeBtn = document.getElementById("close-btn");
-  const megaMenu = document.getElementById("mega-menu");
-  const menuCard = document.getElementById("menu-card");
+  const slides = document.querySelectorAll('.am-slide');
+  let currentIndex = 0;
+  let totalSlides = slides.length;
 
-  // Teleport menu to body to avoid clipping
-  if (megaMenu) { document.body.appendChild(megaMenu); }
+  function showSlide(index) {
+    // 1. Calculate correct index
+    if (index >= totalSlides) index = 0;
+    if (index < 0) index = totalSlides - 1;
+    currentIndex = index;
 
-  if (openBtn && megaMenu && menuCard) {
-    openBtn.addEventListener("click", () => {
-      megaMenu.style.pointerEvents = "auto";
-      megaMenu.style.opacity = "1";
-      menuCard.classList.remove("am:scale-95");
-      menuCard.classList.add("am:scale-100");
-    });
-
-    closeBtn.addEventListener("click", () => {
-      megaMenu.style.opacity = "0";
-      megaMenu.style.pointerEvents = "none";
-      menuCard.classList.remove("am:scale-100");
-      menuCard.classList.add("am:scale-95");
-    });
-  }
-
-  // ============================================
-  // PART B: HERO VIDEO SLIDER LOGIC
-  // ============================================
-  let slides = [];
-  let currentSlideIndex = 0;
-
-  // DOM Elements
-  const videoElement = document.getElementById('hero-video');
-  const titleElement = document.getElementById('hero-title');
-  const subtitleElement = document.getElementById('hero-subtitle');
-  const cardTitle = document.getElementById('card-title');
-  const cardDesc = document.getElementById('card-desc');
-  const cardThumbVideo = document.getElementById('card-thumb-video');
-  const progressBar = document.getElementById('video-progress-bar');
-  const prevBtn = document.getElementById('prev-btn');
-  const nextBtn = document.getElementById('next-btn');
-
-  function initSlider() {
-    // 1. Fetch data from HTML
-    const dataContainer = document.getElementById('hero-slides-data');
-    if (dataContainer) {
-      const items = dataContainer.querySelectorAll('.slide-item');
-      slides = Array.from(items).map((item, index) => {
-        return {
-          id: index,
-          videoSrc: item.getAttribute('data-video-src'),
-          title: item.querySelector('.slide-title').innerHTML,
-          subtitle: item.querySelector('.slide-subtitle').innerText,
-          cardTitle: item.querySelector('.slide-card-title').innerText,
-          cardDesc: item.querySelector('.slide-card-desc').innerText
-        };
-      });
-    }
-
-    // 2. Start Slider
-    if (slides.length > 0) {
-      loadSlide(0);
+    // 2. Loop through slides to Toggle Visibility
+    slides.forEach((slide, i) => {
+      const video = slide.querySelector('.hero-video');
       
-      // Auto-next on video end
-      if (videoElement) {
-        videoElement.addEventListener('ended', nextSlide);
-        videoElement.addEventListener('timeupdate', () => {
-          if (videoElement.duration && progressBar) {
-            const progress = (videoElement.currentTime / videoElement.duration) * 100;
-            progressBar.style.width = `${progress}%`;
-          }
-        });
-      }
-    }
-  }
-
-  async function loadSlide(index) {
-    if (!slides[index]) return;
-    currentSlideIndex = index;
-    const slide = slides[index];
-
-    if (progressBar) progressBar.style.width = '0%';
-
-    // Change Video
-    if (videoElement) {
-      videoElement.style.opacity = '0';
-      setTimeout(async () => {
-        videoElement.src = slide.videoSrc;
-        try {
-          await videoElement.play();
-          videoElement.style.opacity = '1';
-        } catch (e) { videoElement.style.opacity = '1'; }
-      }, 300);
-    }
-
-    // Animate Text
-    if (titleElement) animateTextChange(titleElement, slide.title);
-    if (subtitleElement) animateTextChange(subtitleElement, slide.subtitle);
-
-    // Update Card
-    if (cardTitle && cardDesc) {
-      cardTitle.style.opacity = '0';
-      cardDesc.style.opacity = '0';
-      setTimeout(() => {
-        cardTitle.innerText = slide.cardTitle;
-        cardDesc.innerText = slide.cardDesc;
-        if (cardThumbVideo) {
-          cardThumbVideo.src = slide.videoSrc;
-          cardThumbVideo.play().catch(() => {});
+      if (i === currentIndex) {
+        // Active Slide
+        slide.classList.remove('am:opacity-0', 'am:pointer-events-none');
+        slide.classList.add('am:opacity-100', 'am:pointer-events-auto');
+        
+        // Play Video
+        if(video) {
+           video.currentTime = 0;
+           video.play();
         }
-        cardTitle.style.opacity = '1';
-        cardDesc.style.opacity = '1';
-      }, 200);
+      } else {
+        // Inactive Slide
+        slide.classList.remove('am:opacity-100', 'am:pointer-events-auto');
+        slide.classList.add('am:opacity-0', 'am:pointer-events-none');
+        
+        // Pause Video to save resources
+        if(video) video.pause();
+      }
+    });
+  }
+
+  // 3. Attach Events to Buttons INSIDE each slide
+  slides.forEach((slide) => {
+    const nextBtns = slide.querySelectorAll('.next-btn');
+    const prevBtns = slide.querySelectorAll('.prev-btn');
+    const video = slide.querySelector('.hero-video');
+    const progressBar = slide.querySelector('.video-progress-bar');
+
+    // Button Clicks
+    nextBtns.forEach(btn => btn.addEventListener('click', () => showSlide(currentIndex + 1)));
+    prevBtns.forEach(btn => btn.addEventListener('click', () => showSlide(currentIndex - 1)));
+
+    // Auto-Next on Video End
+    if(video) {
+        video.addEventListener('ended', () => showSlide(currentIndex + 1));
+        
+        // Progress Bar
+        video.addEventListener('timeupdate', () => {
+            if (video.duration && progressBar) {
+                const percent = (video.currentTime / video.duration) * 100;
+                progressBar.style.width = percent + '%';
+            }
+        });
     }
-  }
+  });
 
-  function animateTextChange(element, newHtml) {
-    element.classList.remove('fade-enter-active');
-    element.classList.add('fade-enter');
-    setTimeout(() => {
-      element.innerHTML = newHtml;
-      element.classList.remove('fade-enter');
-      void element.offsetWidth; // force reflow
-      element.classList.add('fade-enter-active');
-    }, 300);
-  }
-
-  function nextSlide() {
-    if (slides.length === 0) return;
-    loadSlide((currentSlideIndex + 1) % slides.length);
-  }
-
-  function prevSlide() {
-    if (slides.length === 0) return;
-    loadSlide((currentSlideIndex - 1 + slides.length) % slides.length);
-  }
-
-  if (prevBtn) prevBtn.addEventListener('click', prevSlide);
-  if (nextBtn) nextBtn.addEventListener('click', nextSlide);
-
-  // Initialize
-  initSlider();
+  // Initialize first slide
+  showSlide(0);
 });
 
 

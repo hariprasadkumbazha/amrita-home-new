@@ -222,75 +222,170 @@
     </header>
     <!--------------BANNER VIDEO---------------->
     <section class="am:py-2 am:px-2 am:sm:py-4 am:sm:px-4 am:lg:py-6 am:lg:px-6 am:w-full am:h-full am:relative">
-      <div class="am:relative am:h-[600px] am:sm:h-[700px] am:lg:h-[850px] am:w-full am:rounded-2xl am:sm:rounded-[2rem] am:overflow-hidden am:group am:shadow-2xl am:bg-black am:z-10 am:transition-all am:duration-500" id="main-content">
-        <video id="hero-video" autoplay muted playsinline class="am:absolute am:inset-0 am:w-full am:h-full am:object-cover am:transition-opacity am:duration-700 am:opacity-0">
-          <source src="" type="video/mp4" />
-        </video>
-        <div class="am:absolute am:inset-0 am:bg-black/40 am:sm:bg-black/50"></div>
-        <div class="am:absolute am:inset-0 am:w-full am:h-full">
-          <div class="am:container am:mx-auto am:px-4 am:lg:px-6 am:h-full am:relative am:flex am:flex-col am:justify-between am:py-6 am:sm:py-8 am:lg:py-10">
-            <div class="am:w-full am:h-20"></div>
-            <div class="am:flex am:flex-col am:lg:flex-row am:items-end am:justify-between am:relative am:z-10 am:w-full am:pointer-events-none am:h-full am:pb-32 am:sm:pb-0">
-              <div class="am:max-w-3xl am:w-full am:lg:max-w-4xl am:pointer-events-auto am:mt-auto am:mb-10 am:sm:mb-10">
-                <h1 id="hero-title" class="am:text-white am:font-anton am:text-5xl am:sm:text-6xl am:lg:text-8xl am:lg:leading-[1.1] am:uppercase am:leading-tight am:mb-3 am:sm:mb-4 am:drop-shadow-lg am:transition-all am:duration-500 am:ease-in-out"></h1>
-                <p id="hero-subtitle" class="am:max-w-[90%] am:sm:max-w-lg am:py-2 am:sm:py-4 am:text-gray-100 am:font-satoshi am:text-base am:font-satoshi am:sm:text-lg am:lg:text-xl am:leading-snug am:sm:leading-7 am:drop-shadow-md am:transition-opacity am:duration-500"></p>
-                <button class="am:mt-4 am:sm:mt-5 am:cursor-pointer am:group/apply am:relative am:z-10 am:inline-flex am:items-center am:gap-3 am:overflow-hidden am:rounded-full am:bg-[#AF0C3E] am:pl-1 am:pr-6 am:py-1 am:text-white am:transition-all am:duration-800 am:hover:shadow-lg">
+  
+  <div class="am:relative am:h-[600px] am:sm:h-[700px] am:lg:h-[850px] am:w-full am:rounded-2xl am:sm:rounded-[2rem] am:overflow-hidden am:group am:shadow-2xl am:bg-black am:z-10" id="hero-slider">
+
+    <!--------------BANNER VIDEO FIRST SLIDE---------------->
+    <div class="am-slide am:absolute am:inset-0 am:w-full am:h-full am:transition-opacity am:duration-700 am:opacity-100 am:z-20 am:pointer-events-auto">
+      
+      <video autoplay muted playsinline class="hero-video am:absolute am:inset-0 am:w-full am:h-full am:object-cover">
+        <source src="img/amrita-campus-video-home-page.mp4" type="video/mp4" />
+      </video>
+
+      <div class="am:absolute am:inset-0 am:bg-black/40 am:sm:bg-black/50"></div>
+
+      <div class="am:absolute am:inset-0 am:w-full am:h-full">
+        <div class="am:container am:mx-auto am:px-4 am:lg:px-6 am:h-full am:relative am:flex am:flex-col am:justify-between am:py-6 am:sm:py-8 am:lg:py-10">
+          
+          <div class="am:w-full am:h-20"></div>
+
+          <div class="am:flex am:flex-col am:lg:flex-row am:items-end am:justify-between am:relative am:z-10 am:w-full am:pointer-events-none am:h-full am:pb-32 am:sm:pb-0">
+            <div class="am:max-w-3xl am:w-full am:lg:max-w-4xl am:pointer-events-auto am:mt-auto am:mb-10 am:sm:mb-10">
+              <h1 class="am:text-white am:font-anton am:text-5xl am:sm:text-6xl am:lg:text-8xl am:lg:leading-[1.1] am:uppercase am:leading-tight am:mb-3 am:sm:mb-4 am:drop-shadow-lg">
+                The Future <br />Awaits You. <br />Shape it.
+              </h1>
+              <p class="am:max-w-[90%] am:sm:max-w-lg am:py-2 am:sm:py-4 am:text-gray-100 am:font-satoshi am:text-base am:sm:text-lg am:lg:text-xl am:leading-snug am:sm:leading-7 am:drop-shadow-md">
+                Join Amrita’s B.Tech programmes, where innovation, technology, and values unite to shape a better tomorrow.
+              </p>
+              
+              <div class="am:mt-4 am:sm:mt-5 am:flex am:flex-wrap am:gap-4">
+                
+                <button class="am:cursor-pointer am:group/apply am:relative am:z-10 am:inline-flex am:items-center am:gap-3 am:overflow-hidden am:rounded-full am:bg-[#AF0C3E] am:pl-1 am:pr-6 am:py-1 am:text-white am:transition-all am:duration-800 am:hover:shadow-lg">
                   <span class="am:absolute am:left-1 am:top-1/2 am:-translate-y-1/2 am:h-10 am:w-10 am:rounded-full am:bg-white am:transition-transform am:duration-800 am:ease-out am:scale-0 am:group-hover/apply:scale-[10]"></span>
                   <div class="am:relative am:z-10 am:flex am:h-10 am:w-10 am:items-center am:justify-center am:rounded-full am:bg-white/20 am:transition-all am:duration-800 am:group-hover/apply:bg-[#AF0C3E] am:group-hover/apply:rotate-90">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="am:h-5 am:w-5 am:text-white">
-                      <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="am:h-5 am:w-5 am:text-white"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
                   </div>
                   <span class="am:relative am:z-10 am:font-satoshi am:text-sm am:font-medium am:tracking-wide am:transition-colors am:duration-800 am:group-hover/apply:text-black">Apply Now</span>
                 </button>
-              </div>
-            </div>
-            <div class="am:absolute am:bottom-4 am:left-4 am:right-4 am:sm:left-auto am:sm:right-8 am:sm:bottom-12 am:z-30 am:w-auto am:sm:w-full am:sm:max-w-md am:pointer-events-auto">
-              <div class="am:bg-black/80 am:sm:bg-black/60 am:backdrop-blur-xl am:border am:border-white/10 am:p-3 am:pb-4 am:rounded-xl am:flex am:gap-3 am:sm:gap-4 am:items-center am:shadow-2xl am:relative am:overflow-hidden am:group/card am:transition-all am:hover:bg-black/70">
-                <div class="am:absolute am:bottom-0 am:left-0 am:w-full am:h-[3px] am:bg-white/10">
-                  <div id="video-progress-bar" class="am:h-full am:bg-[#AF0C3E] am:w-0"></div>
-                </div>
-                <div class="am:w-20 am:h-20 am:sm:w-32 am:sm:h-24 am:flex-shrink-0 am:rounded-lg am:overflow-hidden am:relative am:bg-gray-800">
-                  <video id="card-thumb-video" muted loop class="am:w-full am:h-full am:object-cover am:opacity-80 am:group-hover/card:opacity-100 am:transition-opacity">
-                    <source src="" type="video/mp4" />
-                  </video>
-                </div>
-                <div class="am:flex-1 am:pr-1 am:sm:pr-2">
-                  <h3 id="card-title" class="am:text-white am:font-bold am:text-sm am:sm:text-base am:font-satoshi am:mb-1"></h3>
-                  <p id="card-desc" class="am:text-gray-400 am:text-[10px] am:sm:text-xs am:font-satoshi"></p>
-                  <div class="am:flex am:items-center am:gap-2 am:justify-end">
-                    <button id="prev-btn" class="am:w-6 am:h-6 am:sm:w-7 am:sm:h-7 am:flex am:items-center am:justify-center am:border am:border-white/20 am:rounded am:hover:bg-white am:hover:text-black am:text-white am:transition-colors am:cursor-pointer">
-                      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M15 18l-6-6 6-6" />
-                      </svg>
-                    </button>
-                    <button id="next-btn" class="am:w-6 am:h-6 am:sm:w-7 am:sm:h-7 am:flex am:items-center am:justify-center am:border am:border-white/20 am:rounded am:hover:bg-white am:hover:text-black am:text-white am:transition-colors am:cursor-pointer">
-                      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M9 18l6-6-6-6" />
-                      </svg>
-                    </button>
+
+                <button class="am:cursor-pointer am:group/enquire am:relative am:z-10 am:inline-flex am:items-center am:gap-3 am:overflow-hidden am:rounded-full am:bg-white am:pl-1 am:pr-6 am:py-1 am:text-black am:transition-all am:duration-800 am:hover:shadow-lg">
+                  <span class="am:absolute am:left-1 am:top-1/2 am:-translate-y-1/2 am:h-10 am:w-10 am:rounded-full am:bg-[#AF0C3E] am:transition-transform am:duration-800 am:ease-out am:scale-0 am:group-hover/enquire:scale-[10]"></span>
+                  <div class="am:relative am:z-10 am:flex am:h-10 am:w-10 am:items-center am:justify-center am:rounded-full am:bg-black/10 am:transition-all am:duration-800 am:group-hover/enquire:bg-white am:group-hover/enquire:rotate-90">
+                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="am:h-5 am:w-5 am:text-black am:group-hover/enquire:text-[#AF0C3E]">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+                    </svg>
                   </div>
+                  <span class="am:relative am:z-10 am:font-satoshi am:text-sm am:font-medium am:tracking-wide am:transition-colors am:duration-800 am:group-hover/enquire:text-white">Enquire</span>
+                </button>
+
+              </div>
+              </div>
+          </div>
+
+          <div class="am:absolute am:bottom-4 am:left-4 am:right-4 am:sm:left-auto am:sm:right-8 am:sm:bottom-12 am:z-30 am:w-auto am:sm:w-full am:sm:max-w-md am:pointer-events-auto">
+            <div class="am:bg-black/80 am:sm:bg-black/60 am:backdrop-blur-xl am:border am:border-white/10 am:p-3 am:pb-4 am:rounded-xl am:flex am:gap-3 am:sm:gap-4 am:items-center am:shadow-2xl am:relative am:overflow-hidden am:group/card am:transition-all am:hover:bg-black/70">
+              
+              <div class="am:absolute am:bottom-0 am:left-0 am:w-full am:h-[3px] am:bg-white/10">
+                <div class="video-progress-bar am:h-full am:bg-[#AF0C3E] am:w-0"></div>
+              </div>
+
+              <div class="am:w-20 am:h-20 am:sm:w-32 am:sm:h-24 am:flex-shrink-0 am:rounded-lg am:overflow-hidden am:relative am:bg-gray-800">
+                <video muted loop class="am:w-full am:h-full am:object-cover am:opacity-80 am:group-hover/card:opacity-100">
+                  <source src="img/amrita-campus-video-home-page.mp4" type="video/mp4" />
+                </video>
+              </div>
+
+              <div class="am:flex-1 am:pr-1 am:sm:pr-2">
+                <h3 class="am:text-white am:font-bold am:text-sm am:sm:text-base am:font-satoshi am:mb-1">The Future Awaits You.</h3>
+                <p class="am:text-gray-400 am:text-[10px] am:sm:text-xs am:font-satoshi">Shape a better tomorrow.</p>
+                
+                <div class="am:flex am:items-center am:gap-2 am:justify-end">
+                  <button class="prev-btn am:w-6 am:h-6 am:sm:w-7 am:sm:h-7 am:flex am:items-center am:justify-center am:border am:border-white/20 am:rounded am:hover:bg-white am:hover:text-black am:text-white am:transition-colors am:cursor-pointer">
+                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6" /></svg>
+                  </button>
+                  <button class="next-btn am:w-6 am:h-6 am:sm:w-7 am:sm:h-7 am:flex am:items-center am:justify-center am:border am:border-white/20 am:rounded am:hover:bg-white am:hover:text-black am:text-white am:transition-colors am:cursor-pointer">
+                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6" /></svg>
+                  </button>
                 </div>
               </div>
+
             </div>
           </div>
         </div>
       </div>
-    </section>
-    <div id="hero-slides-data" style="display: none;">
-      <div class="slide-item" data-video-src="img/amrita-campus-video-home-page.mp4">
-        <div class="slide-title">The Future <br />Awaits You. <br />Shape it. </div>
-        <div class="slide-subtitle">Join Amrita’s B.Tech programmes, where innovation, technology, and values unite to shape a better tomorrow—for all.</div>
-        <div class="slide-card-title">The Future Awaits You. Shape it.</div>
-        <div class="slide-card-desc">Join Amrita’s B.Tech programmes, where innovation, technology, and values unite to shape a better tomorrow—for all.</div>
-      </div>
-      <div class="slide-item" data-video-src="img/banner-video.mp4">
-        <div class="slide-title">Admissions <br />Open 2025 </div>
-        <div class="slide-subtitle">Apply now for world-class engineering programs designed for the future.</div>
-        <div class="slide-card-title">Admissions Open 2025</div>
-        <div class="slide-card-desc">Apply now for world-class engineering programs designed for the future.</div>
+    </div>
+
+    <!--------------BANNER VIDEO SECOND SLIDE---------------->
+    <div class="am-slide am:absolute am:inset-0 am:w-full am:h-full am:transition-opacity am:duration-700 am:opacity-0 am:pointer-events-none am:z-10">
+      
+      <video muted playsinline class="hero-video am:absolute am:inset-0 am:w-full am:h-full am:object-cover">
+        <source src="img/banner-video.mp4" type="video/mp4" />
+      </video>
+
+      <div class="am:absolute am:inset-0 am:bg-black/40 am:sm:bg-black/50"></div>
+
+      <div class="am:absolute am:inset-0 am:w-full am:h-full">
+        <div class="am:container am:mx-auto am:px-4 am:lg:px-6 am:h-full am:relative am:flex am:flex-col am:justify-between am:py-6 am:sm:py-8 am:lg:py-10">
+          <div class="am:w-full am:h-20"></div>
+
+          <div class="am:flex am:flex-col am:lg:flex-row am:items-end am:justify-between am:relative am:z-10 am:w-full am:pointer-events-none am:h-full am:pb-32 am:sm:pb-0">
+            <div class="am:max-w-3xl am:w-full am:lg:max-w-4xl am:pointer-events-auto am:mt-auto am:mb-10 am:sm:mb-10">
+              <h1 class="am:text-white am:font-anton am:text-5xl am:sm:text-6xl am:lg:text-8xl am:lg:leading-[1.1] am:uppercase am:leading-tight am:mb-3 am:sm:mb-4 am:drop-shadow-lg">
+                Admissions <br />Open 2025
+              </h1>
+              <p class="am:max-w-[90%] am:sm:max-w-lg am:py-2 am:sm:py-4 am:text-gray-100 am:font-satoshi am:text-base am:sm:text-lg am:lg:text-xl am:leading-snug am:sm:leading-7 am:drop-shadow-md">
+                Apply now for world-class engineering programs designed for the future.
+              </p>
+               
+               <div class="am:mt-4 am:sm:mt-5 am:flex am:flex-wrap am:gap-4">
+                
+                <button class="am:cursor-pointer am:group/apply am:relative am:z-10 am:inline-flex am:items-center am:gap-3 am:overflow-hidden am:rounded-full am:bg-[#AF0C3E] am:pl-1 am:pr-6 am:py-1 am:text-white am:transition-all am:duration-800 am:hover:shadow-lg">
+                  <span class="am:absolute am:left-1 am:top-1/2 am:-translate-y-1/2 am:h-10 am:w-10 am:rounded-full am:bg-white am:transition-transform am:duration-800 am:ease-out am:scale-0 am:group-hover/apply:scale-[10]"></span>
+                  <div class="am:relative am:z-10 am:flex am:h-10 am:w-10 am:items-center am:justify-center am:rounded-full am:bg-white/20 am:transition-all am:duration-800 am:group-hover/apply:bg-[#AF0C3E] am:group-hover/apply:rotate-90">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="am:h-5 am:w-5 am:text-white"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
+                  </div>
+                  <span class="am:relative am:z-10 am:font-satoshi am:text-sm am:font-medium am:tracking-wide am:transition-colors am:duration-800 am:group-hover/apply:text-black">Apply Now</span>
+                </button>
+
+                <button class="am:cursor-pointer am:group/enquire am:relative am:z-10 am:inline-flex am:items-center am:gap-3 am:overflow-hidden am:rounded-full am:bg-white am:pl-1 am:pr-6 am:py-1 am:text-black am:transition-all am:duration-800 am:hover:shadow-lg">
+                  <span class="am:absolute am:left-1 am:top-1/2 am:-translate-y-1/2 am:h-10 am:w-10 am:rounded-full am:bg-[#AF0C3E] am:transition-transform am:duration-800 am:ease-out am:scale-0 am:group-hover/enquire:scale-[10]"></span>
+                  <div class="am:relative am:z-10 am:flex am:h-10 am:w-10 am:items-center am:justify-center am:rounded-full am:bg-black/10 am:transition-all am:duration-800 am:group-hover/enquire:bg-white am:group-hover/enquire:rotate-90">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="am:h-5 am:w-5 am:text-black am:group-hover/enquire:text-[#AF0C3E]">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+                    </svg>
+                  </div>
+                  <span class="am:relative am:z-10 am:font-satoshi am:text-sm am:font-medium am:tracking-wide am:transition-colors am:duration-800 am:group-hover/enquire:text-white">Admissions</span>
+                </button>
+
+              </div>
+              </div>
+          </div>
+
+          <div class="am:absolute am:bottom-4 am:left-4 am:right-4 am:sm:left-auto am:sm:right-8 am:sm:bottom-12 am:z-30 am:w-auto am:sm:w-full am:sm:max-w-md am:pointer-events-auto">
+            <div class="am:bg-black/80 am:sm:bg-black/60 am:backdrop-blur-xl am:border am:border-white/10 am:p-3 am:pb-4 am:rounded-xl am:flex am:gap-3 am:sm:gap-4 am:items-center am:shadow-2xl am:relative am:overflow-hidden am:group/card am:transition-all am:hover:bg-black/70">
+              
+              <div class="am:absolute am:bottom-0 am:left-0 am:w-full am:h-[3px] am:bg-white/10">
+                <div class="video-progress-bar am:h-full am:bg-[#AF0C3E] am:w-0"></div>
+              </div>
+
+              <div class="am:w-20 am:h-20 am:sm:w-32 am:sm:h-24 am:flex-shrink-0 am:rounded-lg am:overflow-hidden am:relative am:bg-gray-800">
+                <video muted loop class="am:w-full am:h-full am:object-cover am:opacity-80 am:group-hover/card:opacity-100">
+                  <source src="img/banner-video.mp4" type="video/mp4" />
+                </video>
+              </div>
+
+              <div class="am:flex-1 am:pr-1 am:sm:pr-2">
+                <h3 class="am:text-white am:font-bold am:text-sm am:sm:text-base am:font-satoshi am:mb-1">Admissions Open 2025</h3>
+                <p class="am:text-gray-400 am:text-[10px] am:sm:text-xs am:font-satoshi">Apply now for world-class programs.</p>
+                
+                <div class="am:flex am:items-center am:gap-2 am:justify-end">
+                  <button class="prev-btn am:w-6 am:h-6 am:sm:w-7 am:sm:h-7 am:flex am:items-center am:justify-center am:border am:border-white/20 am:rounded am:hover:bg-white am:hover:text-black am:text-white am:transition-colors am:cursor-pointer">
+                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6" /></svg>
+                  </button>
+                  <button class="next-btn am:w-6 am:h-6 am:sm:w-7 am:sm:h-7 am:flex am:items-center am:justify-center am:border am:border-white/20 am:rounded am:hover:bg-white am:hover:text-black am:text-white am:transition-colors am:cursor-pointer">
+                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6" /></svg>
+                  </button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
       </div>
     </div>
+
+  </div>
+</section>
     <!--------------WHAT'S YOUR INTEREST---------------->
     <section class="am:py-12 am:lg:py-24 am:w-full am:bg-white">
       <div class="am:container am:mx-auto am:px-4 am:sm:px-6 am:lg:px-6">
