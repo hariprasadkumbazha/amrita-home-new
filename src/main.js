@@ -1,164 +1,284 @@
 import './style.css'
 
 /////////////////////////////// 1. MEGA MENU SWITCHER/////////////////////////////////
+
+// ==================================================================
+// 1. MOBILE NAVIGATION LOGIC (STACK BASED)
+// ==================================================================
+let navStack = []; // Stores IDs of views we've visited: ['root', 'academics', 'academics-ug']
+
+const mobileNavigate = (targetViewId, title) => {
+    // 1. Push current view to stack if we are at root
+    if (navStack.length === 0) navStack.push('root');
+    
+    // 2. Add new target to stack
+    navStack.push(targetViewId);
+
+    // 3. Update UI
+    updateMobileView(targetViewId, title);
+};
+
+const mobileGoBack = () => {
+    if (navStack.length <= 1) return; // Can't go back from root
+
+    // 1. Pop current view
+    const currentViewId = navStack.pop();
+    // Hide current
+    const currentEl = document.getElementById('m-view-' + currentViewId);
+    if(currentEl) currentEl.classList.add('am:translate-x-full');
+
+    // 2. Get previous view
+    const prevViewId = navStack[navStack.length - 1];
+    
+    // 3. Determine Title for Previous View
+    let prevTitle = "";
+    if(prevViewId === 'root') prevTitle = ""; // Logo shows
+    else if(prevViewId.includes('academics-ug-')) prevTitle = "Undergraduate"; // e.g. coming back from arts
+    else if(prevViewId === 'academics-ug') prevTitle = "Academics";
+    else if(prevViewId === 'academics') prevTitle = "Academics";
+    
+    // 4. Update UI (Show previous)
+    updateMobileHeader(prevViewId, prevTitle);
+};
+
+const updateMobileView = (viewId, title) => {
+    // Slide in target view
+    const targetEl = document.getElementById('m-view-' + viewId);
+    if(targetEl) targetEl.classList.remove('am:translate-x-full');
+    
+    updateMobileHeader(viewId, title);
+};
+
+const updateMobileHeader = (viewId, title) => {
+    const logo = document.getElementById('menu-logo');
+    const navHeader = document.getElementById('mobile-nav-header');
+    const navTitle = document.getElementById('mobile-nav-title');
+
+    if (viewId === 'root') {
+        logo.classList.remove('am:hidden');
+        logo.classList.add('am:block');
+        navHeader.classList.remove('am:flex');
+        navHeader.classList.add('am:hidden');
+        navStack = []; // Reset stack
+    } else {
+        logo.classList.remove('am:block');
+        logo.classList.add('am:hidden');
+        navHeader.classList.remove('am:hidden');
+        navHeader.classList.add('am:flex');
+        navTitle.innerText = title;
+    }
+}
+
+
+// ==================================================================
+// 2. GENERAL DOM LOGIC
+// ==================================================================
 document.addEventListener('DOMContentLoaded', () => {
-    // --- ELEMENTS ---
     const openBtn = document.getElementById('open-btn');
     const closeBtn = document.getElementById('close-btn');
     const megaMenu = document.getElementById('mega-menu');
     const menuCard = document.getElementById('menu-card');
-    const menuOverlay = document.getElementById('menu-overlay');
 
-    // --- OPEN / CLOSE ---
-    function openMenu() {
-        // 1. Add 'am:' to all classes being removed/added
-        megaMenu.classList.remove('am:opacity-0', 'am:pointer-events-none');
-        megaMenu.classList.add('am:opacity-100', 'am:pointer-events-auto');
-        
-        if (menuCard) {
-            menuCard.classList.remove('am:scale-95');
-            menuCard.classList.add('am:scale-100');
-        }
-        
-        // Ensure this function exists or checks for prefix too
-        if (typeof resetToDefault === 'function') {
-            resetToDefault(); 
-        }
-    }
-
-    function closeMenu() {
-        // 2. Add 'am:' here as well
-        megaMenu.classList.add('am:opacity-0', 'am:pointer-events-none');
-        megaMenu.classList.remove('am:opacity-100', 'am:pointer-events-auto');
-        
-        if (menuCard) {
-            menuCard.classList.add('am:scale-95');
-            menuCard.classList.remove('am:scale-100');
+    function toggleMenu(isOpen) {
+        if (isOpen) {
+            megaMenu.classList.remove('am:opacity-0', 'am:pointer-events-none');
+            megaMenu.classList.add('am:opacity-100', 'am:pointer-events-auto');
+            if (menuCard) {
+                menuCard.classList.remove('am:scale-95');
+                menuCard.classList.add('am:scale-100');
+            }
+            // Reset Mobile State on Open
+            document.querySelectorAll('.am\\:mobile-view').forEach(el => {
+                if(el.id !== 'm-view-root') el.classList.add('am:translate-x-full');
+            });
+            updateMobileHeader('root', '');
+        } else {
+            megaMenu.classList.add('am:opacity-0', 'am:pointer-events-none');
+            megaMenu.classList.remove('am:opacity-100', 'am:pointer-events-auto');
+            if (menuCard) {
+                menuCard.classList.add('am:scale-95');
+                menuCard.classList.remove('am:scale-100');
+            }
         }
     }
-
-    if (openBtn) openBtn.addEventListener('click', openMenu);
-    if (closeBtn) closeBtn.addEventListener('click', closeMenu);
-    if (menuOverlay) menuOverlay.addEventListener('click', closeMenu);
+    if (openBtn) openBtn.addEventListener('click', () => toggleMenu(true));
+    if (closeBtn) closeBtn.addEventListener('click', () => toggleMenu(false));
+    document.getElementById('menu-overlay').addEventListener('click', () => toggleMenu(false));
 });
 
 
-// --- 1. ROOT SWITCHER (Top Nav: About / Campus / Academics / Research) ---
+// ==================================================================
+// DESKTOP NAVIGATION SWITCHER (ROOT LEVEL)
+// ==================================================================
 const switchRoot = (rootId, clickedElement) => {
-    
-    // A. Visual Styles for Top Nav
-    // Note: escape colon with \\ for selectors
-    const allRoots = document.querySelectorAll('.am\\:root-nav'); 
-    allRoots.forEach(el => {
-        // Reset styles (remove Active red color)
+    // 1. Reset Header Styles (Stars, colors)
+    document.querySelectorAll('.am\\:root-nav').forEach(el => {
         el.classList.remove('am:text-[#AF0C3E]', 'am:font-medium', 'am:active');
-        el.classList.add('am:hover:text-gray-800');
-        
-        // Remove the yellow star if it exists
-        const star = el.querySelector('span'); 
-        if(star) star.remove();
+        el.classList.add('am:text-gray-400');
+        const star = el.querySelector('span'); if(star) star.remove();
     });
-
-    // Set Active style
-    clickedElement.classList.remove('am:hover:text-gray-800');
+    
+    // 2. Set Active Header Style
+    clickedElement.classList.remove('am:text-gray-400');
     clickedElement.classList.add('am:text-[#AF0C3E]', 'am:font-medium', 'am:active');
     
-    // Add the Star (Visual flair)
+    // Add Star Icon
     const starSpan = document.createElement('span');
-    // Updated classes with prefix
     starSpan.className = "am:absolute am:-top-1 am:-right-3 am:text-yellow-400 am:text-xs";
     starSpan.innerHTML = "✦";
     clickedElement.appendChild(starSpan);
 
-    // B. Show Corresponding Sidebar Group
-    const allSidebarGroups = document.querySelectorAll('.am\\:sidebar-root-group');
-    allSidebarGroups.forEach(grp => grp.classList.add('am:hidden'));
+    // 3. Layout Handling
+    const layoutSplit = document.getElementById('layout-split'); 
+    const layoutFull = document.getElementById('layout-full');
+    
+    // Hide all sidebars and views first
+    document.querySelectorAll('.am\\:sidebar-root-group').forEach(el => el.classList.add('am:hidden'));
+    document.querySelectorAll('.am\\:view-container').forEach(el => el.classList.add('am:hidden'));
 
-    const targetSidebar = document.getElementById('sidebar-' + rootId);
-    if(targetSidebar) {
-        targetSidebar.classList.remove('am:hidden');
+    if (rootId === 'campus') {
+        // --- LOGIC 2: CAMPUS (Full Grid) ---
+        layoutSplit.classList.add('am:hidden');
+        layoutFull.classList.remove('am:hidden'); // Show full layout
         
-        // C. Automatically Click the FIRST item in this Sidebar
-        const firstBtn = targetSidebar.querySelector('.am\\:level-btn');
-        if(firstBtn) firstBtn.click();
+        const viewCampus = document.getElementById('view-campus');
+        if(viewCampus) viewCampus.classList.remove('am:hidden');
+
+    } else {
+        // --- LOGIC 1 & 3: ACADEMICS / ABOUT / RESEARCH (Split Layout) ---
+        layoutFull.classList.add('am:hidden');
+        layoutSplit.classList.remove('am:hidden'); // Show split layout
+
+        // Determine which sidebar and view to show
+        let targetSidebarId = '';
+        let targetViewId = '';
+
+        if(rootId === 'about') {
+            targetSidebarId = 'sidebar-about';
+            targetViewId = 'view-about';
+        } else if (rootId === 'research') {
+            targetSidebarId = 'sidebar-research';
+            targetViewId = 'view-research';
+        } else {
+            // Default to Academics
+            targetSidebarId = 'sidebar-academics';
+            targetViewId = 'view-academics';
+        }
+
+        // Show the specific sidebar
+        const sidebar = document.getElementById(targetSidebarId);
+        if(sidebar) sidebar.classList.remove('am:hidden');
+
+        // Show the specific view
+        const view = document.getElementById(targetViewId);
+        if(view) view.classList.remove('am:hidden');
+
+        // Auto-click the first button in the sidebar if nothing is active
+        if(sidebar) {
+            const activeBtn = sidebar.querySelector('.am\\:active');
+            if(!activeBtn) {
+                const firstBtn = sidebar.querySelector('[onclick]');
+                if(firstBtn) firstBtn.click();
+            }
+        }
     }
 };
 
-// --- 2. LEVEL SWITCHER (Sidebar: Undergraduate / Leadership / Facilities etc) ---
-const switchLevel = (levelId, clickedElement) => {
-    
-    // Reset Sidebar Buttons Styles (globally)
-    const allLevelBtns = document.querySelectorAll('.am\\:level-btn');
-    allLevelBtns.forEach(btn => {
+// ==================================================================
+// ABOUT SECTION SWITCHER (New Logic)
+// ==================================================================
+const switchAboutTab = (tabName, btnElement) => {
+    // 1. Hide all content content divs
+    const contents = document.querySelectorAll('.am\\:about-content');
+    contents.forEach(el => el.classList.add('am:hidden'));
+  
+    // 2. Show the specific content div
+    const targetContent = document.getElementById('content-about-' + tabName);
+    if (targetContent) {
+      targetContent.classList.remove('am:hidden');
+    }
+  
+    // 3. Update Sidebar Styles
+    const buttons = document.querySelectorAll('.am\\:about-btn');
+    buttons.forEach(btn => {
+      btn.classList.remove('am:active', 'am:text-[#AF0C3E]', 'am:font-medium', 'am:border-[#AF0C3E]');
+      btn.classList.add('am:border-transparent'); 
+    });
+  
+    btnElement.classList.add('am:active', 'am:text-[#AF0C3E]', 'am:font-medium', 'am:border-[#AF0C3E]');
+    btnElement.classList.remove('am:border-transparent');
+};
+
+// ==================================================================
+// RESEARCH SECTION SWITCHER (New Logic)
+// ==================================================================
+const switchResearchTab = (tabName, btnElement) => {
+    const contents = document.querySelectorAll('.am\\:research-content');
+    contents.forEach(el => el.classList.add('am:hidden'));
+  
+    const targetContent = document.getElementById('content-research-' + tabName);
+    if (targetContent) {
+      targetContent.classList.remove('am:hidden');
+    }
+  
+    const buttons = document.querySelectorAll('.am\\:research-btn');
+    buttons.forEach(btn => {
+      btn.classList.remove('am:active', 'am:text-[#AF0C3E]', 'am:font-medium', 'am:border-[#AF0C3E]');
+      btn.classList.add('am:border-transparent'); 
+    });
+  
+    btnElement.classList.add('am:active', 'am:text-[#AF0C3E]', 'am:font-medium', 'am:border-[#AF0C3E]');
+    btnElement.classList.remove('am:border-transparent');
+};
+
+// ==================================================================
+// 4. ACADEMICS INNER SWITCHERS
+// ==================================================================
+const switchLevel = (targetId, clickedElement) => {
+    const parent = clickedElement.parentElement;
+    parent.querySelectorAll('.am\\:level-btn').forEach(btn => {
         btn.classList.remove('am:text-[#AF0C3E]', 'am:font-medium', 'am:border-[#AF0C3E]');
         btn.classList.add('am:text-gray-500', 'am:border-transparent');
     });
-
-    // Set Active Style
     clickedElement.classList.remove('am:text-gray-500', 'am:border-transparent');
     clickedElement.classList.add('am:text-[#AF0C3E]', 'am:font-medium', 'am:border-[#AF0C3E]');
 
-    // Hide ALL Tab Groups (Middle)
-    const allLevelGroups = document.querySelectorAll('.am\\:level-group');
-    allLevelGroups.forEach(group => group.classList.add('am:hidden'));
-
-    // Show the specific Tab Group
-    const targetGroup = document.getElementById('tabs-' + levelId);
-    if (targetGroup) {
-        targetGroup.classList.remove('am:hidden');
-        
-        // Auto-click the first tab in this group
-        const firstTab = targetGroup.querySelector('.am\\:tab-btn');
-        if(firstTab) firstTab.click();
+    if (targetId.includes('academics')) {
+        const viewAcademics = document.getElementById('view-academics');
+        viewAcademics.querySelectorAll('.am\\:level-group').forEach(el => el.classList.add('am:hidden'));
+        const targetGroup = document.getElementById('tabs-' + targetId);
+        if (targetGroup) {
+            targetGroup.classList.remove('am:hidden');
+            const firstTab = targetGroup.querySelector('.am\\:tab-btn');
+            if(firstTab) firstTab.click();
+        }
     }
 };
 
-
-// --- 3. TAB SWITCHER (Middle: Arts / Engineering / Vision etc) ---
-const switchTab = (contentId, clickedElement) => {
-    // Hide ALL content sections
-    const allContents = document.querySelectorAll('.am\\:tab-content');
-    allContents.forEach(div => div.classList.add('am:hidden'));
-
-    // Show selected content
-    const targetContent = document.getElementById('content-' + contentId);
-    if (targetContent) {
-        targetContent.classList.remove('am:hidden');
-    }
-
-    // Reset Tab Styles
-    const allButtons = document.querySelectorAll('.am\\:tab-btn');
-    allButtons.forEach(btn => {
-        // Remove Active
-        btn.classList.remove('am:bg-white', 'am:shadow-sm', 'am:border-[#AF0C3E]', 'am:active');
-        // Add Inactive
-        btn.classList.add('am:hover:bg-white', 'am:hover:shadow-md', 'am:border-transparent', 'am:hover:border-[#AF0C3E]');
+const switchTab = (targetId, clickedElement) => {
+    const parent = clickedElement.parentElement;
+    parent.querySelectorAll('.am\\:tab-btn').forEach(btn => {
+        btn.classList.remove('am:active', 'am:bg-white', 'am:shadow-sm', 'am:border-[#AF0C3E]');
+        btn.classList.add('am:border-transparent');
     });
-
-    // Set Active Tab Style
-    clickedElement.classList.remove('am:hover:bg-white', 'am:hover:shadow-md', 'am:border-transparent', 'am:hover:border-[#AF0C3E]');
-    clickedElement.classList.add('am:bg-white', 'am:shadow-sm', 'am:border-[#AF0C3E]', 'am:active');
+    clickedElement.classList.add('am:active', 'am:bg-white', 'am:shadow-sm', 'am:border-[#AF0C3E]');
+    clickedElement.classList.remove('am:border-transparent');
+    document.getElementById('view-academics').querySelectorAll('.am\\:tab-content').forEach(el => el.classList.add('am:hidden'));
+    const content = document.getElementById('content-' + targetId);
+    if(content) content.classList.remove('am:hidden');
 };
 
 
-// --- 4. RESET TO DEFAULT (Academics -> Undergraduate) ---
-const resetToDefault = () => {
-    // Find the Academics root button
-    const rootBtns = document.querySelectorAll('.am\\:root-nav');
-    const academicsBtn = Array.from(rootBtns).find(el => el.innerText.includes('Academics'));
-    
-    if(academicsBtn) {
-        academicsBtn.click();
-    }
-}
-
-// Expose to window
+// ==================================================================
+// 7. EXPORT TO WINDOW
+// ==================================================================
 window.switchRoot = switchRoot;
 window.switchLevel = switchLevel;
 window.switchTab = switchTab;
-window.resetToDefault = resetToDefault;
-
-
+window.switchAboutTab = switchAboutTab;
+window.switchResearchTab = switchResearchTab;
+window.mobileNavigate = mobileNavigate;
+window.mobileGoBack = mobileGoBack;
 
 /////////////////////////////// 2. HERO SLIDER /////////////////////////////////
 document.addEventListener("DOMContentLoaded", function () {
@@ -283,6 +403,7 @@ const eventsSwiper = new Swiper('[class~="am:UpcomingEvents"]', {
 /////////////////////////////// 5. VIDEO SLIDER /////////////////////////////////
 // Assuming you prefixed this in HTML as 'am:VideoSlider'
 const videoSwiper = new Swiper('[class~="am:VideoSlider"]', {
+  // Mobile View (Default) - 1 Slide
   slidesPerView: 1,
   spaceBetween: 0,
   speed: 800,
@@ -290,8 +411,16 @@ const videoSwiper = new Swiper('[class~="am:VideoSlider"]', {
   autoplay: true,
   
   breakpoints: {
-    640: { slidesPerView: 1, spaceBetween: 0 },
-    1024: { slidesPerView: 4, spaceBetween: 0 },
+    // Tablet View (>= 640px) - 2 Sliders
+    640: { 
+      slidesPerView: 2, 
+      spaceBetween: 0 
+    },
+    // Large Desktop View (>= 1024px) - 4 Sliders
+    1024: { 
+      slidesPerView: 4, 
+      spaceBetween: 0 
+    },
   },
 
   pagination: {
@@ -326,26 +455,24 @@ const spotlightSwiper = new Swiper('[class~="am:SpotlightProjects"]', {
 
 
 /////////////////////////////// 7. FOOTER TOOGLE /////////////////////////////////
-document.addEventListener('DOMContentLoaded', () => {
-        // Select all header containers
-        const headers = document.querySelectorAll('.toggle-header');
+    document.addEventListener('DOMContentLoaded', () => {
+    // Note: escaping the colon for the selector
+    const headers = document.querySelectorAll('.am\\:toggle-header');
 
-        headers.forEach(header => {
-            header.addEventListener('click', () => {
-                // Only toggle on mobile (check if the screen is small or if logic should apply globally, 
-                // but strictly speaking the layout handles visibility via CSS)
-                
-                // Find the next sibling UL which is the content
-                const content = header.nextElementSibling;
-                
-                // Find the chevron icon inside the header
-                const icon = header.querySelector('.chevron-icon');
+    headers.forEach(header => {
+      header.addEventListener('click', () => {
+        // Toggle the content visibility
+        const content = header.nextElementSibling;
+        if (content && content.classList.contains('am:toggle-content')) {
+          content.classList.toggle('am:hidden');
+        }
 
-                // Toggle visibility
-                content.classList.toggle('hidden');
-                
-                // Rotate icon
-                icon.classList.toggle('rotate-180');
-            });
-        });
+        // Rotate the chevron icon
+        const icon = header.querySelector('.am\\:chevron-icon');
+        if (icon) {
+          icon.classList.toggle('am:rotate-180');
+        }
+      });
     });
+  });
+

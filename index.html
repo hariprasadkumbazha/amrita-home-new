@@ -19,10 +19,13 @@
         <div class="am:container am:mx-auto am:px-4 am:lg:px-6 am:h-full">
           <div class="am:flex am:flex-col am:justify-between am:py-6 am:sm:py-8 am:lg:py-10">
             <div class="am:flex am:justify-between am:items-start am:pointer-events-auto">
+              <!--------------LOGO---------------->
               <div class="am:flex am:items-center">
                 <img src="img/logo.svg" alt="Logo" class="am:h-10 am:sm:h-16 am:lg:h-20 am:w-auto" />
               </div>
+              <!--------------INLINE ADMISSION BUTTON AND TOOGLE---------------->
               <div class="am:flex am:items-center am:gap-2 am:sm:gap-4">
+                <!--------------ADMISSION BUTTON---------------->
                 <button class="am:cursor-pointer am:group/admissions am:relative am:z-10 am:hidden am:md:inline-flex am:items-center am:gap-3 am:overflow-hidden am:rounded-full am:bg-[#AF0C3E] am:pl-1 am:pr-6 am:py-1 am:text-white am:transition-all am:duration-800 am:hover:shadow-lg">
                   <span class="am:absolute am:left-1 am:top-1/2 am:-translate-y-1/2 am:h-10 am:w-10 am:rounded-full am:bg-white am:transition-transform am:duration-800 am:ease-out am:scale-0 am:group-hover/admissions:scale-[10]"></span>
                   <div class="am:relative am:z-10 am:flex am:h-10 am:w-10 am:items-center am:justify-center am:rounded-full am:bg-white/20 am:transition-all am:duration-800 am:group-hover/admissions:bg-[#AF0C3E] am:group-hover/admissions:rotate-90">
@@ -32,7 +35,8 @@
                   </div>
                   <span class="am:relative am:z-10 am:font-satoshi am:text-sm am:font-medium am:tracking-wide am:transition-colors am:duration-800 am:group-hover/admissions:text-black">Admissions</span>
                 </button>
-                <button id="open-btn" class="am:group/button am:cursor-pointer am:bg-white am:text-gray-600 am:rounded-full am:w-10 am:h-10 am:sm:w-12 am:sm:h-12 am:flex am:items-center am:justify-center am:hover:bg-gray-200 am:transition-colors am:duration-300">
+                <!--------------MENU OPEN TOOGLE---------------->
+                <button id="open-btn" onclick="toggleMenu(true)" class="am:group/button am:cursor-pointer am:bg-white am:text-gray-600 am:rounded-full am:w-10 am:h-10 am:sm:w-12 am:sm:h-12 am:flex am:items-center am:justify-center am:hover:bg-gray-200 am:transition-colors am:duration-300">
                   <div class="am:w-5 am:sm:w-6 am:flex am:flex-col am:gap-[4px] am:sm:gap-[5px]">
                     <span class="am:h-[2px] am:w-1/2 am:bg-current am:rounded-full am:ml-auto am:transition-transform am:duration-300 am:ease-out am:group-hover/button:-translate-x-full"></span>
                     <span class="am:h-[2px] am:w-full am:bg-current am:rounded-full"></span>
@@ -44,9 +48,11 @@
           </div>
         </div>
       </div>
+      <!--------------MEGA MENU STARTED---------------->
       <div id="mega-menu" class="am:fixed am:inset-0 am:z-[9999] am:w-full am:h-full am:flex am:flex-col am:items-center am:opacity-0 am:pointer-events-none am:transition-all am:duration-500 am:ease-[cubic-bezier(0.16,1,0.3,1)]">
-        <div class="am:absolute am:inset-0 am:bg-black am:backdrop-blur-sm" id="menu-overlay"></div>
-        <div class="am:relative am:w-full am:h-full am:flex am:flex-col am:px-4 am:sm:px-6 am:lg:px-8 am:py-6 am:sm:py-8">
+        <div class="am:absolute am:inset-0 am:bg-black am:backdrop-blur-sm" id="menu-overlay" onclick="toggleMenu(false)"></div>
+        <div class="am:relative am:w-full am:h-full am:flex am:flex-col am:px-2 am:sm:px-6 am:lg:px-8 am:py-4 am:sm:py-8">
+          <!--------------TOP MENUS DESKTOP---------------->
           <div class="am:hidden am:lg:flex am:justify-between am:items-end am:pb-4 am:text-white am:font-satoshi am:text-xs am:font-regular am:tracking-widest am:uppercase am:shrink-0 am:w-full">
             <div class="am:flex am:gap-8">
               <a href="#" class="am:hover:text-white am:transition-colors">International</a>
@@ -62,155 +68,566 @@
               <a href="#" class="am:hover:text-white am:transition-colors">Contact</a>
             </div>
           </div>
-          <div class="am:relative am:flex-1 am:bg-white am:rounded-[2rem] am:shadow-2xl am:overflow-hidden am:flex am:flex-col am:transition-transform am:duration-500 am:scale-95" id="menu-card">
-            <div class="am:flex am:justify-between am:items-center am:px-6 am:sm:px-10 am:py-5 am:border-b am:border-gray-200 am:shrink-0">
-              <div class="am:flex am:items-center am:shrink-0 am:flex-1">
-                <img src="img/logo.svg" alt="Logo" class="am:h-8 am:sm:h-12 am:w-auto" />
+          <div class="am:relative am:flex-1 am:bg-white am:rounded-[1.5rem] am:lg:rounded-[2rem] am:shadow-2xl am:overflow-hidden am:flex am:flex-col am:transition-transform am:duration-500 am:scale-95" id="menu-card">
+            <div class="am:flex am:justify-between am:items-center am:px-4 am:sm:px-10 am:py-4 am:sm:py-5 am:border-b am:border-gray-200 am:shrink-0 am:min-h-[80px]">
+              <div class="am:flex am:items-center am:shrink-0 am:flex-1 am:lg:flex-none">
+                <img id="menu-logo" src="img/logo.svg" alt="Logo" class="am:h-8 am:sm:h-12 am:w-auto am:block" />
+                <div id="mobile-nav-header" class="am:hidden am:flex-col am:justify-center">
+                  <button onclick="mobileGoBack()" class="am:flex am:items-center am:gap-2 am:text-gray-400 am:font-satoshi am:text-sm am:mb-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="am:w-4 am:h-4">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+                    </svg> Back </button>
+                  <span id="mobile-nav-title" class="am:text-[#AF0C3E] am:font-satoshi am:font-bold am:text-lg am:leading-none">Academics</span>
+                </div>
               </div>
-              <div class="am:hidden am:lg:flex am:items-center am:justify-center am:gap-6 am:xl:gap-10 am:font-satoshi am:text-lg am:sm:text-xl am:text-gray-400 am:shrink-0">
-                <span onclick="switchRoot('about', this)" class="am:root-nav am:cursor-pointer am:hover:text-gray-800 am:transition-colors am:relative"> About </span>
-                <span onclick="switchRoot('campus', this)" class="am:root-nav am:cursor-pointer am:hover:text-gray-800 am:transition-colors am:relative"> Campus </span>
-                <span onclick="switchRoot('academics', this)" class="am:root-nav am:active am:text-[#AF0C3E] am:font-medium am:cursor-pointer am:relative"> Academics & Programs </span>
-                <span onclick="switchRoot('research', this)" class="am:root-nav am:cursor-pointer am:hover:text-gray-800 am:transition-colors am:relative"> Research </span>
+              <!--------------MAIN LINKS DESKTOP---------------->
+              <div class="am:hidden am:lg:flex am:items-center am:justify-center am:gap-6 am:xl:gap-5 am:font-satoshi am:text-xl am:text-gray-400">
+                <span onclick="switchRoot('about', this)" class="am:active am:text-[#AF0C3E] am:root-nav am:cursor-pointer am:hover:text-gray-800 am:transition-colors am:relative am:px-2"> About </span>
+                <span onclick="switchRoot('campus', this)" class="am:root-nav am:font-medium am:cursor-pointer am:relative am:px-2"> Campus </span>
+                <span onclick="switchRoot('academics', this)" class="am:root-nav am:cursor-pointer am:hover:text-gray-800 am:transition-colors am:relative am:px-2"> Academics & Programs </span>
+                <span onclick="switchRoot('research', this)" class="am:root-nav am:cursor-pointer am:hover:text-gray-800 am:transition-colors am:relative am:px-2"> Research </span>
               </div>
-              <div class="am:flex am:items-center am:justify-end am:gap-3 am:shrink-0 am:flex-1">
-                <button class="am:cursor-pointer am:group/admissions am:relative am:z-10 am:hidden am:md:inline-flex am:items-center am:gap-3 am:overflow-hidden am:rounded-full am:bg-[#AF0C3E] am:pl-1 am:pr-6 am:py-1 am:text-white am:transition-all am:duration-800">
-                  <span class="am:absolute am:left-1 am:top-1/2 am:-translate-y-1/2 am:h-10 am:w-10 am:rounded-full am:bg-[#FFD92A] am:transition-transform am:duration-800 am:ease-out am:scale-0 am:group-hover/admissions:scale-[10]"></span>
-                  <div class="am:relative am:z-10 am:flex am:h-10 am:w-10 am:items-center am:justify-center am:rounded-full am:bg-white/20 am:transition-all am:duration-800 am:group-hover/admissions:bg-[#AF0C3E] am:group-hover/admissions:rotate-90">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="am:h-5 am:w-5 am:text-white">
-                      <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                    </svg>
-                  </div>
-                  <span class="am:relative am:z-10 am:font-satoshi am:text-sm am:font-medium am:tracking-wide am:transition-colors am:duration-800 am:group-hover/admissions:text-black am:whitespace-nowrap">Admissions</span>
-                </button>
-                <button id="close-btn" class="am:group/close am:cursor-pointer am:bg-gray-100 am:text-black am:rounded-full am:w-10 am:h-10 am:sm:w-12 am:sm:h-12 am:flex am:items-center am:justify-center am:hover:bg-gray-200 am:transition-colors am:duration-300">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="am:h-6 am:w-6 am:transition-transform am:duration-500 am:ease-out am:group-hover/close:rotate-90" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <!-------------------------CLOSE BUTTON---------------->
+              <div class="am:flex am:items-center am:justify-end am:gap-3 am:shrink-0 am:flex-1 am:lg:flex-none">
+                <button onclick="toggleMenu(false)" id="close-btn" class="am:group/close am:cursor-pointer am:bg-gray-100 am:text-black am:rounded-full am:w-10 am:h-10 am:sm:w-12 am:sm:h-12 am:flex am:items-center am:justify-center am:hover:bg-gray-200 am:transition-colors am:duration-300">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="am:h-5 am:w-5 am:sm:h-6 am:sm:w-6 am:transition-transform am:duration-500 am:ease-out am:group-hover/close:rotate-90" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                   </svg>
                 </button>
               </div>
             </div>
-            <div class="am:flex am:flex-1 am:overflow-hidden am:relative">
-              <div class="am:hidden am:md:flex am:w-64 am:py-8 am:pl-12 am:flex-col am:gap-5 am:font-satoshi am:text-lg am:text-gray-500 am:overflow-y-auto am:border-r am:border-gray-200">
-                <div id="sidebar-academics" class="am:sidebar-root-group am:flex am:flex-col am:gap-5">
-                  <span onclick="switchLevel('academics-ug', this)" class="am:level-btn am:text-[#AF0C3E] am:font-medium am:border-b-2 am:border-[#AF0C3E] am:pb-1 am:w-max am:cursor-pointer">Undergraduate</span>
-                  <span onclick="switchLevel('academics-pg', this)" class="am:level-btn am:cursor-pointer am:hover:text-gray-800 am:pb-1 am:w-max am:border-b-2 am:border-transparent">Postgraduate</span>
-                  <span onclick="switchLevel('academics-phd', this)" class="am:level-btn am:cursor-pointer am:hover:text-gray-800 am:pb-1 am:w-max am:border-b-2 am:border-transparent">Doctoral</span>
+            <div class="am:flex-1 am:overflow-hidden am:relative am:flex am:flex-col">
+              <!-------------------------MENU MOBILE VIEW---------------->
+              <div id="mobile-views-container" class="am:block am:lg:hidden am:h-full am:w-full am:relative">
+                <div id="m-view-root" class="am:mobile-view am:absolute am:inset-0 am:flex am:flex-col am:bg-white am:overflow-y-auto am:p-4 am:transition-transform am:duration-300">
+                  <!-------------------------ABOUT---------------->
+                  <div onclick="mobileNavigate('about', 'About')" class="am:group am:flex am:items-center am:justify-between am:py-5 am:border-b am:border-gray-100 am:cursor-pointer">
+                    <span class="am:text-xl am:font-satoshi am:font-medium am:text-gray-800 am:group-hover:text-[#AF0C3E]">About</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="am:w-5 am:h-5 am:text-gray-400 am:group-hover:text-[#AF0C3E]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                    </svg>
+                  </div>
+                  <!-------------------------CAMPUS---------------->
+                  <div onclick="mobileNavigate('campus', 'Campus')" class="am:group am:flex am:items-center am:justify-between am:py-5 am:border-b am:border-gray-100 am:cursor-pointer">
+                    <span class="am:text-xl am:font-satoshi am:font-medium am:text-gray-800 am:group-hover:text-[#AF0C3E]">Campus</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="am:w-5 am:h-5 am:text-gray-400 am:group-hover:text-[#AF0C3E]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                    </svg>
+                  </div>
+                  <!-------------------------ACADEMICS---------------->
+                  <div onclick="mobileNavigate('academics', 'Academics')" class="am:group am:flex am:items-center am:justify-between am:py-5 am:border-b am:border-gray-100 am:cursor-pointer">
+                    <span class="am:text-xl am:font-satoshi am:font-medium am:text-gray-800 am:group-hover:text-[#AF0C3E]">Academics & Programs</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="am:w-5 am:h-5 am:text-gray-400 am:group-hover:text-[#AF0C3E]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                    </svg>
+                  </div>
+                  <!-------------------------RESEARCH---------------->
+                  <div onclick="mobileNavigate('research', 'Research')" class="am:group am:flex am:items-center am:justify-between am:py-5 am:border-b am:border-gray-100 am:cursor-pointer">
+                    <span class="am:text-xl am:font-satoshi am:font-medium am:text-gray-800 am:group-hover:text-[#AF0C3E]">Research</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="am:w-5 am:h-5 am:text-gray-400 am:group-hover:text-[#AF0C3E]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                    </svg>
+                  </div>
+                  <!-------------------------MOBILE VIEW BELOW SUB LINKS---------------->
+                  <div class="am:grid am:grid-cols-2 am:gap-4 am:mt-8 am:pt-8 am:border-t am:border-gray-100 am:text-sm am:font-satoshi am:text-gray-500">
+                    <a href="#" class="am:hover:text-[#AF0C3E]">International</a>
+                    <a href="#" class="am:hover:text-[#AF0C3E]">News</a>
+                    <a href="#" class="am:hover:text-[#AF0C3E]">Alumni</a>
+                    <a href="#" class="am:hover:text-[#AF0C3E]">Contact</a>
+                  </div>
                 </div>
-                <div id="sidebar-about" class="am:sidebar-root-group am:hidden am:flex am:flex-col am:gap-5">
-                  <span onclick="switchLevel('about-overview', this)" class="am:level-btn am:cursor-pointer am:hover:text-gray-800 am:pb-1 am:w-max am:border-b-2 am:border-transparent">Overview</span>
-                  <span onclick="switchLevel('about-leadership', this)" class="am:level-btn am:cursor-pointer am:hover:text-gray-800 am:pb-1 am:w-max am:border-b-2 am:border-transparent">Leadership</span>
-                  <span onclick="switchLevel('about-rankings', this)" class="am:level-btn am:cursor-pointer am:hover:text-gray-800 am:pb-1 am:w-max am:border-b-2 am:border-transparent">Rankings</span>
+                <!-------------------------MOBILE VIEW ACADEMICS---------------->
+                <div id="m-view-academics" class="am:mobile-view am:absolute am:inset-0 am:translate-x-full am:flex am:flex-col am:bg-white am:overflow-y-auto am:p-4 am:transition-transform am:duration-300">
+                  <!-------------------------MOBILE VIEW ACADEMICS UNDERGRADUATE---------------->
+                  <div onclick="mobileNavigate('academics-ug', 'Undergraduate')" class="am:group am:flex am:items-center am:justify-between am:py-5 am:border-b am:border-gray-100 am:cursor-pointer">
+                    <span class="am:text-lg am:font-satoshi am:font-medium am:text-gray-700 am:group-hover:text-[#AF0C3E]">Undergraduate</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="am:w-4 am:h-4 am:text-gray-400 am:group-hover:text-[#AF0C3E]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                    </svg>
+                  </div>
+                  <!-------------------------MOBILE VIEW ACADEMICS POSTGRADUATE---------------->
+                  <div onclick="mobileNavigate('academics-pg', 'Postgraduate')" class="am:group am:flex am:items-center am:justify-between am:py-5 am:border-b am:border-gray-100 am:cursor-pointer">
+                    <span class="am:text-lg am:font-satoshi am:font-medium am:text-gray-700 am:group-hover:text-[#AF0C3E]">Postgraduate</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="am:w-4 am:h-4 am:text-gray-400 am:group-hover:text-[#AF0C3E]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                    </svg>
+                  </div>
+                  <!-------------------------MOBILE VIEW ACADEMICS DOCTORAL---------------->
+                  <div onclick="mobileNavigate('academics-doc', 'Doctoral')" class="am:group am:flex am:items-center am:justify-between am:py-5 am:border-b am:border-gray-100 am:cursor-pointer">
+                    <span class="am:text-lg am:font-satoshi am:font-medium am:text-gray-700 am:group-hover:text-[#AF0C3E]">Doctoral</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="am:w-4 am:h-4 am:text-gray-400 am:group-hover:text-[#AF0C3E]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                    </svg>
+                  </div>
                 </div>
-                <div id="sidebar-campus" class="am:sidebar-root-group am:hidden am:flex am:flex-col am:gap-5">
-                  <span onclick="switchLevel('campus-facilities', this)" class="am:level-btn am:cursor-pointer am:hover:text-gray-800 am:pb-1 am:w-max am:border-b-2 am:border-transparent">Facilities</span>
-                  <span onclick="switchLevel('campus-life', this)" class="am:level-btn am:cursor-pointer am:hover:text-gray-800 am:pb-1 am:w-max am:border-b-2 am:border-transparent">Student Life</span>
+                <!-------------------------MOBILE VIEW ACADEMICS UG---------------->
+                <div id="m-view-academics-ug" class="am:mobile-view am:absolute am:inset-0 am:translate-x-full am:flex am:flex-col am:bg-white am:overflow-y-auto am:p-4 am:transition-transform am:duration-300">
+                  <!-------------------------MOBILE VIEW ACADEMICS UG (ARTS)---------------->
+                  <div onclick="mobileNavigate('academics-ug-arts', 'Arts & Humanities')" class="am:group am:flex am:items-center am:justify-between am:py-4 am:border-b am:border-gray-100 am:cursor-pointer">
+                    <div class="am:flex am:items-center am:gap-4">
+                      <div class="am:w-10 am:h-10 am:rounded-lg am:bg-orange-100 am:flex am:items-center am:justify-center am:text-orange-700">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="am:w-6 am:h-6">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M9.53 16.122a3 3 0 0 0-5.78 1.128 2.25 2.25 0 0 1-2.4 2.245 4.5 4.5 0 0 0 8.4-2.245c0-.399-.078-.78-.22-1.128Zm0 0a15.998 15.998 0 0 0 3.388-1.62m-5.043-.025a15.994 15.994 0 0 1 1.622-3.395m3.42 3.42a15.995 15.995 0 0 0 4.764-4.648l3.876-5.814a1.151 1.151 0 0 0-1.597-1.597L14.146 6.32a15.996 15.996 0 0 0-4.649 4.763m3.42 3.42a6.776 6.776 0 0 0-3.42-3.42" />
+                        </svg>
+                      </div>
+                      <span class="am:text-lg am:font-satoshi am:font-medium am:text-gray-700 am:group-hover:text-[#AF0C3E]">Arts & Humanities</span>
+                    </div>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="am:w-4 am:h-4 am:text-gray-400 am:group-hover:text-[#AF0C3E]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                    </svg>
+                  </div>
+                  <!-------------------------MOBILE VIEW ACADEMICS UG (ENGINEERING)---------------->
+                  <div onclick="mobileNavigate('academics-ug-eng', 'Engineering')" class="am:group am:flex am:items-center am:justify-between am:py-4 am:border-b am:border-gray-100 am:cursor-pointer">
+                    <div class="am:flex am:items-center am:gap-4">
+                      <div class="am:w-10 am:h-10 am:rounded-lg am:bg-purple-100 am:flex am:items-center am:justify-center am:text-purple-700">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="am:w-6 am:h-6">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M10.343 3.94c.09-.542.56-.94 1.11-.94h1.093c.55 0 1.02.398 1.11.94l.149.894c.07.424.384.764.78.93.398.164.855.142 1.205-.108l.737-.527a1.125 1.125 0 0 1 1.45.12l.773.774c.39.389.44 1.002.12 1.45l-.527.737c-.25.35-.272.806-.107 1.204.165.397.505.71.93.78l.893.15c.543.09.94.56.94 1.109v1.094c0 .55-.397 1.02-.94 1.11l-.893.149c-.425.07-.765.383-.93.78-.165.398-.143.854.107 1.204l.527.738c.32.447.269 1.06-.12 1.45l-.774.773a1.125 1.125 0 0 1-1.449.12l-.738-.527c-.35-.25-.806-.272-1.203-.107-.397.165-.71.505-.781.929l-.149.894c-.09.542-.56.94-1.11.94h-1.094c-.55 0-1.019-.398-1.11-.94l-.148-.894c-.071-.424-.384-.764-.781-.93-.398-.164-.854-.142-1.204.108l-.738.527c-.447.32-1.06.269-1.45-.12l-.773-.774a1.125 1.125 0 0 1-.12-1.45l.527-.737c.25-.35.273-.806.108-1.204-.165-.397-.505-.71-.93-.78l-.894-.15c-.542-.09-.94-.56-.94-1.109v-1.094c0-.55.398-1.02.94-1.11l.894-.149c.424-.07.765-.383.93-.78.165-.398.143-.854-.107-1.204l-.527-.738a1.125 1.125 0 0 1 .12-1.45l.773-.773a1.125 1.125 0 0 1 1.45-.12l.737.527c.35.25.807.272 1.204.107.397-.165.71-.505.78-.929l.15-.894Z" />
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                        </svg>
+                      </div>
+                      <span class="am:text-lg am:font-satoshi am:font-medium am:text-gray-700 am:group-hover:text-[#AF0C3E]">Engineering</span>
+                    </div>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="am:w-4 am:h-4 am:text-gray-400 am:group-hover:text-[#AF0C3E]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                    </svg>
+                  </div>
                 </div>
-                <div id="sidebar-research" class="am:sidebar-root-group am:hidden am:flex am:flex-col am:gap-5">
-                  <span onclick="switchLevel('research-centers', this)" class="am:level-btn am:cursor-pointer am:hover:text-gray-800 am:pb-1 am:w-max am:border-b-2 am:border-transparent">Centers of Excellence</span>
-                  <span onclick="switchLevel('research-projects', this)" class="am:level-btn am:cursor-pointer am:hover:text-gray-800 am:pb-1 am:w-max am:border-b-2 am:border-transparent">Funded Projects</span>
+                <!-------------------------MOBILE VIEW ACADEMICS UG (ARTS LISTING)---------------->
+                <div id="m-view-academics-ug-arts" class="am:mobile-view am:absolute am:inset-0 am:translate-x-full am:flex am:flex-col am:bg-white am:overflow-y-auto am:p-4 am:transition-transform am:duration-300">
+                  <a href="#" class="am:block am:py-4 am:border-b am:border-gray-50 am:text-gray-700 am:hover:text-[#AF0C3E] am:font-satoshi">B.A. (Hons) English</a>
+                  <a href="#" class="am:block am:py-4 am:border-b am:border-gray-50 am:text-gray-700 am:hover:text-[#AF0C3E] am:font-satoshi">B.A. Mass Communication</a>
+                </div>
+                <!-------------------------MOBILE VIEW ACADEMICS UG (ENGINEERING LISTING)---------------->
+                <div id="m-view-academics-ug-eng" class="am:mobile-view am:absolute am:inset-0 am:translate-x-full am:flex am:flex-col am:bg-white am:overflow-y-auto am:p-4 am:transition-transform am:duration-300">
+                  <a href="#" class="am:block am:py-4 am:border-b am:border-gray-50 am:text-gray-700 am:hover:text-[#AF0C3E] am:font-satoshi">B.Tech Computer Science</a>
+                  <a href="#" class="am:block am:py-4 am:border-b am:border-gray-50 am:text-gray-700 am:hover:text-[#AF0C3E] am:font-satoshi">B.Tech Mechanical Engineering</a>
+                </div>
+                <!-------------------------MOBILE VIEW CAMPUS LISTING---------------->
+                <div id="m-view-campus" class="am:mobile-view am:absolute am:inset-0 am:translate-x-full am:flex am:flex-col am:bg-white am:overflow-y-auto am:p-4 am:pb-24 am:transition-transform am:duration-300">
+                  <div class="am:grid am:grid-cols-1 am:gap-4">
+                    <!-------------------------AMRITAPURI CAMPUS MOBILE---------------->
+                    <a href="#" class="am:group am:block am:relative am:bg-[#effdf5] am:p-5 am:h-full am:transition-all am:duration-300 am:hover:shadow-lg">
+                      <div class="am:w-full am:h-24 am:mb-4 am:flex am:items-center am:justify-center">
+                        <img src="img/amritapuri-campus.svg" alt="sketch" class="am:h-full am:object-contain" />
+                      </div>
+                      <h3 class="am:font-satoshi am:text-lg am:font-medium am:text-black am:mb-2">Amritapuri Campus</h3>
+                      <p class="am:font-satoshi am:text-sm am:leading-relaxed am:text-gray-600 am:line-clamp-4 am:mb-8 line-clamp-3">Amrita Vishwa Vidyapeetham's Amritapuri campus located in the pleasing village of Vallikavu is a multi-disciplinary research and teaching institute peacefully blended with science and spirituality</p>
+                      <div class="am:absolute am:bottom-5 am:left-5 am:text-gray-400 am:group-hover:text-[#AF0C3E] am:group-hover:translate-x-2 am:transition-all">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <path d="M5 12h14M12 5l7 7-7 7" />
+                        </svg>
+                      </div>
+                    </a>
+                    <!-------------------------AMARAVATI CAMPUS MOBILE---------------->
+                    <a href="#" class="am:group am:block am:relative am:bg-[#fffbf0] am:p-5 am:h-full am:transition-all am:duration-300 am:hover:shadow-lg">
+                      <div class="am:w-full am:h-24 am:mb-4 am:flex am:items-center am:justify-center">
+                        <img src="img/amaravati-campus.svg" alt="sketch" class="am:h-full am:object-contain" />
+                      </div>
+                      <h3 class="am:font-satoshi am:text-lg am:font-medium am:text-black am:mb-2">Amaravati Campus</h3>
+                      <p class="am:font-satoshi am:text-sm am:leading-relaxed am:text-gray-600 am:line-clamp-4 am:mb-8 line-clamp-3">Welcome to our seventh campus at Amaravati in Andhra Pradesh. Amrita is a multi-disciplinary, research-intensive university and is accredited with the highest possible A++ NAAC grade and is the country’s 5th best-ranked university in the NIRF rankings 2021. We invite you to join our new Amaravati campus in various faculty and administrative positions.</p>
+                      <div class="am:absolute am:bottom-5 am:left-5 am:text-gray-400 am:group-hover:text-[#AF0C3E] am:group-hover:translate-x-2 am:transition-all">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <path d="M5 12h14M12 5l7 7-7 7" />
+                        </svg>
+                      </div>
+                    </a>
+                    <!-------------------------BENGALURU CAMPUS MOBILE---------------->
+                    <a href="#" class="am:group am:block am:relative am:bg-[#f2f8ff] am:p-5 am:h-full am:transition-all am:duration-300 am:hover:shadow-lg">
+                      <div class="am:w-full am:h-24 am:mb-4 am:flex am:items-center am:justify-center">
+                        <img src="img/bengaluru-campus.svg" alt="sketch" class="am:h-full am:object-contain" />
+                      </div>
+                      <h3 class="am:font-satoshi am:text-lg am:font-medium am:text-black am:mb-2">Bengaluru Campus</h3>
+                      <p class="am:font-satoshi am:text-sm am:leading-relaxed am:text-gray-600 am:line-clamp-4 am:mb-8 line-clamp-3">Amrita University's Bengaluru Campus situated in Junnasandra, Karnataka, aims to create graduates with a solution mindset and a high degree of ethical standards</p>
+                      <div class="am:absolute am:bottom-5 am:left-5 am:text-gray-400 am:group-hover:text-[#AF0C3E] am:group-hover:translate-x-2 am:transition-all">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <path d="M5 12h14M12 5l7 7-7 7" />
+                        </svg>
+                      </div>
+                    </a>
+                    <!-------------------------CHENNAI CAMPUS MOBILE---------------->
+                    <a href="#" class="am:group am:block am:relative am:bg-[#f4f4f4] am:p-5 am:h-full am:transition-all am:duration-300 am:hover:shadow-lg">
+                      <div class="am:w-full am:h-24 am:mb-4 am:flex am:items-center am:justify-center">
+                        <img src="img/chennai-campus.svg" alt="sketch" class="am:h-full am:object-contain" />
+                      </div>
+                      <h3 class="am:font-satoshi am:text-lg am:font-medium am:text-black am:mb-2">Chennai Campus</h3>
+                      <p class="am:font-satoshi am:text-sm am:leading-relaxed am:text-gray-600 am:line-clamp-4 am:mb-8 line-clamp-3">Amrita Vishwa Vidyapeetham's Chennai campus at Vengal, Tamil Nadu offers various engineering programs developed on a choice-based credit system following continuous evaluation by faculties who guide students</p>
+                      <div class="am:absolute am:bottom-5 am:left-5 am:text-gray-400 am:group-hover:text-[#AF0C3E] am:group-hover:translate-x-2 am:transition-all">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <path d="M5 12h14M12 5l7 7-7 7" />
+                        </svg>
+                      </div>
+                    </a>
+                    <!-------------------------COIMBATORE CAMPUS MOBILE---------------->
+                    <a href="#" class="am:group am:block am:relative am:bg-[#fdf0fe] am:p-5 am:h-full am:transition-all am:duration-300 am:hover:shadow-lg">
+                      <div class="am:w-full am:h-24 am:mb-4 am:flex am:items-center am:justify-center">
+                        <img src="img/coimbatore-campus.svg" alt="sketch" class="am:h-full am:object-contain" />
+                      </div>
+                      <h3 class="am:font-satoshi am:text-lg am:font-medium am:text-black am:mb-2">Coimbatore Campus</h3>
+                      <p class="am:font-satoshi am:text-sm am:leading-relaxed am:text-gray-600 am:line-clamp-4 am:mb-8 line-clamp-3">Amrita University's Coimbatore campus started in a hidden village named Ettimadai provides over 120 UG, PG and doctoral programs to a student population of over 12,000 and faculty strength of nearly 1500</p>
+                      <div class="am:absolute am:bottom-5 am:left-5 am:text-gray-400 am:group-hover:text-[#AF0C3E] am:group-hover:translate-x-2 am:transition-all">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <path d="M5 12h14M12 5l7 7-7 7" />
+                        </svg>
+                      </div>
+                    </a>
+                    <!-------------------------FARIDABAD CAMPUS MOBILE---------------->
+                    <a href="#" class="am:group am:block am:relative am:bg-[#4F977214] am:p-5 am:h-full am:transition-all am:duration-300 am:hover:shadow-lg">
+                      <div class="am:w-full am:h-24 am:mb-4 am:flex am:items-center am:justify-center">
+                        <img src="img/faridabad-campus.svg" alt="sketch" class="am:h-full am:object-contain" />
+                      </div>
+                      <h3 class="am:font-satoshi am:text-lg am:font-medium am:text-black am:mb-2">Faridabad Campus</h3>
+                      <p class="am:font-satoshi am:text-sm am:leading-relaxed am:text-gray-600 am:line-clamp-4 am:mb-8 line-clamp-3">A land that has witnessed the historical prominence of ultra-modern facilities in India. A place where science, technology, and research merge to embrace good health across a 130-acre sprawling health city campus.</p>
+                      <div class="am:absolute am:bottom-5 am:left-5 am:text-gray-400 am:group-hover:text-[#AF0C3E] am:group-hover:translate-x-2 am:transition-all">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <path d="M5 12h14M12 5l7 7-7 7" />
+                        </svg>
+                      </div>
+                    </a>
+                    <!-------------------------KOCHI CAMPUS MOBILE---------------->
+                    <a href="#" class="am:group am:block am:relative am:bg-[#79BEFF30] am:p-5 am:h-full am:transition-all am:duration-300 am:hover:shadow-lg">
+                      <div class="am:w-full am:h-24 am:mb-4 am:flex am:items-center am:justify-center">
+                        <img src="img/kochi-campus.svg" alt="sketch" class="am:h-full am:object-contain" />
+                      </div>
+                      <h3 class="am:font-satoshi am:text-lg am:font-medium am:text-black am:mb-2">Kochi Campus</h3>
+                      <p class="am:font-satoshi am:text-sm am:leading-relaxed am:text-gray-600 am:line-clamp-4 am:mb-8 line-clamp-3">Amrita Vishwa Vidyapeetham's Kochi campus is an extensive campus comprising a premier multispeciality hospital, Amrita Institute of Medical Sciences, School of Medicine, Dentistry, Nursing, Pharmacy, Allied Health Sciences, Center for Nanosciences along with a School of Arts and Sciences and Department of Management as well</p>
+                      <div class="am:absolute am:bottom-5 am:left-5 am:text-gray-400 am:group-hover:text-[#AF0C3E] am:group-hover:translate-x-2 am:transition-all">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <path d="M5 12h14M12 5l7 7-7 7" />
+                        </svg>
+                      </div>
+                    </a>
+                    <!-------------------------MYSURU CAMPUS MOBILE---------------->
+                    <a href="#" class="am:group am:block am:relative am:bg-[#FFF4F5] am:p-5 am:h-full am:transition-all am:duration-300 am:hover:shadow-lg">
+                      <div class="am:w-full am:h-24 am:mb-4 am:flex am:items-center am:justify-center">
+                        <img src="img/mysuru-campus.svg" alt="sketch" class="am:h-full am:object-contain" />
+                      </div>
+                      <h3 class="am:font-satoshi am:text-lg am:font-medium am:text-black am:mb-2">Mysuru Campus</h3>
+                      <p class="am:font-satoshi am:text-sm am:leading-relaxed am:text-gray-600 am:line-clamp-4 am:mb-8 line-clamp-3">Amrita University's Mysuru campus situated at Bhogadi, Karnataka away from the hustle & bustle of the city combining state-of-the-art facilities offers a perfect environment that fulfills the aspirations of young minds and meets the requirements of future employers</p>
+                      <div class="am:absolute am:bottom-5 am:left-5 am:text-gray-400 am:group-hover:text-[#AF0C3E] am:group-hover:translate-x-2 am:transition-all">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <path d="M5 12h14M12 5l7 7-7 7" />
+                        </svg>
+                      </div>
+                    </a>
+                    <!-------------------------NAGERCOIL CAMPUS MOBILE---------------->
+                    <a href="#" class="am:group am:block am:relative am:bg-[#F8FFD7] am:p-5 am:h-full am:transition-all am:duration-300 am:hover:shadow-lg">
+                      <div class="am:w-full am:h-24 am:mb-4 am:flex am:items-center am:justify-center">
+                        <img src="img/nagercoil-campus.svg" alt="sketch" class="am:h-full am:object-contain" />
+                      </div>
+                      <h3 class="am:font-satoshi am:text-lg am:font-medium am:text-black am:mb-2">Nagercoil Campus</h3>
+                      <p class="am:font-satoshi am:text-sm am:leading-relaxed am:text-gray-600 am:line-clamp-4 am:mb-8 line-clamp-3">Amrita Vishwa Vidyapeetham, situated in Erachakulam, Nagercoil is a beacon of educational excellence which operates under the esteemed Mata Amritanandamayi Math. Founded by Satguru Mata Amritanandamayi Devi (Amma), our institution is dedicated to providing holistic education, guided by Amma’s profound vision encapsulated in the philosophy of “Education for Life.”</p>
+                      <div class="am:absolute am:bottom-5 am:left-5 am:text-gray-400 am:group-hover:text-[#AF0C3E] am:group-hover:translate-x-2 am:transition-all">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <path d="M5 12h14M12 5l7 7-7 7" />
+                        </svg>
+                      </div>
+                    </a>
+                    <!-------------------------HARIDWAR CAMPUS MOBILE---------------->
+                    <a href="#" class="am:group am:block am:relative am:bg-[#EEFFEE] am:p-5 am:h-full am:transition-all am:duration-300 am:hover:shadow-lg">
+                      <div class="am:w-full am:h-24 am:mb-4 am:opacity-60 am:mix-blend-multiply am:flex am:items-center am:justify-center">
+                        <img src="img/haridwar-campus.svg" alt="sketch" class="am:h-full am:object-contain" />
+                      </div>
+                      <h3 class="am:font-satoshi am:text-lg am:font-medium am:text-black am:mb-2">Haridwar Campus</h3>
+                      <p class="am:font-satoshi am:text-sm am:leading-relaxed am:text-gray-600 am:line-clamp-4 am:mb-8 line-clamp-3">Amrita Vishwa Vidyapeetham’s campus in Haridwar, nestled on the sacred banks of the Ganges, is poised to become a landmark of educational excellence. This new campus will embody Amma’s profound vision of “education for life” and her emphasis on compassion-driven research, extending the university’s mission to the spiritual heartland of India.</p>
+                      <div class="am:absolute am:bottom-5 am:left-5 am:text-gray-400 am:group-hover:text-[#AF0C3E] am:group-hover:translate-x-2 am:transition-all">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <path d="M5 12h14M12 5l7 7-7 7" />
+                        </svg>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+                <!-------------------------ABOUT MOBILE---------------->
+                <div id="m-view-about" class="am:mobile-view am:absolute am:inset-0 am:translate-x-full am:flex am:flex-col am:bg-white am:overflow-y-auto am:p-4 am:transition-transform am:duration-300">
+                  <div class="am:p-4 am:text-gray-500">About Content Placeholder</div>
+                </div>
+                <!-------------------------RESEARCH MOBILE---------------->
+                <div id="m-view-research" class="am:mobile-view am:absolute am:inset-0 am:translate-x-full am:flex am:flex-col am:bg-white am:overflow-y-auto am:p-4 am:transition-transform am:duration-300">
+                  <div class="am:p-4 am:text-gray-500">Research Content Placeholder</div>
                 </div>
               </div>
-              <div class="am:flex-1 am:bg-white am:p-6 am:sm:p-10 am:overflow-hidden am:flex am:flex-col">
-                <div class="am:grid am:grid-cols-1 am:lg:grid-cols-12 am:gap-8 am:h-full">
-                  <div id="tab-container" class="am:lg:col-span-3 am:bg-[#FDFBF7] am:rounded-xl am:p-4 am:flex am:flex-col am:gap-2 am:h-full am:overflow-y-auto am:custom-scrollbar">
-                    <div id="tabs-academics-ug" class="am:level-group am:flex am:flex-col am:gap-2">
-                      <div onclick="switchTab('ug-arts', this)" class="am:tab-btn am:active am:group am:flex am:items-center am:gap-3 am:p-3 am:rounded-lg am:bg-white am:shadow-sm am:cursor-pointer am:border-l-[3px] am:border-[#AF0C3E]">
-                        <div class="am:w-8 am:h-8 am:rounded am:bg-orange-100 am:flex am:items-center am:justify-center am:text-gray-700 am:transition-transform am:duration-300 am:group-hover:scale-110">A</div>
-                        <span class="am:font-satoshi am:text-base am:font-satoshi am:font-medium am:text-gray-800 am:group-hover:text-[#AF0C3E]">Arts & Humanities</span>
-                      </div>
-                      <div onclick="switchTab('ug-eng', this)" class="am:tab-btn am:group am:flex am:items-center am:gap-3 am:p-3 am:rounded-lg am:hover:bg-white am:hover:shadow-md am:cursor-pointer am:border-l-[3px] am:border-transparent am:hover:border-[#AF0C3E]">
-                        <div class="am:w-8 am:h-8 am:rounded am:bg-purple-100 am:flex am:items-center am:justify-center am:text-gray-700 am:transition-transform am:duration-300 am:group-hover:scale-110">E</div>
-                        <span class="am:font-satoshi am:text-base am:font-satoshi am:font-medium am:text-gray-800 am:group-hover:text-[#AF0C3E]">Engineering</span>
-                      </div>
+              <!-------------------------MENU DESKTOP VIEW---------------->
+              <div id="desktop-content-wrapper" class="am:hidden am:lg:flex am:flex-col am:h-full am:w-full">
+                <div id="layout-split" class="am:hidden am:flex am:flex-col am:md:flex-row am:h-full am:w-full">
+                  <div class="am:w-64 am:py-8 am:pl-12 am:flex am:flex-col am:gap-5 am:font-satoshi am:text-lg am:text-gray-500 am:overflow-y-auto am:border-r am:border-gray-200 am:shrink-0">
+                    <!-------------------------MENU DESKTOP ACADEMICS SIDE BAR---------------->
+                    <div id="sidebar-academics" class="am:sidebar-root-group am:hidden am:flex am:flex-col am:gap-5">
+                      <!-------------------------UNDERGRADUATE---------------->
+                      <span onclick="switchLevel('academics-ug', this)" class="am:level-btn am:active am:text-[#AF0C3E] am:font-medium am:border-b-2 am:border-[#AF0C3E] am:pb-1 am:w-max am:cursor-pointer">Undergraduate</span>
+                      <!-------------------------POSTGRADUATE---------------->
+                      <span onclick="switchLevel('academics-pg', this)" class="am:level-btn am:cursor-pointer am:hover:text-gray-800 am:pb-1 am:w-max am:border-b-2 am:border-transparent">Postgraduate</span>
+                      <!-------------------------POSTGRADUATE---------------->
+                      <span onclick="switchLevel('academics-doctoral', this)" class="am:level-btn am:cursor-pointer am:hover:text-gray-800 am:pb-1 am:w-max am:border-b-2 am:border-transparent">Doctoral</span>
                     </div>
-                    <div id="tabs-academics-pg" class="am:level-group am:hidden am:flex am:flex-col am:gap-2">
-                      <div onclick="switchTab('pg-mba', this)" class="am:tab-btn am:group am:flex am:items-center am:gap-3 am:p-3 am:rounded-lg am:hover:bg-white am:hover:shadow-md am:cursor-pointer am:border-l-[3px] am:border-transparent am:hover:border-[#AF0C3E]">
-                        <div class="am:w-8 am:h-8 am:rounded am:bg-blue-100 am:flex am:items-center am:justify-center am:text-gray-700 am:transition-transform am:duration-300 am:group-hover:scale-110">M</div>
-                        <span class="am:font-satoshi am:text-base am:font-satoshi am:font-medium am:text-gray-800 am:group-hover:text-[#AF0C3E]">MBA</span>
-                      </div>
-                    </div>
-                    <div id="tabs-academics-phd" class="am:level-group am:hidden am:flex am:flex-col am:gap-2"></div>
-                    <div id="tabs-about-overview" class="am:level-group am:hidden am:flex am:flex-col am:gap-2">
-                      <div onclick="switchTab('about-vision', this)" class="am:tab-btn am:group am:flex am:items-center am:gap-3 am:p-3 am:rounded-lg am:hover:bg-white am:hover:shadow-md am:cursor-pointer am:border-l-[3px] am:border-transparent am:hover:border-[#AF0C3E]">
-                        <div class="am:w-8 am:h-8 am:rounded am:bg-gray-100 am:flex am:items-center am:justify-center">V</div>
-                        <span class="am:font-satoshi am:text-base am:font-satoshi am:font-medium am:text-gray-800 am:group-hover:text-[#AF0C3E]">Vision & Mission</span>
-                      </div>
-                      <div onclick="switchTab('about-history', this)" class="am:tab-btn am:group am:flex am:items-center am:gap-3 am:p-3 am:rounded-lg am:hover:bg-white am:hover:shadow-md am:cursor-pointer am:border-l-[3px] am:border-transparent am:hover:border-[#AF0C3E]">
-                        <div class="am:w-8 am:h-8 am:rounded am:bg-gray-100 am:flex am:items-center am:justify-center">H</div>
-                        <span class="am:font-satoshi am:text-base am:font-satoshi am:font-medium am:text-gray-800 am:group-hover:text-[#AF0C3E]">History</span>
-                      </div>
-                    </div>
-                    <div id="tabs-about-leadership" class="am:level-group am:hidden am:flex am:flex-col am:gap-2"></div>
-                    <div id="tabs-about-rankings" class="am:level-group am:hidden am:flex am:flex-col am:gap-2"></div>
-                    <div id="tabs-campus-facilities" class="am:level-group am:hidden am:flex am:flex-col am:gap-2">
-                      <div onclick="switchTab('campus-library', this)" class="am:tab-btn am:group am:flex am:items-center am:gap-3 am:p-3 am:rounded-lg am:hover:bg-white am:hover:shadow-md am:cursor-pointer am:border-l-[3px] am:border-transparent am:hover:border-[#AF0C3E]">
-                        <div class="am:w-8 am:h-8 am:rounded am:bg-yellow-100 am:flex am:items-center am:justify-center">L</div>
-                        <span class="am:font-satoshi am:text-base am:font-satoshi am:font-medium am:text-gray-800 am:group-hover:text-[#AF0C3E]">Central Library</span>
-                      </div>
-                    </div>
-                    <div id="tabs-campus-life" class="am:level-group am:hidden am:flex am:flex-col am:gap-2">
-                      <div onclick="switchTab('campus-housing', this)" class="am:tab-btn am:group am:flex am:items-center am:gap-3 am:p-3 am:rounded-lg am:hover:bg-white am:hover:shadow-md am:cursor-pointer am:border-l-[3px] am:border-transparent am:hover:border-[#AF0C3E]">
-                        <div class="am:w-8 am:h-8 am:rounded am:bg-yellow-100 am:flex am:items-center am:justify-center">H</div>
-                        <span class="am:font-satoshi am:text-base am:font-satoshi am:font-medium am:text-gray-800 am:group-hover:text-[#AF0C3E]">Housing & Hostels</span>
-                      </div>
-                    </div>
-                    <div id="tabs-research-centers" class="am:level-group am:hidden am:flex am:flex-col am:gap-2">
-                      <div onclick="switchTab('res-ai', this)" class="am:tab-btn am:group am:flex am:items-center am:gap-3 am:p-3 am:rounded-lg am:hover:bg-white am:hover:shadow-md am:cursor-pointer am:border-l-[3px] am:border-transparent am:hover:border-[#AF0C3E]">
-                        <div class="am:w-8 am:h-8 am:rounded am:bg-red-100 am:flex am:items-center am:justify-center">A</div>
-                        <span class="am:font-satoshi am:text-base am:font-satoshi am:font-medium am:text-gray-800 am:group-hover:text-[#AF0C3E]">AI & Robotics</span>
-                      </div>
-                    </div>
-                    <div id="tabs-research-projects" class="am:level-group am:hidden am:flex am:flex-col am:gap-2"></div>
+
+
+                    <div id="sidebar-about" class="am:sidebar-root-group am:hidden am:flex am:flex-col am:gap-6">
+        <span class="am:text-xs am:font-bold am:tracking-widest am:uppercase am:text-gray-400 am:mb-2">Overview</span>
+        <span onclick="switchAboutTab('rankings', this)" class="am:about-btn am:active am:text-[#AF0C3E] am:font-medium am:border-r-2 am:border-[#AF0C3E] am:cursor-pointer am:transition-colors">Rankings</span>
+        <span onclick="switchAboutTab('accreditation', this)" class="am:about-btn am:cursor-pointer am:hover:text-gray-800 am:border-r-2 am:border-transparent am:hover:border-gray-200 am:cursor-pointer am:transition-colors">Accreditation</span>
+        <span onclick="switchAboutTab('chancellor', this)" class="am:about-btn am:cursor-pointer am:hover:text-gray-800 am:border-r-2 am:border-transparent am:hover:border-gray-200 am:cursor-pointer am:transition-colors">Chancellor</span>
+        <span onclick="switchAboutTab('mission', this)" class="am:about-btn am:cursor-pointer am:hover:text-gray-800 am:border-r-2 am:border-transparent am:hover:border-gray-200 am:cursor-pointer am:transition-colors">Mission & Vision</span>
+      </div>
+
+       <div id="sidebar-research" class="am:sidebar-root-group am:hidden am:flex am:flex-col am:gap-6">
+        <span class="am:text-xs am:font-bold am:tracking-widest am:uppercase am:text-gray-400 am:mb-2">Innovation</span>
+        <span onclick="switchResearchTab('centers', this)" class="am:research-btn am:active am:text-[#AF0C3E] am:font-medium am:border-r-2 am:border-[#AF0C3E] am:cursor-pointer am:transition-colors">Centers of Excellence</span>
+        <span onclick="switchResearchTab('projects', this)" class="am:research-btn am:cursor-pointer am:hover:text-gray-800 am:border-r-2 am:border-transparent am:hover:border-gray-200 am:cursor-pointer am:transition-colors">Funded Projects</span>
+      </div>
+
                   </div>
-                  <div class="am:lg:col-span-9 am:bg-white am:p-2 am:h-full am:overflow-y-auto am:custom-scrollbar">
-                    <div id="content-ug-arts" class="am:tab-content am:grid am:grid-cols-1 am:md:grid-cols-2 am:lg:grid-cols-3 am:gap-6 am:animate-fade-in">
-                      <div class="am:flex am:flex-col am:gap-4">
-                        <a href="#" class="am:font-satoshi am:text-base am:font-satoshi am:text-gray-700 am:hover:text-[#AF0C3E] am:block">B.A. (Hons) English</a>
-                        <a href="#" class="am:font-satoshi am:text-base am:font-satoshi am:text-gray-700 am:hover:text-[#AF0C3E] am:block">B.A. Mass Comm</a>
+                  <div class="am:flex-1 am:bg-white am:p-10 am:overflow-hidden am:flex am:flex-col">
+                    <div id="view-academics" class="am:hidden am:h-full am:grid am:grid-cols-12 am:gap-8 am:overflow-y-auto am:custom-scrollbar">
+                      <div class="am:col-span-3 am:bg-[#FDFBF7] am:rounded-xl am:p-4 am:flex am:flex-col am:gap-2 am:h-full">
+                        <!-------------------------ACADEMICS TABS---------------->
+                        <div id="tabs-academics-ug" class="am:level-group am:flex am:flex-col am:gap-2">
+                          <div onclick="switchTab('ug-arts', this)" class="am:tab-btn am:active am:group am:flex am:items-center am:gap-3 am:p-3 am:rounded-lg am:bg-white am:shadow-sm am:cursor-pointer am:border-l-[3px] am:border-[#AF0C3E]">
+                            <div class="am:w-8 am:h-8 am:rounded am:bg-orange-100 am:flex am:items-center am:justify-center am:text-orange-700">
+                              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="am:w-5 am:h-5">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9.53 16.122a3 3 0 0 0-5.78 1.128 2.25 2.25 0 0 1-2.4 2.245 4.5 4.5 0 0 0 8.4-2.245c0-.399-.078-.78-.22-1.128Zm0 0a15.998 15.998 0 0 0 3.388-1.62m-5.043-.025a15.994 15.994 0 0 1 1.622-3.395m3.42 3.42a15.995 15.995 0 0 0 4.764-4.648l3.876-5.814a1.151 1.151 0 0 0-1.597-1.597L14.146 6.32a15.996 15.996 0 0 0-4.649 4.763m3.42 3.42a6.776 6.776 0 0 0-3.42-3.42" />
+                              </svg>
+                            </div>
+                            <span class="am:font-satoshi am:text-base am:font-medium am:text-gray-800">Arts & Humanities</span>
+                          </div>
+                          <div onclick="switchTab('ug-eng', this)" class="am:tab-btn am:group am:flex am:items-center am:gap-3 am:p-3 am:rounded-lg am:hover:bg-white am:hover:shadow-md am:cursor-pointer am:border-l-[3px] am:border-transparent am:hover:border-[#AF0C3E]">
+                            <div class="am:w-8 am:h-8 am:rounded am:bg-purple-100 am:flex am:items-center am:justify-center am:text-purple-700">
+                              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="am:w-5 am:h-5">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M10.343 3.94c.09-.542.56-.94 1.11-.94h1.093c.55 0 1.02.398 1.11.94l.149.894c.07.424.384.764.78.93.398.164.855.142 1.205-.108l.737-.527a1.125 1.125 0 0 1 1.45.12l.773.774c.39.389.44 1.002.12 1.45l-.527.737c-.25.35-.272.806-.107 1.204.165.397.505.71.93.78l.893.15c.543.09.94.56.94 1.109v1.094c0 .55-.397 1.02-.94 1.11l-.893.149c-.425.07-.765.383-.93.78-.165.398-.143.854.107 1.204l.527.738c.32.447.269 1.06-.12 1.45l-.774.773a1.125 1.125 0 0 1-1.449.12l-.738-.527c-.35-.25-.806-.272-1.203-.107-.397.165-.71.505-.781.929l-.149.894c-.09.542-.56.94-1.11.94h-1.094c-.55 0-1.019-.398-1.11-.94l-.148-.894c-.071-.424-.384-.764-.781-.93-.398-.164-.854-.142-1.204.108l-.738.527c-.447.32-1.06.269-1.45-.12l-.773-.774a1.125 1.125 0 0 1-.12-1.45l.527-.737c.25-.35.273-.806.108-1.204-.165-.397-.505-.71-.93-.78l-.894-.15c-.542-.09-.94-.56-.94-1.109v-1.094c0-.55.398-1.02.94-1.11l.894-.149c.424-.07.765-.383.93-.78.165-.398.143-.854-.107-1.204l-.527-.738a1.125 1.125 0 0 1 .12-1.45l.773-.773a1.125 1.125 0 0 1 1.45-.12l.737.527c.35.25.807.272 1.204.107.397-.165.71-.505.78-.929l.15-.894Z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                              </svg>
+                            </div>
+                            <span class="am:font-satoshi am:text-base am:font-medium am:text-gray-800">Engineering</span>
+                          </div>
+                        </div>
                       </div>
-                      <div class="am:flex am:flex-col am:gap-4">
-                        <a href="#" class="am:font-satoshi am:text-base am:font-satoshi am:text-gray-700 am:hover:text-[#AF0C3E] am:block">B.A. (Hons) English</a>
-                        <a href="#" class="am:font-satoshi am:text-base am:font-satoshi am:text-gray-700 am:hover:text-[#AF0C3E] am:block">B.A. Mass Comm</a>
+                      <div class="am:col-span-9 am:bg-white am:p-2 am:h-full">
+                        <!-------------------------ACADEMICS TAB PROGRAMMES LISTINGS---------------->
+                        <div id="content-ug-arts" class="am:tab-content am:grid am:grid-cols-3 am:gap-6">
+                          <!-------------------------PRG - 01--------------->
+                          <div class="am:flex am:flex-col am:gap-4">
+                            <a href="#" class="am:font-satoshi am:text-base am:text-gray-700 am:hover:text-[#AF0C3E] am:block">B.A. (Hons) English</a>
+                          </div>
+                          <!-------------------------PRG - 02--------------->
+                          <div class="am:flex am:flex-col am:gap-4">
+                            <a href="#" class="am:font-satoshi am:text-base am:text-gray-700 am:hover:text-[#AF0C3E] am:block">B.A. (Hons) English</a>
+                          </div>
+                          <!-------------------------PRG - 03--------------->
+                          <div class="am:flex am:flex-col am:gap-4">
+                            <a href="#" class="am:font-satoshi am:text-base am:text-gray-700 am:hover:text-[#AF0C3E] am:block">B.A. (Hons) English</a>
+                          </div>
+                          <!-------------------------PRG - 04--------------->
+                          <div class="am:flex am:flex-col am:gap-4">
+                            <a href="#" class="am:font-satoshi am:text-base am:text-gray-700 am:hover:text-[#AF0C3E] am:block">B.A. (Hons) English</a>
+                          </div>
+                          <!-------------------------PRG - 05--------------->
+                          <div class="am:flex am:flex-col am:gap-4">
+                            <a href="#" class="am:font-satoshi am:text-base am:text-gray-700 am:hover:text-[#AF0C3E] am:block">B.A. (Hons) English</a>
+                          </div>
+                        </div>
+                        <!-------------------------ACADEMICS TAB PROGRAMMES LISTINGS---------------->
+                        <div id="content-ug-eng" class="am:tab-content am:hidden am:grid am:grid-cols-3 am:gap-6">
+                          <!-------------------------PRG - 01--------------->
+                          <div class="am:flex am:flex-col am:gap-4">
+                            <a href="#" class="am:font-satoshi am:text-base am:text-gray-700 am:hover:text-[#AF0C3E] am:block">B.Tech Computer Science</a>
+                          </div>
+                        </div>
                       </div>
-                      <div class="am:flex am:flex-col am:gap-4">
-                        <a href="#" class="am:font-satoshi am:text-base am:font-satoshi am:text-gray-700 am:hover:text-[#AF0C3E] am:block">B.A. (Hons) English</a>
-                        <a href="#" class="am:font-satoshi am:text-base am:font-satoshi am:text-gray-700 am:hover:text-[#AF0C3E] am:block">B.A. Mass Comm</a>
-                      </div>
                     </div>
-                    <div id="content-ug-eng" class="am:tab-content am:hidden am:grid am:grid-cols-1 am:md:grid-cols-2 am:lg:grid-cols-3 am:gap-6 am:animate-fade-in">
-                      <div class="am:flex am:flex-col am:gap-4">
-                        <a href="#" class="am:font-satoshi am:text-base am:font-satoshi am:text-gray-700 am:hover:text-[#AF0C3E] am:block">Computer Science</a>
-                        <a href="#" class="am:font-satoshi am:text-base am:font-satoshi am:text-gray-700 am:hover:text-[#AF0C3E] am:block">Mechanical Engg</a>
-                      </div>
-                    </div>
-                    <div id="content-pg-mba" class="am:tab-content am:hidden am:grid am:grid-cols-1 am:md:grid-cols-2 am:lg:grid-cols-3 am:gap-6 am:animate-fade-in">
-                      <div class="am:flex am:flex-col am:gap-4">
-                        <a href="#" class="am:font-satoshi am:text-base am:font-satoshi am:text-gray-700 am:hover:text-[#AF0C3E] am:block">MBA General</a>
-                      </div>
-                    </div>
-                    <div id="content-about-vision" class="am:tab-content am:hidden am:animate-fade-in">
-                      <h3 class="am:text-xl am:font-bold am:text-[#AF0C3E] am:mb-2">Our Vision</h3>
-                      <p class="am:text-gray-600 am:mb-4">To be a world-class institution...</p>
-                      <a href="#" class="am:text-[#AF0C3E] am:underline">Read More</a>
-                    </div>
-                    <div id="content-about-history" class="am:tab-content am:hidden am:animate-fade-in">
-                      <h3 class="am:text-xl am:font-bold am:text-[#AF0C3E] am:mb-2">Our History</h3>
-                      <p class="am:text-gray-600">Founded in 2003, we have grown into...</p>
-                    </div>
-                    <div id="content-campus-library" class="am:tab-content am:hidden am:animate-fade-in">
-                      <div class="am:grid am:grid-cols-2 am:gap-4">
-                        <div class="am:bg-gray-100 am:h-32 am:rounded-lg"></div>
-                        <div class="am:bg-gray-100 am:h-32 am:rounded-lg"></div>
-                      </div>
-                      <p class="am:mt-4 am:text-gray-600">State of the art library facilities...</p>
-                    </div>
-                    <div id="content-campus-housing" class="am:tab-content am:hidden am:animate-fade-in">
-                      <p class="am:text-gray-600">Secure and comfortable hostels for boys and girls...</p>
-                    </div>
-                    <div id="content-res-ai" class="am:tab-content am:hidden am:animate-fade-in">
-                      <h3 class="am:text-xl am:font-bold am:text-[#AF0C3E] am:mb-2">Center for AI</h3>
-                      <p class="am:text-gray-600">Leading research in Machine Learning and Robotics.</p>
+
+
+<div id="view-about" class="am:view-container am:hidden am:h-full am:overflow-y-auto am:custom-scrollbar">
+        
+        <div id="content-about-rankings" class="am:about-content">
+            <h2 class="am:font-anton am:text-3xl am:mb-6 am:text-[#AF0C3E] am:uppercase">University Rankings</h2>
+            <div class="am:grid am:grid-cols-3 am:gap-6">
+                <div class="am:bg-[#FFF4F5] am:p-6 am:rounded-2xl">
+                    <span class="am:block am:text-5xl am:font-bold am:text-[#AF0C3E] am:mb-2">#1</span>
+                    <p class="am:font-satoshi am:text-gray-700">In India for International Outlook (THE Rankings 2024)</p>
+                </div>
+                 <div class="am:bg-[#F2F8FF] am:p-6 am:rounded-2xl">
+                    <span class="am:block am:text-5xl am:font-bold am:text-blue-600 am:mb-2">A++</span>
+                    <p class="am:font-satoshi am:text-gray-700">NAAC Accreditation (Highest Grade)</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="content-about-accreditation" class="am:about-content am:hidden">
+            <h2 class="am:font-anton am:text-3xl am:mb-6 am:text-[#AF0C3E] am:uppercase">Accreditations</h2>
+            <p class="am:font-satoshi am:text-lg am:text-gray-600">Amrita Vishwa Vidyapeetham is accredited with the highest grade of A++ by NAAC.</p>
+        </div>
+
+        <div id="content-about-chancellor" class="am:about-content am:hidden">
+            <div class="am:flex am:gap-8 am:items-start">
+                <div class="am:w-48 am:h-48 am:bg-gray-200 am:rounded-full am:overflow-hidden am:shrink-0">
+                    <img src="img/amma.jpg" alt="Amma" class="am:w-full am:h-full am:object-cover">
+                </div>
+                <div>
+                    <h2 class="am:font-anton am:text-3xl am:mb-2 am:text-[#AF0C3E]">Sri Mata Amritanandamayi Devi</h2>
+                    <h3 class="am:font-satoshi am:text-xl am:font-medium am:mb-4">Chancellor</h3>
+                    <p class="am:font-satoshi am:text-gray-600 am:leading-relaxed">World-renowned humanitarian leader Sri Mata Amritanandamayi Devi (Amma) is the guiding light and Chancellor of Amrita Vishwa Vidyapeetham.</p>
+                </div>
+            </div>
+        </div>
+
+      </div>
+
+
+<div id="view-research" class="am:view-container am:hidden am:h-full am:overflow-y-auto am:custom-scrollbar">
+         <div id="content-research-centers" class="am:research-content">
+            <h2 class="am:font-anton am:text-3xl am:mb-6 am:text-[#AF0C3E] am:uppercase">Research Centers</h2>
+            <div class="am:grid am:grid-cols-2 am:gap-4">
+                <a href="#" class="am:block am:p-4 am:bg-gray-50 am:rounded-xl am:hover:bg-[#FFF4F5] am:transition-colors">
+                    <h4 class="am:font-bold am:text-lg">Cyber Security</h4>
+                    <p class="am:text-sm am:text-gray-500">Cutting edge security research</p>
+                </a>
+                <a href="#" class="am:block am:p-4 am:bg-gray-50 am:rounded-xl am:hover:bg-[#FFF4F5] am:transition-colors">
+                    <h4 class="am:font-bold am:text-lg">Amrita Multi Modal Applications Using Computer & Human Interaction (AMMACHI) Labs</h4>
+                </a>
+            </div>
+         </div>
+      </div>
+
+    
+  
+
+
+
+
+                  </div>
+                </div>
+                <div id="layout-full" class="am:h-full am:w-full am:bg-white am:p-10 am:overflow-hidden">
+                  <div id="view-campus" class="am:h-full am:w-full am:pb-20">
+                    <div class="am:grid am:grid-cols-5 am:gap-4 am:w-full">
+                      <!-------------------------AMRITAPURI CAMPUS DESKTOP---------------->
+                      <a href="#" class="am:group am:block am:relative am:bg-[#effdf5] am:p-5 am:h-full am:transition-all am:duration-300 am:hover:shadow-lg">
+                        <div class="am:w-full am:h-24 am:mb-4 am:flex am:items-center am:justify-center">
+                          <img src="img/amritapuri-campus.svg" alt="sketch" class="am:h-full am:object-contain" />
+                        </div>
+                        <h3 class="am:font-satoshi am:text-lg am:font-medium am:text-black am:mb-2">Amritapuri Campus</h3>
+                        <p class="am:font-satoshi am:text-sm am:leading-relaxed am:text-gray-600 am:line-clamp-4 am:mb-8 line-clamp-3">Amrita Vishwa Vidyapeetham's Amritapuri campus located in the pleasing village of Vallikavu is a multi-disciplinary research and teaching institute peacefully blended with science and spirituality</p>
+                        <div class="am:absolute am:bottom-5 am:left-5 am:text-gray-400 am:group-hover:text-[#AF0C3E] am:group-hover:translate-x-2 am:transition-all">
+                          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7" />
+                          </svg>
+                        </div>
+                      </a>
+                      <!-------------------------AMARAVATI CAMPUS DESKTOP---------------->
+                      <a href="#" class="am:group am:block am:relative am:bg-[#fffbf0] am:p-5 am:h-full am:transition-all am:duration-300 am:hover:shadow-lg">
+                        <div class="am:w-full am:h-24 am:mb-4 am:flex am:items-center am:justify-center">
+                          <img src="img/amaravati-campus.svg" alt="sketch" class="am:h-full am:object-contain" />
+                        </div>
+                        <h3 class="am:font-satoshi am:text-lg am:font-medium am:text-black am:mb-2">Amaravati Campus</h3>
+                        <p class="am:font-satoshi am:text-sm am:leading-relaxed am:text-gray-600 am:line-clamp-4 am:mb-8 line-clamp-3">Welcome to our seventh campus at Amaravati in Andhra Pradesh. Amrita is a multi-disciplinary, research-intensive university and is accredited with the highest possible A++ NAAC grade and is the country’s 5th best-ranked university in the NIRF rankings 2021. We invite you to join our new Amaravati campus in various faculty and administrative positions.</p>
+                        <div class="am:absolute am:bottom-5 am:left-5 am:text-gray-400 am:group-hover:text-[#AF0C3E] am:group-hover:translate-x-2 am:transition-all">
+                          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7" />
+                          </svg>
+                        </div>
+                      </a>
+                      <!-------------------------BENGALURU CAMPUS DESKTOP---------------->
+                      <a href="#" class="am:group am:block am:relative am:bg-[#f2f8ff] am:p-5 am:h-full am:transition-all am:duration-300 am:hover:shadow-lg">
+                        <div class="am:w-full am:h-24 am:mb-4 am:flex am:items-center am:justify-center">
+                          <img src="img/bengaluru-campus.svg" alt="sketch" class="am:h-full am:object-contain" />
+                        </div>
+                        <h3 class="am:font-satoshi am:text-lg am:font-medium am:text-black am:mb-2">Bengaluru Campus</h3>
+                        <p class="am:font-satoshi am:text-sm am:leading-relaxed am:text-gray-600 am:line-clamp-4 am:mb-8 line-clamp-3">Amrita University's Bengaluru Campus situated in Junnasandra, Karnataka, aims to create graduates with a solution mindset and a high degree of ethical standards</p>
+                        <div class="am:absolute am:bottom-5 am:left-5 am:text-gray-400 am:group-hover:text-[#AF0C3E] am:group-hover:translate-x-2 am:transition-all">
+                          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7" />
+                          </svg>
+                        </div>
+                      </a>
+                      <!-------------------------CHENNAI CAMPUS DESKTOP---------------->
+                      <a href="#" class="am:group am:block am:relative am:bg-[#f4f4f4] am:p-5 am:h-full am:transition-all am:duration-300 am:hover:shadow-lg">
+                        <div class="am:w-full am:h-24 am:mb-4 am:flex am:items-center am:justify-center">
+                          <img src="img/chennai-campus.svg" alt="sketch" class="am:h-full am:object-contain" />
+                        </div>
+                        <h3 class="am:font-satoshi am:text-lg am:font-medium am:text-black am:mb-2">Chennai Campus</h3>
+                        <p class="am:font-satoshi am:text-sm am:leading-relaxed am:text-gray-600 am:line-clamp-4 am:mb-8 line-clamp-3">Amrita Vishwa Vidyapeetham's Chennai campus at Vengal, Tamil Nadu offers various engineering programs developed on a choice-based credit system following continuous evaluation by faculties who guide students</p>
+                        <div class="am:absolute am:bottom-5 am:left-5 am:text-gray-400 am:group-hover:text-[#AF0C3E] am:group-hover:translate-x-2 am:transition-all">
+                          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7" />
+                          </svg>
+                        </div>
+                      </a>
+                      <!-------------------------COIMBATORE CAMPUS DESKTOP---------------->
+                      <a href="#" class="am:group am:block am:relative am:bg-[#fdf0fe] am:p-5 am:h-full am:transition-all am:duration-300 am:hover:shadow-lg">
+                        <div class="am:w-full am:h-24 am:mb-4 am:flex am:items-center am:justify-center">
+                          <img src="img/coimbatore-campus.svg" alt="sketch" class="am:h-full am:object-contain" />
+                        </div>
+                        <h3 class="am:font-satoshi am:text-lg am:font-medium am:text-black am:mb-2">Coimbatore Campus</h3>
+                        <p class="am:font-satoshi am:text-sm am:leading-relaxed am:text-gray-600 am:line-clamp-4 am:mb-8 line-clamp-3">Amrita University's Coimbatore campus started in a hidden village named Ettimadai provides over 120 UG, PG and doctoral programs to a student population of over 12,000 and faculty strength of nearly 1500</p>
+                        <div class="am:absolute am:bottom-5 am:left-5 am:text-gray-400 am:group-hover:text-[#AF0C3E] am:group-hover:translate-x-2 am:transition-all">
+                          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7" />
+                          </svg>
+                        </div>
+                      </a>
+                      <!-------------------------FARIDABAD CAMPUS DESKTOP---------------->
+                      <a href="#" class="am:group am:block am:relative am:bg-[#4F977214] am:p-5 am:h-full am:transition-all am:duration-300 am:hover:shadow-lg">
+                        <div class="am:w-full am:h-24 am:mb-4 am:flex am:items-center am:justify-center">
+                          <img src="img/faridabad-campus.svg" alt="sketch" class="am:h-full am:object-contain" />
+                        </div>
+                        <h3 class="am:font-satoshi am:text-lg am:font-medium am:text-black am:mb-2">Faridabad Campus</h3>
+                        <p class="am:font-satoshi am:text-sm am:leading-relaxed am:text-gray-600 am:line-clamp-4 am:mb-8 line-clamp-3">A land that has witnessed the historical prominence of ultra-modern facilities in India. A place where science, technology, and research merge to embrace good health across a 130-acre sprawling health city campus.</p>
+                        <div class="am:absolute am:bottom-5 am:left-5 am:text-gray-400 am:group-hover:text-[#AF0C3E] am:group-hover:translate-x-2 am:transition-all">
+                          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7" />
+                          </svg>
+                        </div>
+                      </a>
+                      <!-------------------------KOCHI CAMPUS DESKTOP---------------->
+                      <a href="#" class="am:group am:block am:relative am:bg-[#79BEFF30] am:p-5 am:h-full am:transition-all am:duration-300 am:hover:shadow-lg">
+                        <div class="am:w-full am:h-24 am:mb-4 am:flex am:items-center am:justify-center">
+                          <img src="img/kochi-campus.svg" alt="sketch" class="am:h-full am:object-contain" />
+                        </div>
+                        <h3 class="am:font-satoshi am:text-lg am:font-medium am:text-black am:mb-2">Kochi Campus</h3>
+                        <p class="am:font-satoshi am:text-sm am:leading-relaxed am:text-gray-600 am:line-clamp-4 am:mb-8 line-clamp-3">Amrita Vishwa Vidyapeetham's Kochi campus is an extensive campus comprising a premier multispeciality hospital, Amrita Institute of Medical Sciences, School of Medicine, Dentistry, Nursing, Pharmacy, Allied Health Sciences, Center for Nanosciences along with a School of Arts and Sciences and Department of Management as well</p>
+                        <div class="am:absolute am:bottom-5 am:left-5 am:text-gray-400 am:group-hover:text-[#AF0C3E] am:group-hover:translate-x-2 am:transition-all">
+                          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7" />
+                          </svg>
+                        </div>
+                      </a>
+                      <!-------------------------MYSURU CAMPUS DESKTOP---------------->
+                      <a href="#" class="am:group am:block am:relative am:bg-[#FFF4F5] am:p-5 am:h-full am:transition-all am:duration-300 am:hover:shadow-lg">
+                        <div class="am:w-full am:h-24 am:mb-4 am:flex am:items-center am:justify-center">
+                          <img src="img/mysuru-campus.svg" alt="sketch" class="am:h-full am:object-contain" />
+                        </div>
+                        <h3 class="am:font-satoshi am:text-lg am:font-medium am:text-black am:mb-2">Mysuru Campus</h3>
+                        <p class="am:font-satoshi am:text-sm am:leading-relaxed am:text-gray-600 am:line-clamp-4 am:mb-8 line-clamp-3">Amrita University's Mysuru campus situated at Bhogadi, Karnataka away from the hustle & bustle of the city combining state-of-the-art facilities offers a perfect environment that fulfills the aspirations of young minds and meets the requirements of future employers</p>
+                        <div class="am:absolute am:bottom-5 am:left-5 am:text-gray-400 am:group-hover:text-[#AF0C3E] am:group-hover:translate-x-2 am:transition-all">
+                          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7" />
+                          </svg>
+                        </div>
+                      </a>
+                      <!-------------------------NAGERCOIL CAMPUS DESKTOP---------------->
+                      <a href="#" class="am:group am:block am:relative am:bg-[#F8FFD7] am:p-5 am:h-full am:transition-all am:duration-300 am:hover:shadow-lg">
+                        <div class="am:w-full am:h-24 am:mb-4 am:flex am:items-center am:justify-center">
+                          <img src="img/nagercoil-campus.svg" alt="sketch" class="am:h-full am:object-contain" />
+                        </div>
+                        <h3 class="am:font-satoshi am:text-lg am:font-medium am:text-black am:mb-2">Nagercoil Campus</h3>
+                        <p class="am:font-satoshi am:text-sm am:leading-relaxed am:text-gray-600 am:line-clamp-4 am:mb-8 line-clamp-3">Amrita Vishwa Vidyapeetham, situated in Erachakulam, Nagercoil is a beacon of educational excellence which operates under the esteemed Mata Amritanandamayi Math. Founded by Satguru Mata Amritanandamayi Devi (Amma), our institution is dedicated to providing holistic education, guided by Amma’s profound vision encapsulated in the philosophy of “Education for Life.”</p>
+                        <div class="am:absolute am:bottom-5 am:left-5 am:text-gray-400 am:group-hover:text-[#AF0C3E] am:group-hover:translate-x-2 am:transition-all">
+                          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7" />
+                          </svg>
+                        </div>
+                      </a>
+                      <!-------------------------HARIDWAR CAMPUS DESKTOP---------------->
+                      <a href="#" class="am:group am:block am:relative am:bg-[#EEFFEE] am:p-5 am:h-full am:transition-all am:duration-300 am:hover:shadow-lg">
+                        <div class="am:w-full am:h-24 am:mb-4 am:opacity-60 am:mix-blend-multiply am:flex am:items-center am:justify-center">
+                          <img src="img/haridwar-campus.svg" alt="sketch" class="am:h-full am:object-contain" />
+                        </div>
+                        <h3 class="am:font-satoshi am:text-lg am:font-medium am:text-black am:mb-2">Haridwar Campus</h3>
+                        <p class="am:font-satoshi am:text-sm am:leading-relaxed am:text-gray-600 am:line-clamp-4 am:mb-8 line-clamp-3">Amrita Vishwa Vidyapeetham’s campus in Haridwar, nestled on the sacred banks of the Ganges, is poised to become a landmark of educational excellence. This new campus will embody Amma’s profound vision of “education for life” and her emphasis on compassion-driven research, extending the university’s mission to the spiritual heartland of India.</p>
+                        <div class="am:absolute am:bottom-5 am:left-5 am:text-gray-400 am:group-hover:text-[#AF0C3E] am:group-hover:translate-x-2 am:transition-all">
+                          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7" />
+                          </svg>
+                        </div>
+                      </a>
                     </div>
                   </div>
                 </div>
@@ -222,170 +639,139 @@
     </header>
     <!--------------BANNER VIDEO---------------->
     <section class="am:py-2 am:px-2 am:sm:py-4 am:sm:px-4 am:lg:py-6 am:lg:px-6 am:w-full am:h-full am:relative">
-  
-  <div class="am:relative am:h-[600px] am:sm:h-[700px] am:lg:h-[850px] am:w-full am:rounded-2xl am:sm:rounded-[2rem] am:overflow-hidden am:group am:shadow-2xl am:bg-black am:z-10" id="hero-slider">
-
-    <!--------------BANNER VIDEO FIRST SLIDE---------------->
-    <div class="am-slide am:absolute am:inset-0 am:w-full am:h-full am:transition-opacity am:duration-700 am:opacity-100 am:z-20 am:pointer-events-auto">
-      
-      <video autoplay muted playsinline class="hero-video am:absolute am:inset-0 am:w-full am:h-full am:object-cover">
-        <source src="img/amrita-campus-video-home-page.mp4" type="video/mp4" />
-      </video>
-
-      <div class="am:absolute am:inset-0 am:bg-black/40 am:sm:bg-black/50"></div>
-
-      <div class="am:absolute am:inset-0 am:w-full am:h-full">
-        <div class="am:container am:mx-auto am:px-4 am:lg:px-6 am:h-full am:relative am:flex am:flex-col am:justify-between am:py-6 am:sm:py-8 am:lg:py-10">
-          
-          <div class="am:w-full am:h-20"></div>
-
-          <div class="am:flex am:flex-col am:lg:flex-row am:items-end am:justify-between am:relative am:z-10 am:w-full am:pointer-events-none am:h-full am:pb-32 am:sm:pb-0">
-            <div class="am:max-w-3xl am:w-full am:lg:max-w-4xl am:pointer-events-auto am:mt-auto am:mb-10 am:sm:mb-10">
-              <h1 class="am:text-white am:font-anton am:text-5xl am:sm:text-6xl am:lg:text-8xl am:lg:leading-[1.1] am:uppercase am:leading-tight am:mb-3 am:sm:mb-4 am:drop-shadow-lg">
-                The Future <br />Awaits You. <br />Shape it.
-              </h1>
-              <p class="am:max-w-[90%] am:sm:max-w-lg am:py-2 am:sm:py-4 am:text-gray-100 am:font-satoshi am:text-base am:sm:text-lg am:lg:text-xl am:leading-snug am:sm:leading-7 am:drop-shadow-md">
-                Join Amrita’s B.Tech programmes, where innovation, technology, and values unite to shape a better tomorrow.
-              </p>
-              
-              <div class="am:mt-4 am:sm:mt-5 am:flex am:flex-wrap am:gap-4">
-                
-                <button class="am:cursor-pointer am:group/apply am:relative am:z-10 am:inline-flex am:items-center am:gap-3 am:overflow-hidden am:rounded-full am:bg-[#AF0C3E] am:pl-1 am:pr-6 am:py-1 am:text-white am:transition-all am:duration-800 am:hover:shadow-lg">
-                  <span class="am:absolute am:left-1 am:top-1/2 am:-translate-y-1/2 am:h-10 am:w-10 am:rounded-full am:bg-white am:transition-transform am:duration-800 am:ease-out am:scale-0 am:group-hover/apply:scale-[10]"></span>
-                  <div class="am:relative am:z-10 am:flex am:h-10 am:w-10 am:items-center am:justify-center am:rounded-full am:bg-white/20 am:transition-all am:duration-800 am:group-hover/apply:bg-[#AF0C3E] am:group-hover/apply:rotate-90">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="am:h-5 am:w-5 am:text-white"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
+      <div class="am:relative am:h-[600px] am:sm:h-[700px] am:lg:h-[850px] am:w-full am:rounded-2xl am:sm:rounded-[2rem] am:overflow-hidden am:group am:shadow-2xl am:bg-black am:z-10" id="hero-slider">
+        <div class="am-slide am:absolute am:inset-0 am:w-full am:h-full am:transition-opacity am:duration-700 am:opacity-100 am:z-20 am:pointer-events-auto">
+          <video autoplay muted playsinline class="hero-video am:absolute am:inset-0 am:w-full am:h-full am:object-cover">
+            <source src="img/amrita-campus-video-home-page.mp4" type="video/mp4" />
+          </video>
+          <div class="am:absolute am:inset-0 am:bg-black/40 am:sm:bg-black/50"></div>
+          <div class="am:absolute am:inset-0 am:w-full am:h-full">
+            <div class="am:container am:mx-auto am:px-4 am:lg:px-6 am:h-full am:relative am:flex am:flex-col am:justify-between am:py-6 am:sm:py-8 am:lg:py-10">
+              <div class="am:w-full am:h-20"></div>
+              <div class="am:flex am:flex-col am:lg:flex-row am:items-end am:justify-between am:relative am:z-10 am:w-full am:pointer-events-none am:h-full am:pb-32 am:sm:pb-0">
+                <div class="am:max-w-3xl am:w-full am:lg:max-w-4xl am:pointer-events-auto am:mt-auto am:mb-10 am:sm:mb-6">
+                  <h1 class="am:text-white am:font-anton am:text-5xl am:sm:text-6xl am:lg:text-8xl am:lg:leading-[1.1] am:uppercase am:leading-tight am:mb-3 am:sm:mb-4 am:drop-shadow-lg"> The Future <br />Awaits You. <br />Shape it. </h1>
+                  <p class="am:max-w-[90%] am:sm:max-w-lg am:py-2 am:sm:py-4 am:text-gray-100 am:font-satoshi am:text-base am:sm:text-lg am:lg:text-xl am:leading-snug am:sm:leading-7 am:drop-shadow-md"> Join Amrita’s B.Tech programmes, where innovation, technology, and values unite to shape a better tomorrow. </p>
+                  <div class="am:mt-4 am:sm:mt-5 am:flex am:flex-wrap am:gap-4">
+                    <button class="am:cursor-pointer am:group/apply am:relative am:z-10 am:inline-flex am:items-center am:gap-3 am:overflow-hidden am:rounded-full am:bg-[#AF0C3E] am:pl-1 am:pr-6 am:py-1 am:text-white am:transition-all am:duration-800 am:hover:shadow-lg">
+                      <span class="am:absolute am:left-1 am:top-1/2 am:-translate-y-1/2 am:h-10 am:w-10 am:rounded-full am:bg-white am:transition-transform am:duration-800 am:ease-out am:scale-0 am:group-hover/apply:scale-[10]"></span>
+                      <div class="am:relative am:z-10 am:flex am:h-10 am:w-10 am:items-center am:justify-center am:rounded-full am:bg-white/20 am:transition-all am:duration-800 am:group-hover/apply:bg-[#AF0C3E] am:group-hover/apply:rotate-90">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="am:h-5 am:w-5 am:text-white">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                        </svg>
+                      </div>
+                      <span class="am:relative am:z-10 am:font-satoshi am:text-sm am:font-medium am:tracking-wide am:transition-colors am:duration-800 am:group-hover/apply:text-black">Apply Now</span>
+                    </button>
+                    <button class="am:cursor-pointer am:group/enquire am:relative am:z-10 am:inline-flex am:items-center am:gap-3 am:overflow-hidden am:rounded-full am:bg-white am:pl-1 am:pr-6 am:py-1 am:text-black am:transition-all am:duration-800 am:hover:shadow-lg">
+                      <span class="am:absolute am:left-1 am:top-1/2 am:-translate-y-1/2 am:h-10 am:w-10 am:rounded-full am:bg-[#AF0C3E] am:transition-transform am:duration-800 am:ease-out am:scale-0 am:group-hover/enquire:scale-[10]"></span>
+                      <div class="am:relative am:z-10 am:flex am:h-10 am:w-10 am:items-center am:justify-center am:rounded-full am:bg-black/10 am:transition-all am:duration-800 am:group-hover/enquire:bg-white am:group-hover/enquire:rotate-90">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="am:h-5 am:w-5 am:text-black am:group-hover/enquire:text-[#AF0C3E]">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+                        </svg>
+                      </div>
+                      <span class="am:relative am:z-10 am:font-satoshi am:text-sm am:font-medium am:tracking-wide am:transition-colors am:duration-800 am:group-hover/enquire:text-white">Enquire</span>
+                    </button>
                   </div>
-                  <span class="am:relative am:z-10 am:font-satoshi am:text-sm am:font-medium am:tracking-wide am:transition-colors am:duration-800 am:group-hover/apply:text-black">Apply Now</span>
-                </button>
-
-                <button class="am:cursor-pointer am:group/enquire am:relative am:z-10 am:inline-flex am:items-center am:gap-3 am:overflow-hidden am:rounded-full am:bg-white am:pl-1 am:pr-6 am:py-1 am:text-black am:transition-all am:duration-800 am:hover:shadow-lg">
-                  <span class="am:absolute am:left-1 am:top-1/2 am:-translate-y-1/2 am:h-10 am:w-10 am:rounded-full am:bg-[#AF0C3E] am:transition-transform am:duration-800 am:ease-out am:scale-0 am:group-hover/enquire:scale-[10]"></span>
-                  <div class="am:relative am:z-10 am:flex am:h-10 am:w-10 am:items-center am:justify-center am:rounded-full am:bg-black/10 am:transition-all am:duration-800 am:group-hover/enquire:bg-white am:group-hover/enquire:rotate-90">
-                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="am:h-5 am:w-5 am:text-black am:group-hover/enquire:text-[#AF0C3E]">
-                      <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
-                    </svg>
-                  </div>
-                  <span class="am:relative am:z-10 am:font-satoshi am:text-sm am:font-medium am:tracking-wide am:transition-colors am:duration-800 am:group-hover/enquire:text-white">Enquire</span>
-                </button>
-
-              </div>
-              </div>
-          </div>
-
-          <div class="am:absolute am:bottom-4 am:left-4 am:right-4 am:sm:left-auto am:sm:right-8 am:sm:bottom-12 am:z-30 am:w-auto am:sm:w-full am:sm:max-w-md am:pointer-events-auto">
-            <div class="am:bg-black/80 am:sm:bg-black/60 am:backdrop-blur-xl am:border am:border-white/10 am:p-3 am:pb-4 am:rounded-xl am:flex am:gap-3 am:sm:gap-4 am:items-center am:shadow-2xl am:relative am:overflow-hidden am:group/card am:transition-all am:hover:bg-black/70">
-              
-              <div class="am:absolute am:bottom-0 am:left-0 am:w-full am:h-[3px] am:bg-white/10">
-                <div class="video-progress-bar am:h-full am:bg-[#AF0C3E] am:w-0"></div>
-              </div>
-
-              <div class="am:w-20 am:h-20 am:sm:w-32 am:sm:h-24 am:flex-shrink-0 am:rounded-lg am:overflow-hidden am:relative am:bg-gray-800">
-                <video muted loop class="am:w-full am:h-full am:object-cover am:opacity-80 am:group-hover/card:opacity-100">
-                  <source src="img/amrita-campus-video-home-page.mp4" type="video/mp4" />
-                </video>
-              </div>
-
-              <div class="am:flex-1 am:pr-1 am:sm:pr-2">
-                <h3 class="am:text-white am:font-bold am:text-sm am:sm:text-base am:font-satoshi am:mb-1">The Future Awaits You.</h3>
-                <p class="am:text-gray-400 am:text-[10px] am:sm:text-xs am:font-satoshi">Shape a better tomorrow.</p>
-                
-                <div class="am:flex am:items-center am:gap-2 am:justify-end">
-                  <button class="prev-btn am:w-6 am:h-6 am:sm:w-7 am:sm:h-7 am:flex am:items-center am:justify-center am:border am:border-white/20 am:rounded am:hover:bg-white am:hover:text-black am:text-white am:transition-colors am:cursor-pointer">
-                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6" /></svg>
-                  </button>
-                  <button class="next-btn am:w-6 am:h-6 am:sm:w-7 am:sm:h-7 am:flex am:items-center am:justify-center am:border am:border-white/20 am:rounded am:hover:bg-white am:hover:text-black am:text-white am:transition-colors am:cursor-pointer">
-                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6" /></svg>
-                  </button>
                 </div>
               </div>
-
+              <div class="am:absolute am:bottom-4 am:left-4 am:right-4 am:z-30 am:w-auto am:sm:relative am:sm:bottom-0 am:sm:left-0 am:sm:right-0 am:sm:mt-0 am:sm:w-full am:sm:max-w-md am:lg:absolute am:lg:bottom-12 am:lg:right-8 am:lg:left-auto am:pointer-events-auto">
+                <div class="am:bg-black/80 am:sm:bg-black/60 am:backdrop-blur-xl am:border am:border-white/10 am:p-3 am:pb-4 am:rounded-xl am:flex am:gap-3 am:sm:gap-4 am:items-center am:shadow-2xl am:relative am:overflow-hidden am:group/card am:transition-all am:hover:bg-black/70">
+                  <div class="am:absolute am:bottom-0 am:left-0 am:w-full am:h-[3px] am:bg-white/10">
+                    <div class="video-progress-bar am:h-full am:bg-[#AF0C3E] am:w-0"></div>
+                  </div>
+                  <div class="am:w-20 am:h-20 am:sm:w-32 am:sm:h-24 am:flex-shrink-0 am:rounded-lg am:overflow-hidden am:relative am:bg-gray-800">
+                    <video muted loop class="am:w-full am:h-full am:object-cover am:opacity-80 am:group-hover/card:opacity-100">
+                      <source src="img/amrita-campus-video-home-page.mp4" type="video/mp4" />
+                    </video>
+                  </div>
+                  <div class="am:flex-1 am:pr-1 am:sm:pr-2">
+                    <h3 class="am:text-white am:font-bold am:text-sm am:sm:text-base am:font-satoshi am:mb-1">The Future Awaits You.</h3>
+                    <p class="am:text-gray-400 am:text-[10px] am:sm:text-xs am:font-satoshi">Shape a better tomorrow.</p>
+                    <div class="am:flex am:items-center am:gap-2 am:justify-end">
+                      <button class="prev-btn am:w-6 am:h-6 am:sm:w-7 am:sm:h-7 am:flex am:items-center am:justify-center am:border am:border-white/20 am:rounded am:hover:bg-white am:hover:text-black am:text-white am:transition-colors am:cursor-pointer">
+                        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <path d="M15 18l-6-6 6-6" />
+                        </svg>
+                      </button>
+                      <button class="next-btn am:w-6 am:h-6 am:sm:w-7 am:sm:h-7 am:flex am:items-center am:justify-center am:border am:border-white/20 am:rounded am:hover:bg-white am:hover:text-black am:text-white am:transition-colors am:cursor-pointer">
+                        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <path d="M9 18l6-6-6-6" />
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="am-slide am:absolute am:inset-0 am:w-full am:h-full am:transition-opacity am:duration-700 am:opacity-0 am:pointer-events-none am:z-10">
+          <video muted playsinline class="hero-video am:absolute am:inset-0 am:w-full am:h-full am:object-cover">
+            <source src="img/banner-video.mp4" type="video/mp4" />
+          </video>
+          <div class="am:absolute am:inset-0 am:bg-black/40 am:sm:bg-black/50"></div>
+          <div class="am:absolute am:inset-0 am:w-full am:h-full">
+            <div class="am:container am:mx-auto am:px-4 am:lg:px-6 am:h-full am:relative am:flex am:flex-col am:justify-between am:py-6 am:sm:py-8 am:lg:py-10">
+              <div class="am:w-full am:h-20"></div>
+              <div class="am:flex am:flex-col am:lg:flex-row am:items-end am:justify-between am:relative am:z-10 am:w-full am:pointer-events-none am:h-full am:pb-32 am:sm:pb-0">
+                <div class="am:max-w-3xl am:w-full am:lg:max-w-4xl am:pointer-events-auto am:mt-auto am:mb-10 am:sm:mb-6">
+                  <h1 class="am:text-white am:font-anton am:text-5xl am:sm:text-6xl am:lg:text-8xl am:lg:leading-[1.1] am:uppercase am:leading-tight am:mb-3 am:sm:mb-4 am:drop-shadow-lg"> Admissions <br />Open 2025 </h1>
+                  <p class="am:max-w-[90%] am:sm:max-w-lg am:py-2 am:sm:py-4 am:text-gray-100 am:font-satoshi am:text-base am:sm:text-lg am:lg:text-xl am:leading-snug am:sm:leading-7 am:drop-shadow-md"> Apply now for world-class engineering programs designed for the future. </p>
+                  <div class="am:mt-4 am:sm:mt-5 am:flex am:flex-wrap am:gap-4">
+                    <button class="am:cursor-pointer am:group/apply am:relative am:z-10 am:inline-flex am:items-center am:gap-3 am:overflow-hidden am:rounded-full am:bg-[#AF0C3E] am:pl-1 am:pr-6 am:py-1 am:text-white am:transition-all am:duration-800 am:hover:shadow-lg">
+                      <span class="am:absolute am:left-1 am:top-1/2 am:-translate-y-1/2 am:h-10 am:w-10 am:rounded-full am:bg-white am:transition-transform am:duration-800 am:ease-out am:scale-0 am:group-hover/apply:scale-[10]"></span>
+                      <div class="am:relative am:z-10 am:flex am:h-10 am:w-10 am:items-center am:justify-center am:rounded-full am:bg-white/20 am:transition-all am:duration-800 am:group-hover/apply:bg-[#AF0C3E] am:group-hover/apply:rotate-90">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="am:h-5 am:w-5 am:text-white">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                        </svg>
+                      </div>
+                      <span class="am:relative am:z-10 am:font-satoshi am:text-sm am:font-medium am:tracking-wide am:transition-colors am:duration-800 am:group-hover/apply:text-black">Apply Now</span>
+                    </button>
+                    <button class="am:cursor-pointer am:group/enquire am:relative am:z-10 am:inline-flex am:items-center am:gap-3 am:overflow-hidden am:rounded-full am:bg-white am:pl-1 am:pr-6 am:py-1 am:text-black am:transition-all am:duration-800 am:hover:shadow-lg">
+                      <span class="am:absolute am:left-1 am:top-1/2 am:-translate-y-1/2 am:h-10 am:w-10 am:rounded-full am:bg-[#AF0C3E] am:transition-transform am:duration-800 am:ease-out am:scale-0 am:group-hover/enquire:scale-[10]"></span>
+                      <div class="am:relative am:z-10 am:flex am:h-10 am:w-10 am:items-center am:justify-center am:rounded-full am:bg-black/10 am:transition-all am:duration-800 am:group-hover/enquire:bg-white am:group-hover/enquire:rotate-90">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="am:h-5 am:w-5 am:text-black am:group-hover/enquire:text-[#AF0C3E]">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+                        </svg>
+                      </div>
+                      <span class="am:relative am:z-10 am:font-satoshi am:text-sm am:font-medium am:tracking-wide am:transition-colors am:duration-800 am:group-hover/enquire:text-white">Enquire</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="am:absolute am:bottom-4 am:left-4 am:right-4 am:z-30 am:w-auto am:sm:relative am:sm:bottom-0 am:sm:left-0 am:sm:right-0 am:sm:mt-0 am:sm:w-full am:sm:max-w-md am:lg:absolute am:lg:bottom-12 am:lg:right-8 am:lg:left-auto am:pointer-events-auto">
+                <div class="am:bg-black/80 am:sm:bg-black/60 am:backdrop-blur-xl am:border am:border-white/10 am:p-3 am:pb-4 am:rounded-xl am:flex am:gap-3 am:sm:gap-4 am:items-center am:shadow-2xl am:relative am:overflow-hidden am:group/card am:transition-all am:hover:bg-black/70">
+                  <div class="am:absolute am:bottom-0 am:left-0 am:w-full am:h-[3px] am:bg-white/10">
+                    <div class="video-progress-bar am:h-full am:bg-[#AF0C3E] am:w-0"></div>
+                  </div>
+                  <div class="am:w-20 am:h-20 am:sm:w-32 am:sm:h-24 am:flex-shrink-0 am:rounded-lg am:overflow-hidden am:relative am:bg-gray-800">
+                    <video muted loop class="am:w-full am:h-full am:object-cover am:opacity-80 am:group-hover/card:opacity-100">
+                      <source src="img/banner-video.mp4" type="video/mp4" />
+                    </video>
+                  </div>
+                  <div class="am:flex-1 am:pr-1 am:sm:pr-2">
+                    <h3 class="am:text-white am:font-bold am:text-sm am:sm:text-base am:font-satoshi am:mb-1">Admissions Open 2025</h3>
+                    <p class="am:text-gray-400 am:text-[10px] am:sm:text-xs am:font-satoshi">Apply now for world-class programs.</p>
+                    <div class="am:flex am:items-center am:gap-2 am:justify-end">
+                      <button class="prev-btn am:w-6 am:h-6 am:sm:w-7 am:sm:h-7 am:flex am:items-center am:justify-center am:border am:border-white/20 am:rounded am:hover:bg-white am:hover:text-black am:text-white am:transition-colors am:cursor-pointer">
+                        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <path d="M15 18l-6-6 6-6" />
+                        </svg>
+                      </button>
+                      <button class="next-btn am:w-6 am:h-6 am:sm:w-7 am:sm:h-7 am:flex am:items-center am:justify-center am:border am:border-white/20 am:rounded am:hover:bg-white am:hover:text-black am:text-white am:transition-colors am:cursor-pointer">
+                        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <path d="M9 18l6-6-6-6" />
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-
-    <!--------------BANNER VIDEO SECOND SLIDE---------------->
-    <div class="am-slide am:absolute am:inset-0 am:w-full am:h-full am:transition-opacity am:duration-700 am:opacity-0 am:pointer-events-none am:z-10">
-      
-      <video muted playsinline class="hero-video am:absolute am:inset-0 am:w-full am:h-full am:object-cover">
-        <source src="img/banner-video.mp4" type="video/mp4" />
-      </video>
-
-      <div class="am:absolute am:inset-0 am:bg-black/40 am:sm:bg-black/50"></div>
-
-      <div class="am:absolute am:inset-0 am:w-full am:h-full">
-        <div class="am:container am:mx-auto am:px-4 am:lg:px-6 am:h-full am:relative am:flex am:flex-col am:justify-between am:py-6 am:sm:py-8 am:lg:py-10">
-          <div class="am:w-full am:h-20"></div>
-
-          <div class="am:flex am:flex-col am:lg:flex-row am:items-end am:justify-between am:relative am:z-10 am:w-full am:pointer-events-none am:h-full am:pb-32 am:sm:pb-0">
-            <div class="am:max-w-3xl am:w-full am:lg:max-w-4xl am:pointer-events-auto am:mt-auto am:mb-10 am:sm:mb-10">
-              <h1 class="am:text-white am:font-anton am:text-5xl am:sm:text-6xl am:lg:text-8xl am:lg:leading-[1.1] am:uppercase am:leading-tight am:mb-3 am:sm:mb-4 am:drop-shadow-lg">
-                Admissions <br />Open 2025
-              </h1>
-              <p class="am:max-w-[90%] am:sm:max-w-lg am:py-2 am:sm:py-4 am:text-gray-100 am:font-satoshi am:text-base am:sm:text-lg am:lg:text-xl am:leading-snug am:sm:leading-7 am:drop-shadow-md">
-                Apply now for world-class engineering programs designed for the future.
-              </p>
-               
-               <div class="am:mt-4 am:sm:mt-5 am:flex am:flex-wrap am:gap-4">
-                
-                <button class="am:cursor-pointer am:group/apply am:relative am:z-10 am:inline-flex am:items-center am:gap-3 am:overflow-hidden am:rounded-full am:bg-[#AF0C3E] am:pl-1 am:pr-6 am:py-1 am:text-white am:transition-all am:duration-800 am:hover:shadow-lg">
-                  <span class="am:absolute am:left-1 am:top-1/2 am:-translate-y-1/2 am:h-10 am:w-10 am:rounded-full am:bg-white am:transition-transform am:duration-800 am:ease-out am:scale-0 am:group-hover/apply:scale-[10]"></span>
-                  <div class="am:relative am:z-10 am:flex am:h-10 am:w-10 am:items-center am:justify-center am:rounded-full am:bg-white/20 am:transition-all am:duration-800 am:group-hover/apply:bg-[#AF0C3E] am:group-hover/apply:rotate-90">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="am:h-5 am:w-5 am:text-white"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
-                  </div>
-                  <span class="am:relative am:z-10 am:font-satoshi am:text-sm am:font-medium am:tracking-wide am:transition-colors am:duration-800 am:group-hover/apply:text-black">Apply Now</span>
-                </button>
-
-                <button class="am:cursor-pointer am:group/enquire am:relative am:z-10 am:inline-flex am:items-center am:gap-3 am:overflow-hidden am:rounded-full am:bg-white am:pl-1 am:pr-6 am:py-1 am:text-black am:transition-all am:duration-800 am:hover:shadow-lg">
-                  <span class="am:absolute am:left-1 am:top-1/2 am:-translate-y-1/2 am:h-10 am:w-10 am:rounded-full am:bg-[#AF0C3E] am:transition-transform am:duration-800 am:ease-out am:scale-0 am:group-hover/enquire:scale-[10]"></span>
-                  <div class="am:relative am:z-10 am:flex am:h-10 am:w-10 am:items-center am:justify-center am:rounded-full am:bg-black/10 am:transition-all am:duration-800 am:group-hover/enquire:bg-white am:group-hover/enquire:rotate-90">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="am:h-5 am:w-5 am:text-black am:group-hover/enquire:text-[#AF0C3E]">
-                      <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
-                    </svg>
-                  </div>
-                  <span class="am:relative am:z-10 am:font-satoshi am:text-sm am:font-medium am:tracking-wide am:transition-colors am:duration-800 am:group-hover/enquire:text-white">Admissions</span>
-                </button>
-
-              </div>
-              </div>
-          </div>
-
-          <div class="am:absolute am:bottom-4 am:left-4 am:right-4 am:sm:left-auto am:sm:right-8 am:sm:bottom-12 am:z-30 am:w-auto am:sm:w-full am:sm:max-w-md am:pointer-events-auto">
-            <div class="am:bg-black/80 am:sm:bg-black/60 am:backdrop-blur-xl am:border am:border-white/10 am:p-3 am:pb-4 am:rounded-xl am:flex am:gap-3 am:sm:gap-4 am:items-center am:shadow-2xl am:relative am:overflow-hidden am:group/card am:transition-all am:hover:bg-black/70">
-              
-              <div class="am:absolute am:bottom-0 am:left-0 am:w-full am:h-[3px] am:bg-white/10">
-                <div class="video-progress-bar am:h-full am:bg-[#AF0C3E] am:w-0"></div>
-              </div>
-
-              <div class="am:w-20 am:h-20 am:sm:w-32 am:sm:h-24 am:flex-shrink-0 am:rounded-lg am:overflow-hidden am:relative am:bg-gray-800">
-                <video muted loop class="am:w-full am:h-full am:object-cover am:opacity-80 am:group-hover/card:opacity-100">
-                  <source src="img/banner-video.mp4" type="video/mp4" />
-                </video>
-              </div>
-
-              <div class="am:flex-1 am:pr-1 am:sm:pr-2">
-                <h3 class="am:text-white am:font-bold am:text-sm am:sm:text-base am:font-satoshi am:mb-1">Admissions Open 2025</h3>
-                <p class="am:text-gray-400 am:text-[10px] am:sm:text-xs am:font-satoshi">Apply now for world-class programs.</p>
-                
-                <div class="am:flex am:items-center am:gap-2 am:justify-end">
-                  <button class="prev-btn am:w-6 am:h-6 am:sm:w-7 am:sm:h-7 am:flex am:items-center am:justify-center am:border am:border-white/20 am:rounded am:hover:bg-white am:hover:text-black am:text-white am:transition-colors am:cursor-pointer">
-                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6" /></svg>
-                  </button>
-                  <button class="next-btn am:w-6 am:h-6 am:sm:w-7 am:sm:h-7 am:flex am:items-center am:justify-center am:border am:border-white/20 am:rounded am:hover:bg-white am:hover:text-black am:text-white am:transition-colors am:cursor-pointer">
-                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6" /></svg>
-                  </button>
-                </div>
-              </div>
-
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</section>
+    </section>
     <!--------------WHAT'S YOUR INTEREST---------------->
     <section class="am:py-12 am:lg:py-24 am:w-full am:bg-white">
       <div class="am:container am:mx-auto am:px-4 am:sm:px-6 am:lg:px-6">
@@ -710,7 +1096,7 @@
     </section>
     <!--------------UPCOMING EVENTS---------------->
     <section class="am:py-12 am:lg:py-25 am:bg-black am:relative am:overflow-hidden">
-      <div class="am:absolute am:top-0 am:right-0 am:w-[70%] am:h-[50%] am:opacity-20 am:lg:top-[10%] am:lg:left-[20%] am:lg:h-[30%] am:lg:w-[30%] am:lg:opacity-100 am:pointer-events-none am:overflow-hidden am:mix-blend-screen">
+      <div class="am:absolute am:top-0 am:right-0 am:w-[70%] am:h-[50%] am:opacity-20 am:lg:top-[10%] am:lg:left-[20%] am:lg:h-[30%] am:lg:w-[30%] am:lg:opacity-100  am:overflow-hidden am:mix-blend-screen">
         <video class="am:absolute am:top-0 am:right-0 am:h-full am:w-full am:object-contain" autoplay loop muted playsinline>
           <source src="img/events-bg-element.mp4" type="video/mp4" />
         </video>
@@ -827,13 +1213,13 @@
           </div>
           <div class="am:col-span-1">
             <div class="am:grid am:grid-cols-2 am:gap-3 am:lg:gap-4">
-              <div class="am:h-40 am:sm:h-52 am:lg:h-64">
+              <div class="am:h-40 am:sm:h-full am:lg:h-64">
                 <img class="am:rounded-lg am:w-full am:h-full am:object-cover" src="img/innovation-card-02.jpg" alt="Innovation" />
               </div>
               <div class="am:row-span-2 am:h-full">
                 <img class="am:rounded-lg am:w-full am:h-full am:object-cover" src="img/innovation-card-03.jpg" alt="Innovation" />
               </div>
-              <div class="am:h-40 am:sm:h-52 am:lg:h-64">
+              <div class="am:h-40 am:sm:h-full am:lg:h-64">
                 <img class="am:rounded-lg am:w-full am:h-full am:object-cover" src="img/innovation-card-01.jpg" alt="Innovation" />
               </div>
             </div>
@@ -846,7 +1232,7 @@
       <div class="am:container am:mx-auto am:px-4 am:sm:px-6">
         <div class="am:grid am:grid-cols-1 am:lg:grid-cols-3 am:gap-6 am:lg:gap-6 am:items-stretch">
           <!-- IMAGE CARD -->
-          <div class="am:h-64 am:sm:h-80 am:lg:h-full am:w-full">
+          <div class="am:h-64 am:sm:h-120 am:lg:h-full am:w-full">
             <img class="am:object-cover am:w-full am:h-full am:rounded-lg am:p-2 am:bg-white" alt="Live-in-labs" src="img/live-in-labs.jpg" />
           </div>
           <!-- VIDEO BACKGROUND CARD -->
@@ -891,100 +1277,91 @@
     </section>
     <!-----------VIDEO GROUP-------------------->
     <section>
-  <div class="swiper am:VideoSlider am:!overflow-hidden">
-    <div class="swiper-wrapper">
-      
-      <div class="swiper-slide am:h-60 am:lg:h-80">
-        <a target="_blank" href="#" class="am:block am:h-full am:group am:relative am:overflow-hidden">
-          <div class="am:relative am:h-full am:w-full">
-            <div class="am:absolute am:top-0 am:left-0 am:h-full am:w-full am:bg-gradient-to-t am:from-black am:via-black/70 am:to-transparent am:transition-opacity am:duration-300 am:z-10"></div>
-            
-            <img class="am:w-full am:h-[280px] am:object-cover am:transition-transform am:duration-700 am:ease-out am:group-hover:scale-110" src="img/video-thumbnail-01.jpg" alt="Video Thumbnail" />
-            
-            <div class="am:absolute am:z-30 am:left-5 am:bottom-4 am:group-hover:left-1/2 am:group-hover:bottom-1/2 am:group-hover:-translate-x-1/2 am:group-hover:translate-y-1/2 am:transition-all am:duration-500 am:cubic-bezier(0.4, am:0, am:0.2, am:1) am:rounded-full">
-              <div class="am:bg-white/10 am:backdrop-blur-sm am:border am:border-white/30 am:rounded-full am:p-2 am:transition-all am:duration-500 am:group-hover:bg-primary am:group-hover:scale-[1.5] am:group-hover:border-primary am:flex am:items-center am:justify-center">
-                <img src="img/play-icon.svg" class="am:w-6 am:h-6 am:sm:w-8 am:sm:h-8" alt="Play" />
+      <div class="swiper am:VideoSlider am:!overflow-hidden">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide am:h-60 am:lg:h-80">
+            <a target="_blank" href="#" class="am:block am:h-full am:group am:relative am:overflow-hidden">
+              <div class="am:relative am:h-full am:w-full">
+                <div class="am:absolute am:top-0 am:left-0 am:h-full am:w-full am:bg-gradient-to-t am:from-black am:via-black/70 am:to-transparent am:transition-opacity am:duration-300 am:z-10"></div>
+                <img class="am:w-full am:h-[280px] am:lg:h-[300px] am:object-cover am:transition-transform am:duration-700 am:ease-out am:group-hover:scale-110" src="img/video-thumbnail-01.jpg" alt="Video Thumbnail" />
+                <div class="am:absolute am:z-30 am:left-5 am:bottom-4 am:group-hover:left-1/2 am:group-hover:bottom-1/2 am:group-hover:-translate-x-1/2 am:group-hover:translate-y-1/2 am:transition-all am:duration-500 am:cubic-bezier(0.4, am:0, am:0.2, am:1) am:rounded-full">
+                  <div class="am:bg-white/10 am:backdrop-blur-sm am:border am:border-white/30 am:rounded-full am:p-2 am:transition-all am:duration-500 am:group-hover:bg-primary am:group-hover:scale-[1.5] am:group-hover:border-primary am:flex am:items-center am:justify-center">
+                    <img src="img/play-icon.svg" class="am:w-6 am:h-6 am:sm:w-8 am:sm:h-8" alt="Play" />
+                  </div>
+                </div>
+                <div class="am:absolute am:bottom-0 am:w-full am:h-20 am:z-20 am:flex am:items-center am:pl-20 am:pr-5">
+                  <span class="am:text-white am:text-sm am:font-satoshi am:font-thin am:w-full"> Study BTech @ Amrita Vishwa Vidyapeetham </span>
+                </div>
               </div>
-            </div>
-            
-            <div class="am:absolute am:bottom-0 am:w-full am:h-20 am:z-20 am:flex am:items-center am:pl-20 am:pr-5">
-              <span class="am:text-white am:text-sm am:font-satoshi am:font-thin am:w-full"> Study BTech @ Amrita Vishwa Vidyapeetham </span>
-            </div>
+            </a>
           </div>
-        </a>
-      </div>
-
-      <div class="swiper-slide am:h-60 am:lg:h-80">
-        <a target="_blank" href="#" class="am:block am:h-full am:group am:relative am:overflow-hidden">
-          <div class="am:relative am:h-full am:w-full">
-            <div class="am:absolute am:top-0 am:left-0 am:h-full am:w-full am:bg-gradient-to-t am:from-black am:via-black/70 am:to-transparent am:transition-opacity am:duration-300 am:z-10"></div>
-            <img class="am:w-full am:h-[280px] am:object-cover am:transition-transform am:duration-700 am:ease-out am:group-hover:scale-110" src="img/video-thumbnail-02.jpg" alt="Video Thumbnail" />
-            <div class="am:absolute am:z-30 am:left-5 am:bottom-4 am:group-hover:left-1/2 am:group-hover:bottom-1/2 am:group-hover:-translate-x-1/2 am:group-hover:translate-y-1/2 am:transition-all am:duration-500 am:cubic-bezier(0.4, am:0, am:0.2, am:1) am:rounded-full">
-              <div class="am:bg-white/10 am:backdrop-blur-sm am:border am:border-white/30 am:rounded-full am:p-2 am:transition-all am:duration-500 am:group-hover:bg-primary am:group-hover:scale-[1.5] am:group-hover:border-primary am:flex am:items-center am:justify-center">
-                <img src="img/play-icon.svg" class="am:w-6 am:h-6 am:sm:w-8 am:sm:h-8" alt="Play" />
+          <div class="swiper-slide am:h-60 am:lg:h-80">
+            <a target="_blank" href="#" class="am:block am:h-full am:group am:relative am:overflow-hidden">
+              <div class="am:relative am:h-full am:w-full">
+                <div class="am:absolute am:top-0 am:left-0 am:h-full am:w-full am:bg-gradient-to-t am:from-black am:via-black/70 am:to-transparent am:transition-opacity am:duration-300 am:z-10"></div>
+                <img class="am:w-full am:h-[280px] am:lg:h-[300px] am:object-cover am:transition-transform am:duration-700 am:ease-out am:group-hover:scale-110" src="img/video-thumbnail-02.jpg" alt="Video Thumbnail" />
+                <div class="am:absolute am:z-30 am:left-5 am:bottom-4 am:group-hover:left-1/2 am:group-hover:bottom-1/2 am:group-hover:-translate-x-1/2 am:group-hover:translate-y-1/2 am:transition-all am:duration-500 am:cubic-bezier(0.4, am:0, am:0.2, am:1) am:rounded-full">
+                  <div class="am:bg-white/10 am:backdrop-blur-sm am:border am:border-white/30 am:rounded-full am:p-2 am:transition-all am:duration-500 am:group-hover:bg-primary am:group-hover:scale-[1.5] am:group-hover:border-primary am:flex am:items-center am:justify-center">
+                    <img src="img/play-icon.svg" class="am:w-6 am:h-6 am:sm:w-8 am:sm:h-8" alt="Play" />
+                  </div>
+                </div>
+                <div class="am:absolute am:bottom-0 am:w-full am:h-20 am:z-20 am:flex am:items-center am:pl-20 am:pr-5">
+                  <span class="am:text-white am:text-sm am:font-satoshi am:font-thin am:w-full"> Study BTech @ Amrita Vishwa Vidyapeetham </span>
+                </div>
               </div>
-            </div>
-            <div class="am:absolute am:bottom-0 am:w-full am:h-20 am:z-20 am:flex am:items-center am:pl-20 am:pr-5">
-              <span class="am:text-white am:text-sm am:font-satoshi am:font-thin am:w-full"> Study BTech @ Amrita Vishwa Vidyapeetham </span>
-            </div>
+            </a>
           </div>
-        </a>
-      </div>
-
-      <div class="swiper-slide am:h-60 am:lg:h-80">
-        <a target="_blank" href="#" class="am:block am:h-full am:group am:relative am:overflow-hidden">
-          <div class="am:relative am:h-full am:w-full">
-            <div class="am:absolute am:top-0 am:left-0 am:h-full am:w-full am:bg-gradient-to-t am:from-black am:via-black/70 am:to-transparent am:transition-opacity am:duration-300 am:z-10"></div>
-            <img class="am:w-full am:h-[280px] am:object-cover am:transition-transform am:duration-700 am:ease-out am:group-hover:scale-110" src="img/video-thumbnail-03.jpg" alt="Video Thumbnail" />
-            <div class="am:absolute am:z-30 am:left-5 am:bottom-4 am:group-hover:left-1/2 am:group-hover:bottom-1/2 am:group-hover:-translate-x-1/2 am:group-hover:translate-y-1/2 am:transition-all am:duration-500 am:cubic-bezier(0.4, am:0, am:0.2, am:1) am:rounded-full">
-              <div class="am:bg-white/10 am:backdrop-blur-sm am:border am:border-white/30 am:rounded-full am:p-2 am:transition-all am:duration-500 am:group-hover:bg-primary am:group-hover:scale-[1.5] am:group-hover:border-primary am:flex am:items-center am:justify-center">
-                <img src="img/play-icon.svg" class="am:w-6 am:h-6 am:sm:w-8 am:sm:h-8" alt="Play" />
+          <div class="swiper-slide am:h-60 am:lg:h-80">
+            <a target="_blank" href="#" class="am:block am:h-full am:group am:relative am:overflow-hidden">
+              <div class="am:relative am:h-full am:w-full">
+                <div class="am:absolute am:top-0 am:left-0 am:h-full am:w-full am:bg-gradient-to-t am:from-black am:via-black/70 am:to-transparent am:transition-opacity am:duration-300 am:z-10"></div>
+                <img class="am:w-full am:h-[280px] am:lg:h-[300px] am:object-cover am:transition-transform am:duration-700 am:ease-out am:group-hover:scale-110" src="img/video-thumbnail-03.jpg" alt="Video Thumbnail" />
+                <div class="am:absolute am:z-30 am:left-5 am:bottom-4 am:group-hover:left-1/2 am:group-hover:bottom-1/2 am:group-hover:-translate-x-1/2 am:group-hover:translate-y-1/2 am:transition-all am:duration-500 am:cubic-bezier(0.4, am:0, am:0.2, am:1) am:rounded-full">
+                  <div class="am:bg-white/10 am:backdrop-blur-sm am:border am:border-white/30 am:rounded-full am:p-2 am:transition-all am:duration-500 am:group-hover:bg-primary am:group-hover:scale-[1.5] am:group-hover:border-primary am:flex am:items-center am:justify-center">
+                    <img src="img/play-icon.svg" class="am:w-6 am:h-6 am:sm:w-8 am:sm:h-8" alt="Play" />
+                  </div>
+                </div>
+                <div class="am:absolute am:bottom-0 am:w-full am:h-20 am:z-20 am:flex am:items-center am:pl-20 am:pr-5">
+                  <span class="am:text-white am:text-sm am:font-satoshi am:font-thin am:w-full"> Study BTech @ Amrita Vishwa Vidyapeetham </span>
+                </div>
               </div>
-            </div>
-            <div class="am:absolute am:bottom-0 am:w-full am:h-20 am:z-20 am:flex am:items-center am:pl-20 am:pr-5">
-              <span class="am:text-white am:text-sm am:font-satoshi am:font-thin am:w-full"> Study BTech @ Amrita Vishwa Vidyapeetham </span>
-            </div>
+            </a>
           </div>
-        </a>
-      </div>
-
-      <div class="swiper-slide am:h-60 am:lg:h-80">
-        <a target="_blank" href="#" class="am:block am:h-full am:group am:relative am:overflow-hidden">
-          <div class="am:relative am:h-full am:w-full">
-            <div class="am:absolute am:top-0 am:left-0 am:h-full am:w-full am:bg-gradient-to-t am:from-black am:via-black/70 am:to-transparent am:transition-opacity am:duration-300 am:z-10"></div>
-            <img class="am:w-full am:h-[280px] am:object-cover am:transition-transform am:duration-700 am:ease-out am:group-hover:scale-110" src="img/video-thumbnail-04.jpg" alt="Video Thumbnail" />
-            <div class="am:absolute am:z-30 am:left-5 am:bottom-4 am:group-hover:left-1/2 am:group-hover:bottom-1/2 am:group-hover:-translate-x-1/2 am:group-hover:translate-y-1/2 am:transition-all am:duration-500 am:cubic-bezier(0.4, am:0, am:0.2, am:1) am:rounded-full">
-              <div class="am:bg-white/10 am:backdrop-blur-sm am:border am:border-white/30 am:rounded-full am:p-2 am:transition-all am:duration-500 am:group-hover:bg-primary am:group-hover:scale-[1.5] am:group-hover:border-primary am:flex am:items-center am:justify-center">
-                <img src="img/play-icon.svg" class="am:w-6 am:h-6 am:sm:w-8 am:sm:h-8" alt="Play" />
+          <div class="swiper-slide am:h-60 am:lg:h-80">
+            <a target="_blank" href="#" class="am:block am:h-full am:group am:relative am:overflow-hidden">
+              <div class="am:relative am:h-full am:w-full">
+                <div class="am:absolute am:top-0 am:left-0 am:h-full am:w-full am:bg-gradient-to-t am:from-black am:via-black/70 am:to-transparent am:transition-opacity am:duration-300 am:z-10"></div>
+                <img class="am:w-full am:h-[280px] am:lg:h-[300px] am:object-cover am:transition-transform am:duration-700 am:ease-out am:group-hover:scale-110" src="img/video-thumbnail-04.jpg" alt="Video Thumbnail" />
+                <div class="am:absolute am:z-30 am:left-5 am:bottom-4 am:group-hover:left-1/2 am:group-hover:bottom-1/2 am:group-hover:-translate-x-1/2 am:group-hover:translate-y-1/2 am:transition-all am:duration-500 am:cubic-bezier(0.4, am:0, am:0.2, am:1) am:rounded-full">
+                  <div class="am:bg-white/10 am:backdrop-blur-sm am:border am:border-white/30 am:rounded-full am:p-2 am:transition-all am:duration-500 am:group-hover:bg-primary am:group-hover:scale-[1.5] am:group-hover:border-primary am:flex am:items-center am:justify-center">
+                    <img src="img/play-icon.svg" class="am:w-6 am:h-6 am:sm:w-8 am:sm:h-8" alt="Play" />
+                  </div>
+                </div>
+                <div class="am:absolute am:bottom-0 am:w-full am:h-20 am:z-20 am:flex am:items-center am:pl-20 am:pr-5">
+                  <span class="am:text-white am:text-sm am:font-satoshi am:font-thin am:w-full"> Study BTech @ Amrita Vishwa Vidyapeetham </span>
+                </div>
               </div>
-            </div>
-            <div class="am:absolute am:bottom-0 am:w-full am:h-20 am:z-20 am:flex am:items-center am:pl-20 am:pr-5">
-              <span class="am:text-white am:text-sm am:font-satoshi am:font-thin am:w-full"> Study BTech @ Amrita Vishwa Vidyapeetham </span>
-            </div>
+            </a>
           </div>
-        </a>
-      </div>
-
-      <div class="swiper-slide am:h-60 am:lg:h-80">
-        <a target="_blank" href="#" class="am:block am:h-full am:group am:relative am:overflow-hidden">
-          <div class="am:relative am:h-full am:w-full">
-            <div class="am:absolute am:top-0 am:left-0 am:h-full am:w-full am:bg-gradient-to-t am:from-black am:via-black/70 am:to-transparent am:transition-opacity am:duration-300 am:z-10"></div>
-            <img class="am:w-full am:h-[280px] am:object-cover am:transition-transform am:duration-700 am:ease-out am:group-hover:scale-110" src="img/video-thumbnail-01.jpg" alt="Video Thumbnail" />
-            <div class="am:absolute am:z-30 am:left-5 am:bottom-4 am:group-hover:left-1/2 am:group-hover:bottom-1/2 am:group-hover:-translate-x-1/2 am:group-hover:translate-y-1/2 am:transition-all am:duration-500 am:cubic-bezier(0.4, am:0, am:0.2, am:1) am:rounded-full">
-              <div class="am:bg-white/10 am:backdrop-blur-sm am:border am:border-white/30 am:rounded-full am:p-2 am:transition-all am:duration-500 am:group-hover:bg-primary am:group-hover:scale-[1.5] am:group-hover:border-primary am:flex am:items-center am:justify-center">
-                <img src="img/play-icon.svg" class="am:w-6 am:h-6 am:sm:w-8 am:sm:h-8" alt="Play" />
+          <div class="swiper-slide am:h-60 am:lg:h-80">
+            <a target="_blank" href="#" class="am:block am:h-full am:group am:relative am:overflow-hidden">
+              <div class="am:relative am:h-full am:w-full">
+                <div class="am:absolute am:top-0 am:left-0 am:h-full am:w-full am:bg-gradient-to-t am:from-black am:via-black/70 am:to-transparent am:transition-opacity am:duration-300 am:z-10"></div>
+                <img class="am:w-full am:h-[280px] am:lg:h-[300px] am:object-cover am:transition-transform am:duration-700 am:ease-out am:group-hover:scale-110" src="img/video-thumbnail-01.jpg" alt="Video Thumbnail" />
+                <div class="am:absolute am:z-30 am:left-5 am:bottom-4 am:group-hover:left-1/2 am:group-hover:bottom-1/2 am:group-hover:-translate-x-1/2 am:group-hover:translate-y-1/2 am:transition-all am:duration-500 am:cubic-bezier(0.4, am:0, am:0.2, am:1) am:rounded-full">
+                  <div class="am:bg-white/10 am:backdrop-blur-sm am:border am:border-white/30 am:rounded-full am:p-2 am:transition-all am:duration-500 am:group-hover:bg-primary am:group-hover:scale-[1.5] am:group-hover:border-primary am:flex am:items-center am:justify-center">
+                    <img src="img/play-icon.svg" class="am:w-6 am:h-6 am:sm:w-8 am:sm:h-8" alt="Play" />
+                  </div>
+                </div>
+                <div class="am:absolute am:bottom-0 am:w-full am:h-20 am:z-20 am:flex am:items-center am:pl-20 am:pr-5">
+                  <span class="am:text-white am:text-sm am:font-satoshi am:font-thin am:w-full"> Study BTech @ Amrita Vishwa Vidyapeetham </span>
+                </div>
               </div>
-            </div>
-            <div class="am:absolute am:bottom-0 am:w-full am:h-20 am:z-20 am:flex am:items-center am:pl-20 am:pr-5">
-              <span class="am:text-white am:text-sm am:font-satoshi am:font-thin am:w-full"> Study BTech @ Amrita Vishwa Vidyapeetham </span>
-            </div>
+            </a>
           </div>
-        </a>
+        </div>
       </div>
-
-    </div>
-  </div>
-</section>
+    </section>
     <!--------------LIFE AT AMRITA---------------->
     <section class="am:py-12 am:lg:py-25">
       <div class="am:container am:mx-auto am:px-4 am:sm:px-6">
@@ -1274,8 +1651,8 @@
         </div>
       </div>
       <div class="am:container am:mx-auto am:px-4 am:relative am:z-10 am:mb-20">
-        <div class="am:grid am:grid-cols-1 am:md:grid-cols-2 am:lg:grid-cols-4 am:gap-0 am:sm:gap-10 am:lg:gap-0">
-          <div class="am:lg:h-64 am:flex am:flex-col am:justify-center am:border-b am:border-white/5 am:lg:border-none am:pb-8 am:lg:pb-0">
+        <div class="am:grid am:grid-cols-1 am:lg:grid-cols-4 am:gap-0">
+          <div class="am:lg:h-64 am:flex am:flex-col am:justify-center am:items-center am:lg:items-start am:border-b am:border-white/5 am:lg:border-none am:pb-8 am:lg:pb-0 am:pt-8 am:lg:pt-0">
             <img src="/img/amrita-white-logo.svg" alt="Amrita Logo" class="am:w-48" />
           </div>
           <div class="am:lg:h-64 am:lg:px-10 am:flex am:flex-col am:justify-start am:pt-6 am:border-b am:border-white/5 am:lg:border-none am:pb-6 am:lg:pb-0">
@@ -1413,9 +1790,9 @@
       <div class="am:w-full am:relative am:z-20 am:border-t am:border-white/10 am:bg-[#000505]/80 am:backdrop-blur-md">
         <div class="am:container am:mx-auto am:px-6">
           <div class="am:flex am:flex-col am:xl:flex-row am:items-center am:justify-between am:text-xs am:sm:text-sm am:py-6 am:text-gray-400">
-            <div class="am:flex am:flex-col am:md:flex-row am:items-center am:text-center am:md:text-left am:gap-2 am:md:gap-6 am:mb-4 am:xl:mb-0">
+            <div class="am:flex am:flex-col am:xl:flex-row am:items-center am:text-center am:xl:text-left am:gap-4 am:xl:gap-6 am:mb-4 am:xl:mb-0">
               <span class="am:text-white">© 2025 Amrita Vishwa Vidyapeetham</span>
-              <div class="am:hidden am:md:block am:w-px am:h-3 am:bg-gray-600"></div>
+              <div class="am:hidden am:xl:block am:w-px am:h-3 am:bg-gray-600"></div>
               <div class="am:flex am:flex-wrap am:justify-center am:gap-3 am:md:gap-4">
                 <a href="#" class="am:hover:text-white am:transition-colors">Privacy Policy</a>
                 <a href="#" class="am:hover:text-white am:transition-colors">Grievance</a>
